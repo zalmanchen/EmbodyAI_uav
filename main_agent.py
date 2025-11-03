@@ -13,14 +13,26 @@ from llm_agent_core.prompt_templates import CORE_SYSTEM_PROMPT, TOOL_SCHEMAS
 # 假设这是 OpenFly VLA 模型的执行接口
 from uav_tools.flight_controls import execute_vln_instruction 
 
+# 📁 main_agent.py (关键修改部分)
+
+# ... 导入语句 ...
+
+# --- 导入 flight_controls 的 CLIENT BINDER ---
+from uav_tools.flight_controls import set_airsim_client # <--- 新导入
 
 # --- 初始化全局工具和客户端 ---
 
-# 1. 客户端和连接 (在 Agent 启动前初始化一次)
+# 1. 客户端和连接 
 AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
 if not AIRSIM_CLIENT.connect_and_initialize():
     print("FATAL ERROR: AirSim 连接失败，程序退出。")
     exit()
+
+# ************ 新增的关键步骤 ************
+# 将 AirSimClient 实例绑定到 flight_controls 模块
+set_airsim_client(AIRSIM_CLIENT) 
+# ****************************************
+
 
 # 2. 记忆管理器
 MEMORY_MANAGER = MemoryManager()
