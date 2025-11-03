@@ -2,7 +2,7 @@ import airsim
 import numpy as np
 import json
 from PIL import Image
-from airsim_client import AirSimClient # 假设已导入基础客户端
+from .airsim_client import AirSimClient # 假设已导入基础客户端
 
 # 假设全局或通过外部传入的 AirSim 客户端实例
 try:

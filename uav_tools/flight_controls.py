@@ -1,6 +1,6 @@
 import airsim
 import time
-from airsim_client import AirSimClient # 导入我们之前编写的基础客户端
+from uav_tools.airsim_client import AirSimClient # 导入我们之前编写的基础客户端
 
 # 假设全局或通过外部传入的 AirSim 客户端实例
 # 在实际的 Agent 框架中，您会确保这个客户端是已连接和初始化的。

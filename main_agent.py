@@ -6,7 +6,7 @@ from typing import List, Dict, Any
 from uav_tools.flight_controls import fly_to_gps, move_forward, set_yaw
 from uav_tools.vision_bridge import capture_and_analyze_rgb
 from llm_agent_core.memory_manager import MemoryManager
-from airsim_client import AirSimClient 
+from uav_tools.airsim_client import AirSimClient 
 
 # --- 初始化工具和客户端 ---
 
