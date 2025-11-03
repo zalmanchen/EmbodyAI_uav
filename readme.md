@@ -132,7 +132,3 @@ python main_agent.py
 1.  **真实的 LLM API 集成：** 将 `mock_llm_call` 替换为 OpenAI/Gemini 或其他 LLM 的 Function Calling API 接口。
 2.  **OpenFly-Agent 模型接入：** 详细研究 OpenFly 仓库，实现 `execute_vln_instruction` 内部的 VLA 模型加载、推理和实时 AirSim API 调用。
 3.  **视觉感知模块升级：** 将 `capture_and_analyze_rgb` 升级为集成 VLM（如 LLaVA/Gemini Pro Vision）的感知模块，利用 OpenFly 的语义数据。
-
------
-
-Would you like me to provide the previously discussed detailed installation steps for UE 4.27 on Ubuntu 22.04, or is the current structure sufficient?
