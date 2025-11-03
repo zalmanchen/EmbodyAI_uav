@@ -1,124 +1,120 @@
-# 🚁 LLM-Agent 驱动的无人机搜索与救援仿真平台 (UAV-SAR)
+🚁 LLM-Agent 驱动的无人机搜索与救援仿真平台 (UAV-SAR)
+📖 项目概览
+本项目旨在构建一个高鲁棒性的具身智能体（Embodied Agent），用于在户外环境中执行复杂的搜索与救援（SAR）任务。核心优势在于采用了先进的 双层 Agent 架构，并直接集成了 OpenFly-Platform 的环境与工具链，实现了高效且高保真的视觉-语言导航（VLN）。
+核心特性与技术栈
+特性
+描述
+技术栈
 
-## 📖 项目概览
+双层 Agent 架构
+LLM (高级规划者) 负责长程任务分解和宏观路径规划；OpenFly VLA 模型 (低级执行器) 负责短程、实时、反应式的视觉-语言导航。
+LLM Function Calling, OpenFly-Agent
 
-本项目旨在一个高保真物理仿真环境（基于 **AirSim** 和 **Unreal Engine**）中，构建一个由大型语言模型（LLM）驱动的具身智能体（Embodied Agent）。该 Agent 能够接收自然语言指令，自主规划飞行路径，利用视觉感知系统（**YOLO 模型**）识别目标，并使用 **RAG（检索增强生成）记忆系统** 进行长期的情境推理，执行复杂的搜索与救援（SAR）任务。
+VLN 集成基准
+直接依赖并集成 SHAILAB-IPEC/OpenFly-Platform 的环境、工具链和基准数据集，确保仿真场景的高保真度和数据的语义丰富性。
+Unreal Engine 4.27 / AirSim, OpenFly 工具链
 
-## 🧠 核心代码逻辑思路 (Code Logic Breakdown)
+具身工具箱
+通过 RPC 接口，将 LLM 的输出桥接到 AirSim 的物理动作、视觉感知和记忆存储。
+airsim_client.py, uav_tools/
 
-本项目采用经典的 **“思考 (Thought) - 行动 (Action) - 观察 (Observation)”** 循环框架，通过 **Function Calling** 机制将 LLM 的认知能力与无人机的物理执行能力桥接起来。
+鲁棒性与稳定
+针对 AirSim 常见的连接问题进行优化，并锁定在兼容性最佳的 UE 版本。
+优化后的 AirSimClient
 
-1.  **启动与初始化 (`main_agent.py`)**
+---
+🛠️ 一、安装与环境配置
+本项目依赖于 Unreal Engine 4.27、AirSim 以及 OpenFly-Platform 的工具链。此过程在 Ubuntu 22.04 上最为稳定。
+1. 软件环境要求
+软件
+版本要求
+说明
 
-      * **连接 AirSim：** 实例化 `AirSimClient`，建立与 AirSim 仿真环境的 RPC 连接，并进行无人机解锁和环境重置。
-      * **记忆初始化：** 初始化 `MemoryManager`（基于 ChromaDB 的向量数据库），建立 Agent 的长期记忆。
-      * **工具映射：** 将所有 Python 工具函数（飞行、感知、记忆）注册到一个字典中，供主循环调用。
+操作系统
+Ubuntu 22.04
+推荐用于稳定编译 UE 源码。
 
-2.  **LLM 驱动循环 (`run_agent` in `main_agent.py`)**
+Unreal Engine
+4.27
+必须从 GitHub 源码编译。
 
-      * **规划 (Thought)：** LLM 接收系统 Prompt、当前状态和历史对话（记忆）。它生成一个 `Thought`，解释其推理过程（例如：需要前往新区域、开始感知、避障等）。
-      * **行动 (Action)：** LLM 决定调用一个或多个工具（Function Call），以 JSON 格式输出函数名和参数。
-      * **执行 (Execution)：** 主循环解析 LLM 的 JSON 输出，通过 **工具映射** 查找对应的 Python 函数，并执行无人机操作。
-      * **观察 (Observation)：** 工具函数执行完毕后，返回一个结构化的 **Observation** 报告（例如：`OBSERVATION: 成功飞抵目标坐标` 或 YOLO 的检测结果 JSON）。
-      * **记忆更新：** 如果 Observation 包含新线索或已完成的搜索状态，Agent 调用 `update_search_map` 将其存储到长期记忆中。
+Python
+3.8+
 
-3.  **感知系统 (`vision_bridge.py`)**
 
-      * **目标检测：** 在 `capture_and_analyze_rgb` 中，模拟（或实际调用）YOLO 模型对 AirSim 捕获的 RGB 图像进行实时目标检测。
-      * **具身感知：** 实现 **像素坐标到世界坐标的转换** 逻辑，将 YOLO 输出的 2D 像素位置，结合 AirSim 的深度图和无人机姿态，计算出目标的精确 3D GPS 坐标。
+仿真插件
+AirSim Plugin
+编译集成到 OpenFly 的 UE 项目中。
 
-4.  **记忆与推理 (`memory_manager.py`)**
+2. 获取源码
+克隆本项目代码和依赖的 OpenFly-Platform 仓库：
+# 1. 克隆本项目 (UAV-SAR Agent)
+git clone https://your-uav-sar-repo.git uav-sar-agent
+cd uav-sar-agent
 
-      * **存储：** `update_search_map` 将 Agent 的重要发现（如线索、已搜索区域）转换为向量嵌入，并存储到向量数据库中。
-      * **召回 (RAG)：** `retrieve_historical_clues` 根据 Agent 的语义查询，从向量数据库中检索最相关的历史线索，作为 **Observation** 返回给 LLM，增强其长期情境推理能力。
-
------
-
-## 🛠️ 安装与环境配置
-
-### 1\. 软件要求
-
-  * **操作系统：** Windows 10/11 或 Ubuntu 20.04+
-  * **仿真环境：** Unreal Engine 4.27 或 5.x（取决于 AirSim 兼容性）
-  * **核心库：** Python 3.8+
-
-### 2\. AirSim 环境设置
-
-1.  **安装 Unreal Engine：** 确保安装兼容版本的 UE。
-2.  **AirSim 插件：** 从 AirSim GitHub 仓库编译并集成 AirSim 插件到您的 UE 项目中（例如：`Blocks` 场景）。
-3.  **启动仿真：** 启动 Unreal Editor，打开您的项目，并点击 **Play** 开始仿真。
-
-### 3\. Python 依赖安装
-
-```bash
+# 2. 克隆 OpenFly-Platform 仓库
+git clone https://github.com/SHAILAB-IPEC/OpenFly-Platform.git OpenFly-Platform3. 环境与依赖安装 (Ubuntu 22.04)
+A. 系统依赖
+# 安装构建工具和基础依赖
+sudo apt update
+sudo apt install build-essential clang git cmake ninja-build
+# 安装 UE 官方推荐的图形和媒体依赖
+sudo apt install libsdl2-dev libxmu-dev libxi-dev libglu1-mesa-dev \
+libvulkan-dev vulkan-tools libfontconfig1-dev libfreetype6-dev \
+libgtk-3-dev ... # 更多依赖见完整指南B. UE 4.27 与 AirSim 编译
+请按照之前提供的 详细安装指南 编译 UE 4.27 源码，并运行 AirSim 的 ./setup.sh 和 ./build.sh 脚本。
+C. Python 依赖
 # 创建并激活虚拟环境
 python -m venv venv
-source venv/bin/activate  # 或 venv\Scripts\activate
+source venv/bin/activate 
 
-# 安装依赖库
-pip install airsim numpy pandas chromadb
-# 如果使用真实的 LLM API，还需安装对应的库 (e.g., openai, google-genai, anthropic)
-```
+# 安装本项目核心依赖
+pip install airsim numpy pandas chromadb 
 
------
+# 安装 OpenFly-Platform 的依赖 (请参考 OpenFly-Platform/requirements.txt)
+pip install -r OpenFly-Platform/requirements.txt---
+🧠 二、双层 Agent 架构与集成细节
+1. LLM 高级规划层 (High-Level Planner)
+• 文件： main_agent.py, llm_agent_core/prompt_templates.py
+• 职责： 负责任务的宏观决策和调度。
+宏观行动
+对应的 LLM 工具
+目标
 
-## 📂 代码结构
+长程移动
+fly_to_gps
+快速跨越区域，到达目标搜索范围。
 
-```
-UAV_LLM_Agent_PoC/
-├── main_agent.py          # 🚀 Agent 核心驱动：实现 '思考-行动-观察' 主循环
-├── airsim_client.py       # 🔌 AirSim 基础连接和初始化
-├── llm_agent_core/
-│   ├── memory_manager.py  # 📚 长期记忆 (LTM)：RAG 向量数据库实现
-│   └── prompt_templates.py# (省略，但应包含 CORE_PROMPT 和 FUNCTION_SCHEMAS)
-├── uav_tools/             # 🛠️ 具身工具函数集
-│   ├── flight_controls.py # 飞行和导航工具 (fly_to_gps, move_forward)
-│   └── vision_bridge.py   # 感知工具：YOLO 模拟和像素到世界坐标转换
-└── models/
-    └── yolo_v8.pt         # (可选) YOLO 模型文件存放目录
-```
+信息召回
+retrieve_historical_clues
+利用 RAG 长期记忆辅助决策。
 
------
+精细搜索
+execute_vln_instruction
+切换到低级 VLA 模式，进行视觉导航。
 
-## 🚀 运行原型验证 (PoC)
-
-1.  **确保 AirSim 运行：** 在 Unreal Editor 中启动您的 AirSim 场景。
-2.  **运行主程序：** 执行 `main_agent.py` 文件。
-
-<!-- end list -->
-
-```bash
-python main_agent.py
-```
-
-### 预期输出流程
-
-程序将输出 Agent 的思考和行动日志：
-
-```
-============================================================
-Agent 主循环启动 | 初始目标: 去坐标 (...) 附近的区域，寻找红色的标记物或失踪者。
-============================================================
-
---- 步骤 1：规划阶段 ---
-✅ Agent 思考: 任务开始，首先需要起飞到安全高度 20 米。
-   -> 调用工具: takeoff ({'altitude': 20.0})
-   <- 观察结果 (Observation): 起飞成功，当前高度 20.0 米。...
-
---- 步骤 2：规划阶段 ---
-✅ Agent 思考: 已起飞，下一步是获取当前精确位置，用于规划前往目标区域的路径。
-   -> 调用工具: get_current_pose ({})
-   <- 观察结果 (Observation): {'latitude': 47.641..., 'longitude': -122.14...}...
-   
-... (流程持续，直到 Agent 调用 report_finding 或达到步数限制) ...
-```
-
-**❗ 注意：** 在 PoC 阶段，请在 `main_agent.py` 中将 `mock_llm_call` 替换为您实际的 LLM API 调用，以获得真实的智能体行为。
-
-## 📈 后续工作和评估
-
-项目下一步应专注于：
-
-1.  **LLM 集成：** 将 `mock_llm_call` 替换为真实的 LLM API。
-2.  **视觉模型部署：** 部署 YOLO 模型，并完善 `pixel_to_world_coordinates` 的几何计算。
-3.  **性能评估：** 参照项目规划中的评估指标（搜索效率、鲁棒性、推理准确性）对 Agent 进行严格测试。
+2. OpenFly VLA 低级执行层 (Low-Level Executor)
+这是集成的核心部分，由 execute_vln_instruction 工具触发。
+• VLA 逻辑：
+    a. LLM 调用 execute_vln_instruction(instruction="沿着小路飞到红色房子旁边")。
+    b. 该函数加载 OpenFly-Agent 模型（位于 OpenFly-Platform 内部）。
+    c. VLA 模型实时获取 AirSim 图像和状态，进行推理。
+    d. VLA 模型输出低级控制指令（如速度向量、角速度）。
+    e. AirSim Client 执行这些指令，直到 VLA 任务子目标完成。
+    f. 将 VLA 的运行结果（如 "目标已找到，坐标 X"）作为 OBSERVATION 返回给 LLM。
+3. 鲁棒性优化 (airsim_client.py)
+集成了指数退避重试机制和多名称尝试，确保在启动时能够成功连接仿真环境并解锁无人机。
+---
+🚀 四、运行与验证
+1. 启动仿真环境
+1. 在 Unreal Editor (UE 4.27) 中打开 OpenFly-Platform 提供的 AirSim 场景。
+2. 确保 AirSim 插件已启用，并按下 Play 按钮启动仿真。
+2. 运行 Agent 主程序
+python main_agent.py3. 预期输出
+观察控制台日志，确认 Agent 遵循 “思考-行动-观察” 循环，并正确执行了从 fly_to_gps 到 execute_vln_instruction 的控制权切换。
+---
+⏭️ 五、后续工作规划
+当前的 PoC 框架结构已就位，后续工作将聚焦于实现真实的 LLM/VLA 推理。
+1. 真实的 LLM API 集成： 将 mock_llm_call 替换为 OpenAI/Gemini 或其他 LLM 的 Function Calling API 接口。
+2. OpenFly-Agent 模型接入： 详细研究 OpenFly 仓库，实现 execute_vln_instruction 内部的 VLA 模型加载、推理和实时 AirSim API 调用。
+3. 视觉感知模块升级： 将 capture_and_analyze_rgb 升级为集成 VLM（如 LLaVA/Gemini Pro Vision）的感知模块，利用 OpenFly 的语义数据。

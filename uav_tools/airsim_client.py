@@ -1,134 +1,120 @@
+# 📁 airsim_client.py
+
 import airsim
 import time
-import numpy as np
-
-# --- 核心 AirSim 客户端类 ---
+from typing import Dict, Any
 
 class AirSimClient:
     """
-    封装 AirSim 客户端的类，提供连接、初始化和基本飞行控制功能。
+    AirSim RPC 客户端封装，处理连接、初始化和基础控制。
     """
     
-    def __init__(self, vehicle_name="Drone1"):
-        """初始化 AirSim 客户端并尝试连接。"""
+    def __init__(self, vehicle_name: str = "Drone1"):
         self.vehicle_name = vehicle_name
-        self.client = airsim.MultirotorClient()
-        self.connected = False
+        self.client = None
+        self.max_retries = 5
 
-    def connect_and_initialize(self):
+    def connect_and_initialize(self) -> bool:
         """
-        连接到 AirSim 仿真环境，并准备无人机进行飞行。
+        连接 AirSim 仿真器，并进行初始化设置。
         """
-        try:
-            print(f"尝试连接到 AirSim 客户端...")
-            self.client.confirmConnection()
-            self.connected = True
-            print("连接成功！")
-
-            # 重置环境状态
-            self.client.reset()
-            time.sleep(0.5)
-            
-            # 启用 API 控制
-            self.client.enableApiControl(True, self.vehicle_name)
-            
-            # 解锁无人机（上电，准备飞行）
-            self.client.armDisarm(True, self.vehicle_name)
-            print(f"无人机 '{self.vehicle_name}' 已解锁并准备就绪。")
-            
-            return True
-        except Exception as e:
-            print(f"连接 AirSim 或初始化失败: {e}")
-            self.connected = False
-            return False
-
-    def takeoff(self, altitude=20.0):
-        """
-        命令无人机垂直起飞并悬停在指定高度。
-        """
-        if not self.connected:
-            return "错误：未连接到 AirSim。"
+        print("尝试连接 AirSim RPC 服务器...")
         
-        try:
-            print(f"无人机起飞至 {altitude} 米...")
-            # AirSim 的 Z 坐标是朝下的，所以高度为负值
-            self.client.takeoffAsync(timeout_sec=5).join() 
-            
-            # 确保到达目标高度（AirSim 默认起飞到一个安全高度，这里明确飞到指定高度）
-            self.client.moveToZAsync(-altitude, 5).join()
-            print(f"无人机已到达 {altitude} 米并悬停。")
-            return f"起飞成功，当前高度 {altitude} 米。"
-        except Exception as e:
-            print(f"起飞失败: {e}")
-            self.client.armDisarm(False, self.vehicle_name)
-            return f"错误：起飞失败 - {e}"
+        for attempt in range(self.max_retries):
+            try:
+                self.client = airsim.MultirotorClient()
+                self.client.confirmConnection()
+                print(f"✅ AirSim 连接成功 (尝试 {attempt + 1}/{self.max_retries})。")
+                
+                # 尝试重置环境并启用 API 控制
+                self._reset_and_enable_api_control()
+                return True
+                
+            except Exception as e:
+                print(f"连接失败 (尝试 {attempt + 1}/{self.max_retries}): {e}")
+                time.sleep(2 ** attempt)  # 指数退避等待
+                
+        print("❌ FATAL ERROR: 无法连接 AirSim 服务器，请检查仿真环境是否运行。")
+        return False
 
-    def land(self):
-        """
-        命令无人机在当前位置降落并锁定。
-        """
-        if not self.connected:
-            return "错误：未连接到 AirSim。"
+    def _reset_and_enable_api_control(self):
+        """重置环境，并尝试启用 API 控制和解锁。"""
         
-        try:
-            print("无人机开始降落...")
-            self.client.landAsync().join()
-            
-            # 降落后，解除锁定（断电）
-            self.client.armDisarm(False, self.vehicle_name)
-            print("无人机已安全降落并锁定。")
-            return "降落成功。"
-        except Exception as e:
-            print(f"降落失败: {e}")
-            return f"错误：降落失败 - {e}"
-            
-    def get_current_pose(self):
-        """
-        获取无人机的当前 GPS 坐标和姿态。
-        """
-        if not self.connected:
-            return None
+        # 1. 重置环境 (重要：必须在飞行前重置)
+        self.client.reset() 
+        time.sleep(0.5) # 等待环境稳定
+        
+        success = False
+        
+        # 2. 尝试使用默认车辆名或空字符串启用 API 控制
+        vehicle_names_to_try = [self.vehicle_name, ""]
+        
+        for name in vehicle_names_to_try:
+            try:
+                self.client.enableApiControl(True, name)
+                self.client.armDisarm(True, name)
+                
+                # 验证是否成功
+                if self.client.isApiControlEnabled(name) and self.client.getMultirotorState(name).landed_state == airsim.LandedState.Armed:
+                    self.vehicle_name = name # 记录成功的车辆名
+                    print(f"✅ API 控制和解锁成功，使用的车辆名为: '{name}'")
+                    success = True
+                    break
+            except Exception as e:
+                # print(f"尝试车辆名 '{name}' 失败: {e}")
+                pass # 静默失败，继续尝试下一个名称
+        
+        if not success:
+            raise Exception("无法启用 API 控制或解锁无人机。")
 
-        state = self.client.getMultirotorState()
-        gps = state.gps_location
+
+    # --- 基础控制 API ---
+
+    def takeoff(self, altitude: float) -> str:
+        """执行起飞到指定高度。"""
+        print(f"执行起飞到 {altitude}m...")
+        self.client.takeoffAsync(timeout_sec=5).join()
         
-        # 将四元数转换为欧拉角，获取 Yaw (朝向)
+        # 飞到指定高度，以确保高度精确
+        z = self.client.getMultirotorState(self.vehicle_name).position.z_val
+        if z > -altitude + 1: # AirSim NED 坐标系下，z为负值表示高度
+            self.client.moveToZAsync(-altitude, 2, vehicle_name=self.vehicle_name).join()
+            
+        return f"OBSERVATION: 无人机起飞成功，位于高度 {altitude:.2f} 米。"
+
+    def land(self) -> str:
+        """执行降落。"""
+        print("执行降落...")
+        self.client.landAsync(timeout_sec=5).join()
+        self.client.armDisarm(False, self.vehicle_name)
+        return "OBSERVATION: 无人机已安全降落并解除锁定。"
+
+    def get_current_pose(self) -> str:
+        """获取并返回无人机当前的 GPS 坐标和姿态（NED 坐标系）。"""
+        state = self.client.getMultirotorState(self.vehicle_name)
+        gps = self.client.getGpsLocation(self.vehicle_name)
+        
+        # AirSim NED 坐标系下，Z 为负值，需要转换为正高度
+        altitude_meters = -state.position.z_val 
+        
+        # 姿态（四元数）
         orientation = state.kinematics_estimated.orientation
-        pitch, roll, yaw = airsim.to_euler_angles(orientation)
         
-        # 封装为 Agent 可读的格式
-        pose = {
+        pose_data = {
             "latitude": gps.latitude,
             "longitude": gps.longitude,
-            "altitude_meters": -gps.altitude, # AirSim Z朝下，我们将其转换为正的绝对高度
-            "yaw_degrees": np.degrees(yaw)
+            "altitude_meters": altitude_meters,
+            "orientation_w_x_y_z": [orientation.w_val, orientation.x_val, orientation.y_val, orientation.z_val]
         }
         
-        return pose
-
-# --- 示例用法 (用于测试该文件功能) ---
+        return f"OBSERVATION: 当前姿态：Lat={gps.latitude:.6f}, Lon={gps.longitude:.6f}, Alt={altitude_meters:.2f}m. 原始数据: {pose_data}"
 
 if __name__ == "__main__":
-    # 确保 AirSim 仿真环境在运行，并加载了您的场景
-    
-    uav_client = AirSimClient(vehicle_name="Drone1")
-    
-    if uav_client.connect_and_initialize():
-        # 测试 1: 获取初始姿态
-        initial_pose = uav_client.get_current_pose()
-        print(f"\n初始姿态: {initial_pose}")
-
-        # 测试 2: 起飞
-        takeoff_result = uav_client.takeoff(altitude=15.0)
-        print(f"起飞结果: {takeoff_result}")
-        time.sleep(2)
-
-        # 测试 3: 获取起飞后的姿态
-        current_pose = uav_client.get_current_pose()
-        print(f"当前姿态: {current_pose}")
-
-        # 测试 4: 降落
-        land_result = uav_client.land()
-        print(f"降落结果: {land_result}")
-    else:
-        print("\n请检查 AirSim 仿真环境是否已启动。")
+    # 验证客户端
+    client_test = AirSimClient()
+    if client_test.connect_and_initialize():
+        print(client_test.takeoff(20))
+        time.sleep(3)
+        print(client_test.get_current_pose())
+        time.sleep(3)
+        print(client_test.land())
