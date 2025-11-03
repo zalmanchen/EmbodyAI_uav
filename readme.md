@@ -1,7 +1,3 @@
-好的，这是整合了所有讨论内容、清晰反映了 **OpenFly-Platform 集成** 和 **双层 Agent 架构** 的完整 README 文件。
-
------
-
 # 🚁 LLM-Agent 驱动的无人机搜索与救援仿真平台 (UAV-SAR)
 
 ## 📖 项目概览
