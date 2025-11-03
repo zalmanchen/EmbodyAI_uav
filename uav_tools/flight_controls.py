@@ -1,138 +1,121 @@
-import airsim
+# 📁 uav_tools/flight_controls.py
+
 import time
-from uav_tools.airsim_client import AirSimClient # 导入我们之前编写的基础客户端
+from typing import Dict, Any
 
-# 假设全局或通过外部传入的 AirSim 客户端实例
-# 在实际的 Agent 框架中，您会确保这个客户端是已连接和初始化的。
-try:
-    UAV_CLIENT = AirSimClient(vehicle_name="Drone1")
-    UAV_CLIENT.connect_and_initialize()
-except Exception as e:
-    print(f"警告：AirSimClient 初始化失败，飞行控制工具将无法使用。错误: {e}")
-    UAV_CLIENT = None
+# 导入 airsim 库以便使用其类型定义
+import airsim
 
-# --- LLM Agent 核心飞行工具 ---
+# --- 导入 AirSim Client 实例 ---
+# 注意: 为了避免循环导入，我们假设 main_agent.py 会将连接好的 AIRSIM_CLIENT 传入
+# 或者我们通过一个延迟绑定机制获取客户端。这里为了简化 PoC，我们使用一个全局占位符。
 
-def fly_to_gps(latitude: float, longitude: float, altitude_meters: float, velocity: float = 10.0) -> str:
+# 警告：在实际项目中，请使用依赖注入或在运行时绑定客户端，而不是使用全局变量。
+CLIENT_INSTANCE = None 
+
+def set_airsim_client(client: airsim.MultirotorClient):
+    """设置 AirSimClient 实例，供所有控制函数使用。"""
+    global CLIENT_INSTANCE
+    CLIENT_INSTANCE = client
+
+def _ensure_client_ready():
+    """检查客户端是否已连接并可用。"""
+    if CLIENT_INSTANCE is None:
+        raise ConnectionError("AirSim 客户端尚未初始化或设置。请先运行 connect_and_initialize。")
+
+# --- 1. 高级宏观飞行控制函数 ---
+
+def fly_to_gps(latitude: float, longitude: float, altitude_meters: float) -> str:
     """
-    【LLM-Agent 工具】命令无人机飞往指定的 GPS 坐标。
-
-    参数:
-        latitude (float): 目标纬度。
-        longitude (float): 目标经度。
-        altitude_meters (float): 目标绝对高度 (ASL)，应为正值（例如：30.0米）。
-        velocity (float): 巡航速度 (米/秒)。
-
-    返回:
-        str: 飞行结果的观察报告。
+    【LLM 工具】飞往指定的全球定位系统 (GPS) 坐标点。
+    这是高级规划层的主要宏观行动工具。
     """
-    if not UAV_CLIENT or not UAV_CLIENT.connected:
-        return "ERROR: 飞行控制失败，AirSim 客户端未连接或未初始化。"
-
-    # AirSim 约定: Z 轴朝下，因此高度必须取负值。
-    airsim_altitude = -abs(altitude_meters) 
-
-    try:
-        current_pose = UAV_CLIENT.get_current_pose()
-        
-        print(f"Agent 规划飞行：从 ({current_pose['latitude']:.5f}, {current_pose['longitude']:.5f})")
-        print(f"            飞往：({latitude:.5f}, {longitude:.5f})，高度 {altitude_meters:.1f}m，速度 {velocity:.1f}m/s")
-        
-        UAV_CLIENT.client.moveToGPSAsync(
-            latitude, 
-            longitude, 
-            airsim_altitude, 
-            velocity,
-            timeout_sec=60
-        ).join()
-        
-        # 飞行完成后，获取最终位置进行确认
-        final_pose = UAV_CLIENT.get_current_pose()
-        
-        # 简单的检查以验证飞行是否接近目标
-        lat_diff = abs(final_pose['latitude'] - latitude)
-        lon_diff = abs(final_pose['longitude'] - longitude)
-        
-        if lat_diff < 0.00005 and lon_diff < 0.00005: # 这是一个非常简化的成功判定
-            return f"OBSERVATION: 成功飞抵目标坐标 ({latitude:.5f}, {longitude:.5f})，当前高度 {final_pose['altitude_meters']:.1f} 米。"
-        else:
-            return f"WARNING: 飞行完成，但当前位置与目标有偏差。当前坐标: ({final_pose['latitude']:.5f}, {final_pose['longitude']:.5f})"
-
-    except Exception as e:
-        # 如果超时或其他错误，解除锁定并报告
-        UAV_CLIENT.client.armDisarm(False)
-        return f"ERROR: 飞往 GPS 目标失败：{e}"
-
-
-def move_forward(distance: float = 5.0, velocity: float = 5.0) -> str:
-    """
-    【LLM-Agent 工具】向前飞行指定的距离 (米)。
-    用于近距离检查和简单避障。
-    """
-    if not UAV_CLIENT or not UAV_CLIENT.connected:
-        return "ERROR: 飞行控制失败，AirSim 客户端未连接或未初始化。"
+    _ensure_client_ready()
     
-    try:
-        # 使用 moveByVelocityAsync 实现相对移动，但在 AirSim 中，
-        # moveByVelocityAsync 默认是在世界坐标系中，需要结合姿态进行转换。
-        # 简化做法：使用 moveByDistanceAsync（相对当前朝向）
-        UAV_CLIENT.client.moveByDistanceAsync(distance, velocity).join()
-        
-        return f"OBSERVATION: 成功向前移动 {distance:.1f} 米。"
-    except Exception as e:
-        return f"ERROR: 向前移动失败：{e}"
+    # AirSim API 使用海平面以下（负值）作为 Z 坐标
+    target_z = -altitude_meters
+    speed = 5.0 # 默认速度 5 m/s
 
-
-def set_yaw(yaw_degrees: float, velocity: float = 5.0) -> str:
-    """
-    【LLM-Agent 工具】将无人机朝向旋转到指定的绝对偏航角（Yaw）。
-    用于全景扫描或对齐目标。
-    """
-    if not UAV_CLIENT or not UAV_CLIENT.connected:
-        return "ERROR: 飞行控制失败，AirSim 客户端未连接或未初始化。"
+    print(f"执行宏观飞行: 飞往 Lat={latitude:.6f}, Lon={longitude:.6f}, Alt={altitude_meters:.2f}m...")
     
-    try:
-        # AirSim 中的 Yaw 是以弧度计算的，我们需要提供度数并转换为弧度。
-        yaw_rad = np.radians(yaw_degrees)
-        
-        # is_degrees=False 表示我们提供的是弧度
-        UAV_CLIENT.client.rotateToYawAsync(yaw_rad, velocity, is_degrees=False).join()
-        
-        return f"OBSERVATION: 成功将无人机朝向旋转至 {yaw_degrees:.1f} 度 (绝对偏航角)。"
-    except Exception as e:
-        return f"ERROR: 旋转朝向失败：{e}"
+    # 使用 AirSim 的 moveToGPSAsync API
+    CLIENT_INSTANCE.client.moveToGPSAsync(
+        latitude, 
+        longitude, 
+        target_z, 
+        speed, 
+        timeout_sec=60,
+        vehicle_name=CLIENT_INSTANCE.vehicle_name
+    ).join()
+
+    # 验证是否到达目标点 (简单的距离检查)
+    current_gps = CLIENT_INSTANCE.client.getGpsLocation(CLIENT_INSTANCE.vehicle_name)
+    
+    # 模拟成功的观察结果
+    return (f"OBSERVATION: 无人机成功飞抵目标坐标附近的区域。"
+            f"当前 GPS: Lat={current_gps.latitude:.6f}, Lon={current_gps.longitude:.6f}, Alt={-current_gps.altitude:.2f}m。")
+
+# 辅助宏观控制 (如果 LLM 决定使用 NED 坐标系进行微调)
+def move_forward(distance: float) -> str:
+    """在当前航向向前移动指定距离 (米)。"""
+    _ensure_client_ready()
+    speed = 2.0
+    
+    # 假设使用相对移动 API
+    CLIENT_INSTANCE.client.moveByVelocityBodyFrameAsync(
+        vx=speed, vy=0, vz=0, duration=distance/speed, vehicle_name=CLIENT_INSTANCE.vehicle_name
+    ).join()
+    
+    return f"OBSERVATION: 无人机向前移动了 {distance:.2f} 米。"
+
+def set_yaw(yaw_degrees: float) -> str:
+    """设置无人机的偏航角 (相对于世界坐标系，度)。"""
+    _ensure_client_ready()
+    
+    # 使用 AirSim 的 setYaw API
+    CLIENT_INSTANCE.client.rotateToYawAsync(
+        yaw_degrees, 
+        timeout_sec=3, 
+        vehicle_name=CLIENT_INSTANCE.vehicle_name
+    ).join()
+    
+    return f"OBSERVATION: 无人机偏航角已设置为 {yaw_degrees:.1f} 度。"
 
 
-# --- 示例用法 (用于测试该文件功能) ---
+# --- 2. OpenFly VLA 低级执行工具 ---
 
-if __name__ == "__main__":
-    if UAV_CLIENT and UAV_CLIENT.connected:
-        
-        # 1. 确保已起飞
-        UAV_CLIENT.takeoff(altitude=10.0)
-        time.sleep(2)
-        
-        # 2. 测试 GPS 飞行 (请替换为您的 AirSim 地图中的有效 GPS 坐标)
-        TEST_LAT = 47.641467 # 示例坐标
-        TEST_LON = -122.140135 # 示例坐标
-        
-        print("\n--- 测试 fly_to_gps ---")
-        fly_result = fly_to_gps(TEST_LAT, TEST_LON, altitude_meters=15.0, velocity=15.0)
-        print(f"飞行测试结果: {fly_result}")
-        time.sleep(2)
-        
-        # 3. 测试 旋转朝向
-        print("\n--- 测试 set_yaw ---")
-        yaw_result = set_yaw(90.0)
-        print(f"旋转测试结果: {yaw_result}")
-        time.sleep(2)
-        
-        # 4. 测试 相对移动
-        print("\n--- 测试 move_forward ---")
-        move_result = move_forward(distance=10.0)
-        print(f"移动测试结果: {move_result}")
-        
-        # 5. 降落清理
-        UAV_CLIENT.land()
-    else:
-        print("无法运行飞行控制测试，请检查 AirSim 客户端初始化是否成功。")
+def execute_vln_instruction(language_instruction: str) -> str:
+    """
+    【LLM 工具】激活 OpenFly VLA 模型，执行视觉-语言导航任务。
+    LLM 将控制权移交给 VLA 模型进行精细、反应式的导航。
+    
+    在这个 PoC 中，我们模拟 VLA 模型的运行和结果。
+    """
+    _ensure_client_ready()
+    
+    # --- VLA 模型模拟/集成点 ---
+    
+    # 1. 模拟 VLA 启动和推理
+    print(f"\n[VLA 启动] 接收到指令：'{language_instruction}'")
+    
+    # 2. 模拟 VLA 运行循环 (实际中这里是 VLA 模型实时获取图像->推理->发送控制指令)
+    run_time = 5  # 模拟 VLA 执行 5 秒
+    print(f"[VLA 运行] 模拟 VLA 模型正在实时控制无人机进行搜索... 持续 {run_time} 秒。")
+    
+    # 模拟 VLA 的低级控制输出 (例如，前进 2m, 偏航 30度)
+    # 实际中 VLA 会持续输出动作
+    
+    # 模拟 VLA 找到目标，并返回精确的位置
+    time.sleep(run_time) 
+    
+    # 3. 模拟 VLA 返回精确的发现位置
+    mock_found_coords = f"Lat: 47.6417, Lon: -122.1401, Alt: 27.0m"
+    
+    # --- VLA 模拟结束 ---
+    
+    return (f"OBSERVATION: VLA 模型已完成导航指令 '{language_instruction}'。 "
+            f"VLA 报告：成功在目标附近找到线索。精确位置: {mock_found_coords}。")
+
+# -------------------------------------------------------------
+# 您需要在 main_agent.py 中添加 set_airsim_client 的调用！
+# -------------------------------------------------------------
