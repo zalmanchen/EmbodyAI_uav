@@ -11,7 +11,8 @@ class AirSimClient:
     
     def __init__(self, vehicle_name: str = "Drone1"):
         self.vehicle_name = vehicle_name
-        self.client = None
+        self.client = airsim.MultirotorClient() # 这是一个 MultirotorClient 实例
+        # self.client = None
         self.max_retries = 5
 
     def connect_and_initialize(self) -> bool:
@@ -137,33 +138,46 @@ class AirSimClient:
         self.client.armDisarm(False, self.vehicle_name)
         return "OBSERVATION: 无人机已安全降落并解除锁定。"
 
-    # 📁 airsim_client.py (示例：如果存在此函数)
 
-    def get_current_pose(self) -> Dict[str, Any]:
-        """获取无人机当前姿态 (位置和欧拉角)。"""
-        try:
-            state = self.client.getMultirotorState(vehicle_name=self.vehicle_name)
-            
-            # 错误修正：必须通过 kinematics_estimated 访问位置
-            position = state.kinematics_estimated.position
-            orientation = state.kinematics_estimated.orientation
-            
-            # 将四元数转换为欧拉角（简化）
-            roll, pitch, yaw = airsim.to_eularian_angles(orientation)
-            
-            return {
-                "x": position.x_val,
-                "y": position.y_val,
-                "z_down": position.z_val, # Z 轴向下为正，所以这是一个负的海拔高度
-                "roll": roll,
-                "pitch": pitch,
-                "yaw": yaw,
-                "altitude_meters": -position.z_val # 修正为正值的海拔高度
-            }
-        except Exception as e:
-            print(f"Error getting pose: {e}")
-            return {}
+    def get_current_pose(self) -> str:
+        """获取并返回无人机当前的 GPS 坐标和姿态。"""
         
+        # 获取多旋翼状态
+        state = self.client.getMultirotorState(self.vehicle_name)
+        
+        # 修正点 A: 使用 simGetGroundTruthGpsLocation (最常用的方法)
+        try:
+            # 这个方法应该存在于 self.client (MultirotorClient) 对象中
+            gps = self.client.simGetGroundTruthGpsLocation(self.vehicle_name) 
+        except AttributeError:
+            # 如果 simGetGroundTruthGpsLocation 不存在，尝试另一个 AirSim API 提供的 GPS 方法
+            # 警告：此方法可能已被弃用或不存在于所有版本中
+            # gps = self.client.getGpsLocation(self.vehicle_name) # 可能会再次报错
+            
+            # 备选方案：尝试从状态对象中解析（如果 AirSim 状态对象中包含）
+            # 实际情况是，通常需要调用 simGetGroundTruthGpsLocation
+            raise AttributeError("无法找到 simGetGroundTruthGpsLocation 方法。请确认您的 AirSim 版本和 API 兼容性。")
+
+        # 修正点 B: 确保位置信息通过 kinematics_estimated 访问 (解决了上一个问题)
+        position = state.kinematics_estimated.position
+        
+        # AirSim NED 坐标系下，Z 为负值，需要转换为正高度
+        altitude_meters = -position.z_val 
+        
+        # 姿态（四元数）
+        orientation = state.kinematics_estimated.orientation
+        
+        pose_data = {
+            "latitude": gps.latitude,
+            "longitude": gps.longitude,
+            "altitude_meters": altitude_meters,
+            "orientation_w_x_y_z": [orientation.w_val, orientation.x_val, orientation.y_val, orientation.z_val]
+        }
+        
+        return (f"OBSERVATION: 当前姿态：Lat={gps.latitude:.6f}, Lon={gps.longitude:.6f}, "
+                f"Alt={altitude_meters:.2f}m. 原始数据: {pose_data}")
+    
+    
 if __name__ == "__main__":
     # 验证客户端
     client_test = AirSimClient()

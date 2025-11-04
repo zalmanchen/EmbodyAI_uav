@@ -11,6 +11,60 @@ try:
 except Exception:
     UAV_CLIENT = None
 
+# --- 客户端占位符和绑定 ---
+CLIENT_INSTANCE = None 
+
+def set_airsim_client(client_instance):
+    """设置 AirSimClient 实例，供所有视觉函数使用。"""
+    global CLIENT_INSTANCE
+    CLIENT_INSTANCE = client_instance
+
+def _ensure_client_ready():
+    """检查客户端是否已连接并可用。"""
+    if CLIENT_INSTANCE is None:
+        raise ConnectionError("AirSim 客户端尚未初始化或设置。")
+    # 尝试 ping 客户端进行验证 (使用内部封装的客户端)
+    try:
+        # 使用 AirSimClient 内部的 airsim.MultirotorClient 实例
+        CLIENT_INSTANCE.client.ping() 
+    except Exception:
+        raise ConnectionError("AirSim RPC 连接已断开，请检查仿真环境。")
+
+
+# --- 核心视觉工具函数 ---
+
+def capture_and_analyze_rgb(target_description: str) -> str:
+    """
+    【LLM 工具】启动视觉系统，捕获图像并分析指定目标（模拟 VLM 感知）。
+    """
+    _ensure_client_ready()
+
+    # 使用 AirSim 客户端的 API 获取图像
+    try:
+        # 获取 RGB 图像 (例如，从前方摄像头)
+        image_response = CLIENT_INSTANCE.client.simGetImages([
+            airsim.ImageRequest("0", airsim.ImageType.Scene, False, False)
+        ])
+        
+        if not image_response:
+            return "OBSERVATION: 图像捕获失败，可能是摄像头配置错误。"
+        
+        # 实际 VLM (Vision-Language Model) 推理应发生在这里
+        
+        # --- 模拟 VLM/YOLO 分析结果 ---
+        print(f" -> VLM 正在分析图像，目标: '{target_description}'...")
+        
+        if "背包" in target_description or "标记物" in target_description:
+            # 模拟找到目标
+            coords = CLIENT_INSTANCE.client.getMultirotorState(CLIENT_INSTANCE.vehicle_name).kinematics_estimated.position
+            return (f"OBSERVATION: VLM 成功发现目标 '{target_description}'。 "
+                    f"目标被定位在无人机前方 5 米处。当前相对坐标 (X: {coords.x_val:.2f}, Y: {coords.y_val:.2f})")
+        else:
+            return f"OBSERVATION: 未在当前视野中发现目标 '{target_description}'。"
+            
+    except Exception as e:
+        return f"EXECUTION ERROR: 视觉处理失败，可能是 AirSim API 调用错误: {e}"
+
 # --- 辅助函数：坐标转换（简化版） ---
 
 def pixel_to_world_coordinates(pixel_x: int, pixel_y: int, depth_data: np.ndarray) -> dict:

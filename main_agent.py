@@ -5,14 +5,19 @@ from typing import List, Dict, Any
 # --- 导入核心组件 ---
 from uav_tools.airsim_client import AirSimClient 
 from uav_tools.flight_controls import fly_to_gps, move_forward, set_yaw
-from uav_tools.vision_bridge import capture_and_analyze_rgb
+from uav_tools.vision_bridge import capture_and_analyze_rgb 
+from uav_tools.vision_bridge import set_airsim_client as set_vision_client # <-- 新导入
 from llm_agent_core.memory_manager import MemoryManager
-from llm_agent_core.prompt_templates import CORE_SYSTEM_PROMPT, TOOL_SCHEMAS 
+from llm_agent_core.prompt_templates import CORE_SYSTEM_PROMPT, TOOL_SCHEMAS, get_openai_tool_schemas
 
 # --- 导入 OpenFly VLA 模拟工具 ---
 # 假设这是 OpenFly VLA 模型的执行接口
 from uav_tools.flight_controls import execute_vln_instruction 
 from uav_tools.flight_controls import set_airsim_client # <--- 新导入
+
+import os
+import openai # <--- 新增导入
+
 
 # --- 初始化全局工具和客户端 ---
 
@@ -25,7 +30,23 @@ if not AIRSIM_CLIENT.connect_and_initialize():
 # ************ 新增的关键步骤 ************
 # 将 AirSimClient 实例绑定到 flight_controls 模块
 set_airsim_client(AIRSIM_CLIENT) 
+
+# 将 AirSimClient 实例绑定到视觉模块
+set_vision_client(AIRSIM_CLIENT) # <-- 新增
 # ****************************************
+
+# --- 初始化 OpenAI 客户端 ---
+try:
+    # 客户端将自动查找 OPENAI_API_KEY 环境变量
+    OPENAI_CLIENT = openai.OpenAI(
+        api_key = "sk-35abc48ab10f4bf1b5b9d9e61f570f5e",   # os.getenv("DASHSCOPE_API_KEY"),
+        base_url= "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    )
+    LLM_MODEL = "qwen3-vl-flash"  # qwen, gpt
+except Exception as e:
+    print(f"❌ OpenAI 客户端初始化失败: {e}")
+    print("请确保已安装 openai 库并设置 OPENAI_API_KEY 环境变量。")
+    exit()
 
 
 # 2. 记忆管理器
@@ -119,21 +140,93 @@ def mock_llm_call(messages: List[Dict[str, Any]], schemas: Dict[str, Any]) -> Di
         return {"role": "assistant", "content": "任务流程演示完毕，请手动重置或提供新的指令。"}
 
 
+def openai_llm_call(messages: List[Dict[str, Any]], available_tools: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    【真实接口】调用 OpenAI API，启用 Function Calling 功能。
+    
+    参数:
+        messages (List[Dict]): 对话历史。
+        available_tools (Dict): 可用的工具函数映射。
+        
+    返回:
+        Dict: LLM 的响应，包含内容或工具调用。
+    """
+    
+    # 1. 获取 OpenAI 格式的工具 Schema
+    openai_tool_schemas = get_openai_tool_schemas()
+    
+    try:
+        # 2. 调用 OpenAI API
+        response = OPENAI_CLIENT.chat.completions.create(
+            model=LLM_MODEL,
+            messages=messages,
+            tools=openai_tool_schemas,
+            tool_choice="auto", # 允许模型决定是否调用工具
+        )
+        
+        response_message = response.choices[0].message
+        result = {"role": response_message.role}
+        
+        # 3. 解析 LLM 响应
+        
+        # 如果 LLM 调用了工具 (Function Call)
+        if response_message.tool_calls:
+            tool_calls = []
+            for call in response_message.tool_calls:
+                # 注意：OpenAI 响应中没有 'thought' 字段，所以我们无法直接获取思考过程。
+                # 实际应用中，您需要在 LLM 的系统 Prompt 中要求它在每次回复前输出 <thought> 标签。
+                tool_calls.append({
+                    "id": call.id,
+                    "function": {
+                        "name": call.function.name,
+                        "arguments": call.function.arguments # JSON 字符串
+                    }
+                })
+            result["tool_calls"] = tool_calls
+            
+        # 如果 LLM 输出了自然语言内容 (任务完成或询问)
+        elif response_message.content:
+            # 尝试从内容中提取思考过程 (如果系统提示要求)
+            thought = "" # 简略处理，如果需要可以加入正则表达式解析 <thought> 标签
+            
+            result["content"] = response_message.content
+            result["thought"] = thought
+
+        return result
+        
+    except openai.APIError as e:
+        print(f"❌ OpenAI API 错误: {e}")
+        return {"role": "assistant", "content": "API 调用失败，任务终止。"}
+    except Exception as e:
+        print(f"❌ 发生未知错误: {e}")
+        return {"role": "assistant", "content": "程序执行错误，任务终止。"}
+
 # --- 主循环驱动器 (保持不变，但使用更新后的 Prompt) ---
 
 def run_agent(initial_goal: str):
     """驱动 LLM-Agent 的主循环：思考-行动-观察。"""
     
-    # 1. 初始化对话历史和系统 Prompt (使用模块化模板)
+    # 1. 初始化对话历史和系统 Prompt
+    # a. 构建系统 Prompt
     system_prompt = CORE_SYSTEM_PROMPT.format(
         initial_goal=initial_goal,
-        current_pose="未知"
+        current_pose="未知 (必须先调用 get_current_pose)"
     )
-    messages = [{"role": "system", "content": system_prompt}]
+    
+    # b. 构造消息列表
+    messages = [
+        # # 必须是列表的第一个元素 (或之一)
+        # {"role": "system", "content": system_prompt}, 
+        
+        # ✅ 关键修正：添加用户指令，驱动第一次响应
+        {"role": "user", "content": f"请开始执行任务。任务目标是：{initial_goal}"} 
+    ]
     
     print("="*60)
     print(f"Agent 主循环启动 | 初始目标: {initial_goal}")
     print("="*60)
+    
+    # ... (后续循环逻辑保持不变)
     
     max_steps = 10
     step_count = 0
@@ -142,8 +235,9 @@ def run_agent(initial_goal: str):
         print(f"\n--- 步骤 {step_count + 1}：规划阶段 ---")
         
         # 2. LLM 规划 & 行动 (Function Call)
-        llm_response = mock_llm_call(messages, TOOL_SCHEMAS)
-        
+        llm_response = openai_llm_call(messages, AVAILABLE_TOOLS) # <--- 实际 API 调用
+       
+        print(llm_response)
         # 输出 LLM 的思考过程
         if llm_response.get("thought"):
             print(f"✅ Agent 思考: {llm_response['thought']}")

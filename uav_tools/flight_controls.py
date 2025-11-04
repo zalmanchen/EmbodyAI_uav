@@ -26,6 +26,7 @@ def _ensure_client_ready():
 
 # --- 1. 高级宏观飞行控制函数 ---
 
+
 def fly_to_gps(latitude: float, longitude: float, altitude_meters: float) -> str:
     """
     【LLM 工具】飞往指定的全球定位系统 (GPS) 坐标点。
@@ -39,6 +40,7 @@ def fly_to_gps(latitude: float, longitude: float, altitude_meters: float) -> str
 
     print(f"执行宏观飞行: 飞往 Lat={latitude:.6f}, Lon={longitude:.6f}, Alt={altitude_meters:.2f}m...")
     
+    # 1. 执行 GPS 飞行
     # 使用 AirSim 的 moveToGPSAsync API
     CLIENT_INSTANCE.client.moveToGPSAsync(
         latitude, 
@@ -49,12 +51,23 @@ def fly_to_gps(latitude: float, longitude: float, altitude_meters: float) -> str
         vehicle_name=CLIENT_INSTANCE.vehicle_name
     ).join()
 
-    # 验证是否到达目标点 (简单的距离检查)
-    current_gps = CLIENT_INSTANCE.client.getGpsLocation(CLIENT_INSTANCE.vehicle_name)
+    # 2. 验证是否到达目标点 (简单的距离检查)
     
+    # ***** 错误修正点：使用 getGpsData 而不是 getGpsLocation *****
+    # 注意：getGpsData 返回 GpsData 对象，其位置属性名为 gnss.geo_point
+    
+    # 尝试使用 getGpsData 获取数据 (这是更准确的 API)
+    gps_data = CLIENT_INSTANCE.client.getGpsData(vehicle_name=CLIENT_INSTANCE.vehicle_name)
+    current_gps = gps_data.gnss.geo_point
+    
+    # 修正后的变量访问
+    current_lat = current_gps.latitude
+    current_lon = current_gps.longitude
+    current_alt = -current_gps.altitude # 海拔高度转为正值
+
     # 模拟成功的观察结果
     return (f"OBSERVATION: 无人机成功飞抵目标坐标附近的区域。"
-            f"当前 GPS: Lat={current_gps.latitude:.6f}, Lon={current_gps.longitude:.6f}, Alt={-current_gps.altitude:.2f}m。")
+            f"当前 GPS: Lat={current_lat:.6f}, Lon={current_lon:.6f}, Alt={current_alt:.2f}m。")
 
 # 辅助宏观控制 (如果 LLM 决定使用 NED 坐标系进行微调)
 def move_forward(distance: float) -> str:
