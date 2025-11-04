@@ -3,7 +3,7 @@ import time
 from typing import List, Dict, Any
 
 # --- 导入核心组件 ---
-from airsim_client import AirSimClient 
+from uav_tools.airsim_client import AirSimClient 
 from uav_tools.flight_controls import fly_to_gps, move_forward, set_yaw
 from uav_tools.vision_bridge import capture_and_analyze_rgb
 from llm_agent_core.memory_manager import MemoryManager
@@ -12,12 +12,6 @@ from llm_agent_core.prompt_templates import CORE_SYSTEM_PROMPT, TOOL_SCHEMAS
 # --- 导入 OpenFly VLA 模拟工具 ---
 # 假设这是 OpenFly VLA 模型的执行接口
 from uav_tools.flight_controls import execute_vln_instruction 
-
-# 📁 main_agent.py (关键修改部分)
-
-# ... 导入语句 ...
-
-# --- 导入 flight_controls 的 CLIENT BINDER ---
 from uav_tools.flight_controls import set_airsim_client # <--- 新导入
 
 # --- 初始化全局工具和客户端 ---

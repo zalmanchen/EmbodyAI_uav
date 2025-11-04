@@ -13,6 +13,7 @@ import airsim
 # 警告：在实际项目中，请使用依赖注入或在运行时绑定客户端，而不是使用全局变量。
 CLIENT_INSTANCE = None 
 
+
 def set_airsim_client(client: airsim.MultirotorClient):
     """设置 AirSimClient 实例，供所有控制函数使用。"""
     global CLIENT_INSTANCE
@@ -115,6 +116,8 @@ def execute_vln_instruction(language_instruction: str) -> str:
     
     return (f"OBSERVATION: VLA 模型已完成导航指令 '{language_instruction}'。 "
             f"VLA 报告：成功在目标附近找到线索。精确位置: {mock_found_coords}。")
+
+
 
 # -------------------------------------------------------------
 # 您需要在 main_agent.py 中添加 set_airsim_client 的调用！

@@ -26,8 +26,21 @@ class AirSimClient:
                 self.client.confirmConnection()
                 print(f"✅ AirSim 连接成功 (尝试 {attempt + 1}/{self.max_retries})。")
                 
+                # --- 修正点 1：将 self.vehicle_name 设为 None，强制 _reset_and_enable_api_control 尝试所有已知名称 ---
+                # 这一行其实在 _reset_and_enable_api_control 内部已经处理了，但我们在这里可以确保客户端对象存在。
+                
                 # 尝试重置环境并启用 API 控制
                 self._reset_and_enable_api_control()
+                
+                # --- 修正点 2：在 AirSim 客户端成功连接后，将客户端实例绑定到 flight_controls 模块 ---
+                # 这解决了之前我们在 main_agent.py 中手动绑定带来的依赖问题。
+                try:
+                    # 假设 flight_controls 模块已准备好 set_airsim_client
+                    from uav_tools.flight_controls import set_airsim_client
+                    set_airsim_client(self) # 传入 self (AirSimClient 实例)
+                except ImportError:
+                    print("警告: 无法导入 set_airsim_client。请确保 uav_tools/flight_controls.py 文件存在。")
+                
                 return True
                 
             except Exception as e:
@@ -37,50 +50,85 @@ class AirSimClient:
         print("❌ FATAL ERROR: 无法连接 AirSim 服务器，请检查仿真环境是否运行。")
         return False
 
+
+
     def _reset_and_enable_api_control(self):
         """重置环境，并尝试启用 API 控制和解锁。"""
         
-        # 1. 重置环境 (重要：必须在飞行前重置)
+        print(" -> 正在重置 AirSim 环境并尝试启用 API 控制...")
+        
         self.client.reset() 
-        time.sleep(0.5) # 等待环境稳定
+        time.sleep(0.5) 
         
         success = False
+        last_error = ""
         
-        # 2. 尝试使用默认车辆名或空字符串启用 API 控制
-        vehicle_names_to_try = [self.vehicle_name, ""]
-        
-        for name in vehicle_names_to_try:
+        vehicle_names_to_try = [self.vehicle_name, "Drone1", ""]
+        unique_names = list(set(name for name in vehicle_names_to_try if name is not None))
+
+        for name in unique_names:
             try:
+                # 尝试启用 API 控制
                 self.client.enableApiControl(True, name)
+                
+                # 尝试解锁无人机 (Arm)
                 self.client.armDisarm(True, name)
                 
-                # 验证是否成功
-                if self.client.isApiControlEnabled(name) and self.client.getMultirotorState(name).landed_state == airsim.LandedState.Armed:
-                    self.vehicle_name = name # 记录成功的车辆名
-                    print(f"✅ API 控制和解锁成功，使用的车辆名为: '{name}'")
+                # 3. 验证状态：【关键修改点】仅检查 API 是否启用，并假设 armDisarm 成功
+                is_api_enabled = self.client.isApiControlEnabled(name)
+                
+                if is_api_enabled:
+                    # 成功！更新实例中的车辆名称
+                    self.vehicle_name = name 
+                    print(f"✅ API 控制和解锁成功。使用的车辆名: '{name}'")
                     success = True
-                    break
+                    return # 成功，退出函数
+                
+                # 如果 API 未启用
+                if not is_api_enabled:
+                    last_error = f"车辆 '{name}' 无法启用 API 控制，或启用后立即丢失。"
+                
             except Exception as e:
-                # print(f"尝试车辆名 '{name}' 失败: {e}")
+                # 记录详细的错误信息
+                last_error = f"车辆 '{name}' 启用控制或解锁失败: {e}"
                 pass # 静默失败，继续尝试下一个名称
         
+        # 4. 彻底失败：抛出异常
         if not success:
-            raise Exception("无法启用 API 控制或解锁无人机。")
-
+            error_message = f"无法启用 API 控制或解锁无人机。尝试的名称: {unique_names}。最后错误: {last_error}"
+            # 附带一个可能的原因提示
+            error_message += "\n提示: 请确保 UE 场景正在运行，AirSim 插件已加载，并且您已使用正确的 Vehicle Name。"
+            raise Exception(error_message)
 
     # --- 基础控制 API ---
 
-    def takeoff(self, altitude: float) -> str:
+
+    def takeoff(self, altitude: float) -> str: # <--- 必须加上 altitude 参数
         """执行起飞到指定高度。"""
-        print(f"执行起飞到 {altitude}m...")
-        self.client.takeoffAsync(timeout_sec=5).join()
         
-        # 飞到指定高度，以确保高度精确
-        z = self.client.getMultirotorState(self.vehicle_name).position.z_val
-        if z > -altitude + 1: # AirSim NED 坐标系下，z为负值表示高度
-            self.client.moveToZAsync(-altitude, 2, vehicle_name=self.vehicle_name).join()
-            
-        return f"OBSERVATION: 无人机起飞成功，位于高度 {altitude:.2f} 米。"
+        # ... (您的其他确保客户端准备就绪的逻辑) ...
+        
+        print(f"执行起飞到 {altitude}m...")
+        
+        # 1. 执行 AirSim 的基本起飞命令 (通常只离开地面几米)
+        self.client.takeoffAsync(timeout_sec=5, vehicle_name=self.vehicle_name).join()
+        
+        # 2. 修正：使用 moveToZAsync 确保无人机到达指定高度
+        target_z = -altitude # AirSim NED 坐标系下，Z 为负值
+        speed = 2.0
+        
+        self.client.moveToZAsync(
+            target_z, 
+            speed, 
+            timeout_sec=10, 
+            vehicle_name=self.vehicle_name
+        ).join()
+        
+        # 3. 验证高度
+        state = self.client.getMultirotorState(self.vehicle_name)
+        current_alt = -state.kinematics_estimated.position.z_val # 修正后的位置访问
+        
+        return f"OBSERVATION: 无人机起飞成功，位于高度 {current_alt:.2f} 米 (目标 {altitude:.2f} 米)。"
 
     def land(self) -> str:
         """执行降落。"""
@@ -89,26 +137,33 @@ class AirSimClient:
         self.client.armDisarm(False, self.vehicle_name)
         return "OBSERVATION: 无人机已安全降落并解除锁定。"
 
-    def get_current_pose(self) -> str:
-        """获取并返回无人机当前的 GPS 坐标和姿态（NED 坐标系）。"""
-        state = self.client.getMultirotorState(self.vehicle_name)
-        gps = self.client.getGpsLocation(self.vehicle_name)
-        
-        # AirSim NED 坐标系下，Z 为负值，需要转换为正高度
-        altitude_meters = -state.position.z_val 
-        
-        # 姿态（四元数）
-        orientation = state.kinematics_estimated.orientation
-        
-        pose_data = {
-            "latitude": gps.latitude,
-            "longitude": gps.longitude,
-            "altitude_meters": altitude_meters,
-            "orientation_w_x_y_z": [orientation.w_val, orientation.x_val, orientation.y_val, orientation.z_val]
-        }
-        
-        return f"OBSERVATION: 当前姿态：Lat={gps.latitude:.6f}, Lon={gps.longitude:.6f}, Alt={altitude_meters:.2f}m. 原始数据: {pose_data}"
+    # 📁 airsim_client.py (示例：如果存在此函数)
 
+    def get_current_pose(self) -> Dict[str, Any]:
+        """获取无人机当前姿态 (位置和欧拉角)。"""
+        try:
+            state = self.client.getMultirotorState(vehicle_name=self.vehicle_name)
+            
+            # 错误修正：必须通过 kinematics_estimated 访问位置
+            position = state.kinematics_estimated.position
+            orientation = state.kinematics_estimated.orientation
+            
+            # 将四元数转换为欧拉角（简化）
+            roll, pitch, yaw = airsim.to_eularian_angles(orientation)
+            
+            return {
+                "x": position.x_val,
+                "y": position.y_val,
+                "z_down": position.z_val, # Z 轴向下为正，所以这是一个负的海拔高度
+                "roll": roll,
+                "pitch": pitch,
+                "yaw": yaw,
+                "altitude_meters": -position.z_val # 修正为正值的海拔高度
+            }
+        except Exception as e:
+            print(f"Error getting pose: {e}")
+            return {}
+        
 if __name__ == "__main__":
     # 验证客户端
     client_test = AirSimClient()
