@@ -3,31 +3,92 @@ import numpy as np
 import json
 from typing import List, Dict
 
-# --- 核心记忆管理类 ---
+import re
+import os
+from typing import Dict, Any
 
+
+# the semantica segementation  "../scence_data/seg_map/"
+def _parse_filename_to_ned(filename: str) -> Dict[str, float]:
+    """从文件名 'X=...Y=...Z=...' 中解析出 NED 坐标。"""
+    match = re.search(r'X=([-+]?\d*\.?\d+)Y=([-+]?\d*\.?\d+)Z=([-+]?\d*\.?\d+)', filename)
+    if match:
+        return {
+            "x": float(match.group(1)),
+            "y": float(match.group(2)),
+            "z_down": float(match.group(3))
+        }
+    return None
+
+def _create_semantic_description(data: Dict[str, str], ned_coords: Dict[str, float]) -> str:
+    """将语义信息和位置组合成一个自然语言描述。"""
+    
+    # 构建语义描述
+    description = f"一个类型为 '{data['type']}' 的物体/区域被检测到。特征描述："
+    features = [f"{k}: {v}" for k, v in data.items() if k not in ['type', 'filename'] and v != 'test']
+    description += ", ".join(features)
+    
+    # 添加位置信息
+    description += (f" 位于无人机拍摄点 (NED 坐标: X={ned_coords['x']:.2f}, Y={ned_coords['y']:.2f}, "
+                    f"海拔高度: {-ned_coords['z_down']:.2f} 米)。")
+    
+    return description
+
+
+
+# --- 核心记忆管理类 ---
 class MemoryManager:
     """
     Agent 的长期记忆 (LTM) 管理器，使用 ChromaDB 实现 RAG 机制。
-    用于存储搜索线索、已探索区域等，并支持语义搜索召回。
+    现在支持基于场景 ID 的持久化存储。
     """
+
+    SEG_MAP_BASE_DIR = 'scene_data/seg_map'
+    CHROMA_DB_BASE_DIR = "./chroma_dbs"
     
-    def __init__(self, collection_name: str = "uav_search_memory", embedding_dim: int = 384):
+    # 更改 __init__ 方法，接受一个 scene_id
+    def __init__(self, scene_name: str, embedding_dim: int = 384):
         """
-        初始化 ChromaDB 客户端和向量集合。
-        我们使用 in-memory 模式进行 PoC 快速验证。
+        初始化 ChromaDB 客户端和向量集合，使用场景名称进行持久化。
+        
+        参数:
+            scene_name (str): 当前场景的唯一标识符。
         """
-        self.collection_name = collection_name
+        self.scene_name = scene_name
+        self.collection_name = f"uav_memory_{scene_name}"
         self.embedding_dim = embedding_dim
         
-        # 1. 初始化 ChromaDB 客户端 (in-memory 模式)
-        self.client = chromadb.Client() 
+        # 1. 初始化 ChromaDB 客户端 (使用持久化模式)
+        # 数据库将存储在 ./chroma_dbs/YourSceneName/
+        db_path = os.path.join(self.CHROMA_DB_BASE_DIR, scene_name)
+        
+        # 确保路径存在
+        os.makedirs(db_path, exist_ok=True) 
+        self.client = chromadb.PersistentClient(path=db_path)
         
         # 2. 创建或获取向量集合
-        # 注意：ChromaDB 需要一个 Embedding Function，这里我们用一个模拟函数
         self.collection = self.client.get_or_create_collection(
             name=self.collection_name
         )
-        print(f"记忆管理器初始化成功，集合: {self.collection_name}，维度: {self.embedding_dim}")
+        print(f"记忆管理器初始化成功，场景: {self.scene_name}，集合: {self.collection_name}")
+        
+    # --- 新增初始化检查方法 ---
+
+    def check_and_initialize_scene_data(self) -> str:
+        """
+        检查场景静态数据是否已导入。如果未导入，则执行导入操作。
+        它会根据 self.scene_name 构建 JSONL 文件路径。
+        """
+        jsonl_filename = f"{self.scene_name}.jsonl" # 假设文件命名约定
+        jsonl_filepath = os.path.join(self.SEG_MAP_BASE_DIR, jsonl_filename)
+        
+        if self.collection.count() > 0:
+            print(f"✅ 场景 '{self.scene_name}' 记忆库已包含 {self.collection.count()} 条记录，跳过静态导入。")
+            return f"OBSERVATION: 场景 '{self.scene_name}' 记忆库已初始化。"
+        else:
+            print(f"⚠ 场景 '{self.scene_name}' 记忆库为空，正在尝试从 {jsonl_filepath} 导入...")
+            return self.import_semantic_jsonl_data(jsonl_filepath)
+        
 
     def _get_embedding(self, text: str) -> List[float]:
         """
@@ -105,6 +166,59 @@ class MemoryManager:
         
         # 将召回结果格式化，以便 LLM 容易解析和整合到 Thought 中
         return "OBSERVATION: 召回的历史线索如下：\n" + "\n".join(clues_list)
+    
+
+    def import_semantic_jsonl_data(self, jsonl_filepath: str) -> List[str]:
+        """
+        从 JSONL 文件中导入语义分割数据到 RAG 向量数据库。
+        """
+        imported_ids = []
+        documents_to_add = []
+        metadatas_to_add = []
+        
+        try:
+            with open(jsonl_filepath, 'r') as f:
+                for line in f:
+                    try:
+                        data = json.loads(line.strip())
+                        
+                        # 1. 解析坐标
+                        ned_coords = _parse_filename_to_ned(data['filename'])
+                        if not ned_coords:
+                            continue
+                        
+                        # 2. 创建语义文档和元数据
+                        semantic_doc = _create_semantic_description(data, ned_coords)
+                        
+                        # 3. 构造元数据 (将所有原始字段也存入，便于检索)
+                        metadata = {**data, **ned_coords, 'source': 'semantic_segmentation', 'status': 'detected'}
+                        
+                        # 4. 存储
+                        documents_to_add.append(semantic_doc)
+                        metadatas_to_add.append(metadata)
+                        # 使用 UUID 或一个基于内容的哈希值作为 ID
+                        doc_id = f"sem_{hash(semantic_doc)}".replace('-', '')
+                        imported_ids.append(doc_id)
+                        
+                    except json.JSONDecodeError:
+                        print(f"警告: 跳过无效的 JSONL 行: {line.strip()[:50]}...")
+                        continue
+
+            if documents_to_add:
+                # 假设您使用 ChromaDB，并有一个 self.collection 对象
+                # self.collection.add(
+                #     documents=documents_to_add,
+                #     metadatas=metadatas_to_add,
+                #     ids=imported_ids
+                # )
+                print(f"✅ 成功导入 {len(documents_to_add)} 条语义分割记录到记忆库。")
+                return imported_ids
+            
+            return []
+
+        except FileNotFoundError:
+            print(f"❌ 错误: 找不到文件 {jsonl_filepath}")
+            return []
 
 # --- 示例用法 ---
 

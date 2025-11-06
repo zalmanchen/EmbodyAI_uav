@@ -4,8 +4,8 @@ from typing import List, Dict, Any
 
 # --- 导入核心组件 ---
 from uav_tools.airsim_client import AirSimClient 
-from uav_tools.flight_controls import fly_to_gps, move_forward, set_yaw
-from uav_tools.vision_bridge import capture_and_analyze_rgb 
+from uav_tools.flight_controls import fly_to_gps, move_forward, set_yaw, move_with_local_avoidance
+from uav_tools.vision_bridge import capture_and_analyze_rgb
 from uav_tools.vision_bridge import set_airsim_client as set_vision_client # <-- 新导入
 from llm_agent_core.memory_manager import MemoryManager
 from llm_agent_core.prompt_templates import CORE_SYSTEM_PROMPT, TOOL_SCHEMAS, get_openai_tool_schemas
@@ -18,22 +18,83 @@ from uav_tools.flight_controls import set_airsim_client # <--- 新导入
 import os
 import openai # <--- 新增导入
 
+import json
+import argparse
+import os
 
-# --- 初始化全局工具和客户端 ---
+# --- 全局变量（需要在使用前定义或初始化） ---
+AIRSIM_CLIENT = None
+MEMORY_MANAGER = None
+AVAILABLE_TOOLS = {}
 
-# 1. 客户端和连接 
-AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
-if not AIRSIM_CLIENT.connect_and_initialize():
-    print("FATAL ERROR: AirSim 连接失败，程序退出。")
-    exit()
 
-# ************ 新增的关键步骤 ************
-# 将 AirSimClient 实例绑定到 flight_controls 模块
-set_airsim_client(AIRSIM_CLIENT) 
+# --- 全局客户端和工具初始化 (封装到函数中) ---
 
-# 将 AirSimClient 实例绑定到视觉模块
-set_vision_client(AIRSIM_CLIENT) # <-- 新增
-# ****************************************
+def initialize_agent_system(scene_name: str, scene_config: Dict[str, Any]):
+    """初始化 AirSim 客户端、记忆管理器和所有工具函数。"""
+    
+    global AIRSIM_CLIENT, MEMORY_MANAGER, AVAILABLE_TOOLS
+    
+    # 1. 初始化 AirSim 客户端
+    AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
+    if not AIRSIM_CLIENT.connect_and_initialize():
+        print("FATAL ERROR: AirSim 连接失败，程序退出。")
+        return False
+        
+    # 2. 将客户端实例绑定到 flight_controls 模块
+    set_airsim_client(AIRSIM_CLIENT) 
+
+    # 3. 初始化 Memory Manager (使用场景 ID)
+    MEMORY_MANAGER = MemoryManager(scene_name=scene_name)
+    
+    # 4. 检查并导入场景的静态语义数据
+    # 路径构建逻辑已封装在 MemoryManager.check_and_initialize_scene_data() 内部
+    init_observation = MEMORY_MANAGER.check_and_initialize_scene_data()
+    print(f"\n--- 场景初始化观察结果 ---\n{init_observation}\n----------------------------")
+
+    # 5. 可用的工具函数映射 (需要在 global 作用域或此处完整定义)
+    # 必须在这里完成定义，以确保它们引用了初始化后的 MEMORY_MANAGER
+    global AVAILABLE_TOOLS
+    AVAILABLE_TOOLS = {
+        "takeoff": AIRSIM_CLIENT.takeoff,
+        "land": AIRSIM_CLIENT.land,
+        "get_current_pose": AIRSIM_CLIENT.get_current_pose,
+        # ... (其他飞行/视觉工具) ...
+        # 确保这些引用了新的 MemoryManager 实例
+        "fly_to_gps": fly_to_gps, # airsim "inter API, cannot move with avoidance",
+        "move_with_local_avoidance": move_with_local_avoidance,
+        "move_forward": move_forward,
+        "set_yaw": set_yaw,
+        "capture_and_analyze_rgb": capture_and_analyze_rgb,
+        "update_search_map": MEMORY_MANAGER.update_search_map,
+        "retrieve_historical_clues": MEMORY_MANAGER.retrieve_historical_clues,
+        "execute_vln_instruction": execute_vln_instruction,  # <--- VLA 执行工具
+        "report_finding": lambda coords, desc: f"REPORT: 发现目标于 {coords}。详情: {desc}"
+        # ... (OpenFly VLA 工具) ...
+    }
+
+    
+    return True
+
+
+
+
+# # --- 初始化全局工具和客户端 ---
+
+# # 1. 客户端和连接 
+# AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
+# if not AIRSIM_CLIENT.connect_and_initialize():
+#     print("FATAL ERROR: AirSim 连接失败，程序退出。")
+#     exit()
+
+# # ************ 新增的关键步骤 ************
+# # 将 AirSimClient 实例绑定到 flight_controls 模块
+# set_airsim_client(AIRSIM_CLIENT) 
+
+# # 将 AirSimClient 实例绑定到视觉模块
+# set_vision_client(AIRSIM_CLIENT) # <-- 新增
+# # ****************************************
+
 
 # --- 初始化 OpenAI 客户端 ---
 try:
@@ -49,25 +110,8 @@ except Exception as e:
     exit()
 
 
-# 2. 记忆管理器
-MEMORY_MANAGER = MemoryManager()
-
-# 3. 可用的工具函数映射
-# 注意：我们现在将 execute_vln_instruction 视为 LLM 可直接调用的工具
-AVAILABLE_TOOLS = {
-    "takeoff": AIRSIM_CLIENT.takeoff,
-    "land": AIRSIM_CLIENT.land,
-    "get_current_pose": AIRSIM_CLIENT.get_current_pose,
-    "fly_to_gps": fly_to_gps,
-    "move_forward": move_forward,
-    "set_yaw": set_yaw,
-    "capture_and_analyze_rgb": capture_and_analyze_rgb,
-    "update_search_map": MEMORY_MANAGER.update_search_map,
-    "retrieve_historical_clues": MEMORY_MANAGER.retrieve_historical_clues,
-    "execute_vln_instruction": execute_vln_instruction,  # <--- VLA 执行工具
-    "report_finding": lambda coords, desc: f"REPORT: 发现目标于 {coords}。详情: {desc}"
-}
-
+# # 2. 记忆管理器
+# MEMORY_MANAGER = MemoryManager()
 
 
 # --- 模拟 LLM 接口 (双层 Agent 模拟) ---
@@ -293,6 +337,25 @@ def run_agent(initial_goal: str):
     # 最终清理 (如果在循环中没有降落)
     AIRSIM_CLIENT.land()
 
+
 if __name__ == "__main__":
-    # 运行 Agent 任务
-    run_agent("去坐标 (122, 122) 附近的区域，寻找红色的标记物或失踪者。")
+    parser = argparse.ArgumentParser(description="LLM-Agent 驱动的无人机仿真平台。")
+    parser.add_argument(
+        "--scene_name", 
+        type=str, 
+        required=True, 
+        help="指定当前的场景名称（例如: env_sim_16），用于记忆隔离和加载seg_map数据。"
+    )
+    parser.add_argument(
+        "--goal",
+        type=str,
+        default="在搜索区域内寻找任何高价值目标或失踪线索。",
+        help="本次任务的初始自然语言目标。"
+    )
+    args = parser.parse_args()
+    
+    # 1. 初始化系统
+    print(f"=== 启动场景: {args.scene_name} ===")
+    if initialize_agent_system(args.scene_name, args.goal):
+        # 2. 运行 Agent
+        run_agent(args.goal)

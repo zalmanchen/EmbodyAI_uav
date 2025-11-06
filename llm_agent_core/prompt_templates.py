@@ -54,6 +54,18 @@ TOOL_SCHEMAS: Dict[str, Dict[str, Any]] = {
             "altitude_meters": "float (目标高度，单位：米)"
         }
     },
+
+   
+    # 新增避障工具
+    "move_with_local_avoidance": {
+        "description": "安全地在当前航向向前移动指定距离，使用 Lidar/深度传感器自主避开局部障碍物。",
+        "parameters": {
+            "target_distance": "float (目标移动距离，单位：米)",
+            "lidar_name": "str (AirSim中Lidar传感器的名称，例如：'Lidar1')"
+        }
+    },
+    
+    # 确保更新 get_openai_tool_schemas 函数，将其转换为 JSON Schema 格式。
     
     # 视觉感知工具 (来自 uav_tools/vision_bridge.py)
     "capture_and_analyze_rgb": {

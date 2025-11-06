@@ -97,6 +97,112 @@ def set_yaw(yaw_degrees: float) -> str:
     
     return f"OBSERVATION: 无人机偏航角已设置为 {yaw_degrees:.1f} 度。"
 
+# --- 辅助函数：获取 Lidar 障碍物信息 ---
+
+def _get_nearest_obstacle_distance(lidar_name: str = "Lidar1", max_range: float = 5.0) -> float:
+    """
+    获取前方扇区内最近障碍物的距离。
+    需要 AirSim 中已配置 Lidar 传感器。
+    """
+    _ensure_client_ready()
+    try:
+        # 假设我们只关心前方 90 度扇区（例如 yaw +/- 45 度）
+        lidar_data = CLIENT_INSTANCE.client.getLidarData(lidar_name, CLIENT_INSTANCE.vehicle_name)
+        
+        # Lidar 数据是点云，通常需要复杂的处理。这里我们简化为检查最近的X距离。
+        # AirSim LidarData 包含 point_cloud 数组，通常是 (x, y, z) 坐标的扁平列表。
+        
+        min_dist_sq = max_range * max_range  # 用距离平方做比较更高效
+        
+        # 简化处理：遍历点云，只考虑前方点 (X > 0)
+        points = lidar_data.point_cloud
+        num_points = int(len(points) / 3)
+        
+        for i in range(num_points):
+            x = points[i*3 + 0]
+            y = points[i*3 + 1]
+            z = points[i*3 + 2]
+            
+            # 只考虑正前方（X轴正方向）且在高度范围内（例如 Z 在 -0.5 到 0.5 之间）
+            if x > 0.5 and abs(z) < 1.0: 
+                dist_sq = x*x + y*y # 忽略 Z 轴影响，只看水平距离
+                if dist_sq < min_dist_sq:
+                    min_dist_sq = dist_sq
+
+        return min_dist_sq**0.5 # 返回最近距离
+        
+    except Exception as e:
+        print(f"Warning: Lidar 数据获取失败 ({e})，返回最大安全距离。")
+        return max_range
+
+
+# --- 2. 局部避障移动工具 ---
+
+def move_with_local_avoidance(target_distance: float, lidar_name: str = "Lidar1") -> str:
+    """
+    【LLM 工具】在当前航向安全移动指定距离，使用 Lidar 进行局部避障。
+    如果遇到障碍物，执行简单的转向策略。
+    """
+    _ensure_client_ready()
+    
+    SAFETY_DISTANCE = 3.0  # 障碍物小于 3 米时启动避障
+    MOVE_STEP = 1.0        # 每次移动 1 米
+    MAX_YAW_ATTEMPTS = 5   # 最大尝试转向次数
+    distance_moved = 0.0
+    
+    # 转换为 NED 坐标系下的 Z 坐标（用于高度）
+    current_state = CLIENT_INSTANCE.client.getMultirotorState(CLIENT_INSTANCE.vehicle_name)
+    current_z = current_state.kinematics_estimated.position.z_val
+
+    print(f"执行局部避障移动：目标 {target_distance:.1f}m...")
+    
+    while distance_moved < target_distance:
+        # 1. 检查前方距离
+        nearest_obstacle = _get_nearest_obstacle_distance(lidar_name, SAFETY_DISTANCE * 2)
+        
+        if nearest_obstacle < SAFETY_DISTANCE:
+            # 2. 发现障碍物：执行避障策略 (转弯)
+            
+            print(f"-> 发现障碍物！距离 {nearest_obstacle:.1f}m，启动避障。")
+            
+            # 尝试向右转 30 度
+            for attempt in range(MAX_YAW_ATTEMPTS):
+                yaw_change = 30.0 # 转向角度
+                
+                # 获取当前 yaw
+                current_orientation = current_state.kinematics_estimated.orientation
+                _, _, current_yaw = airsim.to_eularian_angles(current_orientation)
+                current_yaw_deg = current_yaw * 180 / 3.14159
+                
+                # 执行转弯
+                set_yaw(current_yaw_deg + yaw_change) 
+                
+                # 检查转弯后前方是否安全
+                time.sleep(1.0) # 等待转弯完成
+                if _get_nearest_obstacle_distance(lidar_name) >= SAFETY_DISTANCE:
+                    print(f"-> 转向成功，前方安全，执行绕行移动。")
+                    
+                    # 绕行 3 米
+                    move_forward(3.0) 
+                    
+                    # 尝试回到主航线（这里为了简化不实现回转）
+                    break 
+                
+                if attempt == MAX_YAW_ATTEMPTS - 1:
+                    return f"OBSERVATION: 无法绕过障碍物，已在距离 {distance_moved:.1f}m 处停止。LLM 需重新规划。"
+        
+        # 3. 前方安全：继续前进
+        else:
+            step_to_move = min(MOVE_STEP, target_distance - distance_moved)
+            move_forward(step_to_move)
+            distance_moved += step_to_move
+            
+        time.sleep(0.5) # 循环延迟
+
+    return f"OBSERVATION: 无人机已在局部避障后安全移动了 {distance_moved:.1f} 米。"
+
+# -------------------------------------------------------------
+
 
 # --- 2. OpenFly VLA 低级执行工具 ---
 

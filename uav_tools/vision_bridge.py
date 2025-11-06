@@ -116,73 +116,73 @@ def pixel_to_world_coordinates(pixel_x: int, pixel_y: int, depth_data: np.ndarra
 
 # --- LLM Agent 核心感知工具 ---
 
-def capture_and_analyze_rgb(target_description: str, camera_name: str = "front_center") -> str:
-    """
-    【LLM-Agent 工具】拍摄 RGB 和深度图像，运行 YOLO 模型，并返回带世界坐标的结果。
+# def capture_and_analyze_rgb(target_description: str, camera_name: str = "front_center") -> str:
+#     """
+#     【LLM-Agent 工具】拍摄 RGB 和深度图像，运行 YOLO 模型，并返回带世界坐标的结果。
     
-    参数:
-        target_description (str): Agent 正在寻找的目标的描述 (用于指导 YOLO/VLM)。
-        camera_name (str): AirSim 中相机的名称。
+#     参数:
+#         target_description (str): Agent 正在寻找的目标的描述 (用于指导 YOLO/VLM)。
+#         camera_name (str): AirSim 中相机的名称。
         
-    返回:
-        str: 包含检测结果的 JSON 字符串 (作为 Agent 的 Observation)。
-    """
-    if not UAV_CLIENT or not UAV_CLIENT.connected:
-        return json.dumps({"status": "ERROR", "details": "未连接客户端，无法捕获图像"})
+#     返回:
+#         str: 包含检测结果的 JSON 字符串 (作为 Agent 的 Observation)。
+#     """
+#     if not UAV_CLIENT or not UAV_CLIENT.connected:
+#         return json.dumps({"status": "ERROR", "details": "未连接客户端，无法捕获图像"})
 
-    try:
-        # 1. 从 AirSim 获取 RGB 和 深度图像
-        responses = UAV_CLIENT.client.simGetImages([
-            airsim.ImageRequest(camera_name, airsim.ImageType.Scene, False, False),  # RGB (Scene)
-            airsim.ImageRequest(camera_name, airsim.ImageType.DepthPlanar, True, False) # 深度
-        ])
+#     try:
+#         # 1. 从 AirSim 获取 RGB 和 深度图像
+#         responses = UAV_CLIENT.client.simGetImages([
+#             airsim.ImageRequest(camera_name, airsim.ImageType.Scene, False, False),  # RGB (Scene)
+#             airsim.ImageRequest(camera_name, airsim.ImageType.DepthPlanar, True, False) # 深度
+#         ])
         
-        # 2. 解析图像数据
-        # 2a. RGB 图像（用于 YOLO 输入）
-        rgb_response = responses[0]
-        # rgb_img = Image.frombuffer("RGB", (rgb_response.width, rgb_response.height), rgb_response.image_data_uint8, "raw", "RGB", 0, 1)
+#         # 2. 解析图像数据
+#         # 2a. RGB 图像（用于 YOLO 输入）
+#         rgb_response = responses[0]
+#         # rgb_img = Image.frombuffer("RGB", (rgb_response.width, rgb_response.height), rgb_response.image_data_uint8, "raw", "RGB", 0, 1)
         
-        # 2b. 深度数据（用于坐标转换）
-        depth_response = responses[1]
-        depth_data = np.array(depth_response.image_data_float, dtype=np.float32).reshape(depth_response.height, depth_response.width)
+#         # 2b. 深度数据（用于坐标转换）
+#         depth_response = responses[1]
+#         depth_data = np.array(depth_response.image_data_float, dtype=np.float32).reshape(depth_response.height, depth_response.width)
 
         
-        # 3. 运行 YOLO 推理（此处为 PoC 模拟）
-        # 实际代码: yolo_results = run_yolo_inference(rgb_img, target_description)
-        # 
-        # 模拟结果：检测到一个符合 target_description 的物体，位于图像中心
-        simulated_detections = []
-        if "标记物" in target_description or "背包" in target_description:
-             simulated_detections.append({
-                "class_name": "target_found",
-                "pixel_x": rgb_response.width // 2, # 图像中心
-                "pixel_y": rgb_response.height // 2, 
-                "confidence": 0.98
-            })
+#         # 3. 运行 YOLO 推理（此处为 PoC 模拟）
+#         # 实际代码: yolo_results = run_yolo_inference(rgb_img, target_description)
+#         # 
+#         # 模拟结果：检测到一个符合 target_description 的物体，位于图像中心
+#         simulated_detections = []
+#         if "标记物" in target_description or "背包" in target_description:
+#              simulated_detections.append({
+#                 "class_name": "target_found",
+#                 "pixel_x": rgb_response.width // 2, # 图像中心
+#                 "pixel_y": rgb_response.height // 2, 
+#                 "confidence": 0.98
+#             })
 
-        detected_objects_summary = []
+#         detected_objects_summary = []
         
-        for result in simulated_detections:
-            # 4. 执行坐标转换
-            world_coords = pixel_to_world_coordinates(
-                result["pixel_x"], 
-                result["pixel_y"], 
-                depth_data
-            )
+#         for result in simulated_detections:
+#             # 4. 执行坐标转换
+#             world_coords = pixel_to_world_coordinates(
+#                 result["pixel_x"], 
+#                 result["pixel_y"], 
+#                 depth_data
+#             )
             
-            detected_objects_summary.append({
-                "object_type": result["class_name"],
-                "confidence": result["confidence"],
-                "gps_location": world_coords
-            })
+#             detected_objects_summary.append({
+#                 "object_type": result["class_name"],
+#                 "confidence": result["confidence"],
+#                 "gps_location": world_coords
+#             })
 
-        if not detected_objects_summary:
-            return json.dumps({"status": "SUCCESS", "details": f"未检测到符合 '{target_description}' 的物体"})
-        else:
-            return json.dumps({"status": "SUCCESS", "details": detected_objects_summary})
+#         if not detected_objects_summary:
+#             return json.dumps({"status": "SUCCESS", "details": f"未检测到符合 '{target_description}' 的物体"})
+#         else:
+#             return json.dumps({"status": "SUCCESS", "details": detected_objects_summary})
             
-    except Exception as e:
-        return json.dumps({"status": "ERROR", "details": f"感知工具运行失败: {e}"})
+#     except Exception as e:
+#         return json.dumps({"status": "ERROR", "details": f"感知工具运行失败: {e}"})
 
 
 # --- 示例用法 (用于测试该文件功能) ---
