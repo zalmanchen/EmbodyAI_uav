@@ -3,6 +3,8 @@
 import time
 from typing import Dict, Any
 
+import torch
+
 # 导入 airsim 库以便使用其类型定义
 import airsim
 
@@ -32,7 +34,7 @@ def fly_to_gps(latitude: float, longitude: float, altitude_meters: float) -> str
     【LLM 工具】飞往指定的全球定位系统 (GPS) 坐标点。
     这是高级规划层的主要宏观行动工具。
     """
-    _ensure_client_ready()
+    # _ensure_client_ready()
     
     # AirSim API 使用海平面以下（负值）作为 Z 坐标
     target_z = -altitude_meters
@@ -97,6 +99,104 @@ def set_yaw(yaw_degrees: float) -> str:
 
 
 # --- 2. OpenFly VLA 低级执行工具 ---
+
+# -------------------------------------------------------------
+# OPENFLY VLA CORE LOGIC (提取自您的测试脚本)
+# -------------------------------------------------------------
+
+# --- 导入 OpenFly 依赖 ---
+# 注意：您可能需要在您的环境中手动处理这些导入
+try:
+    from transformers import AutoConfig, AutoImageProcessor, AutoModelForVision2Seq, AutoProcessor
+    from extern.hf.configuration_prismatic import OpenFlyConfig
+    from extern.hf.modeling_prismatic import OpenVLAForActionPrediction
+    from extern.hf.processing_prismatic import PrismaticImageProcessor, PrismaticProcessor
+    # 注册配置 (确保这些配置在您的环境中被正确识别)
+    AutoConfig.register("openvla", OpenFlyConfig)
+    AutoImageProcessor.register(OpenFlyConfig, PrismaticImageProcessor)
+    AutoProcessor.register(OpenFlyConfig, PrismaticProcessor)
+    AutoModelForVision2Seq.register(OpenFlyConfig, OpenVLAForActionPrediction)
+    
+    OPENFLY_AVAILABLE = True
+except ImportError:
+    print("Warning: OpenFly/Prismatic dependencies not found. VLA execution will be simulated.")
+    OPENFLY_AVAILABLE = False
+
+# --- 全局 VLA 模型实例 ---
+POLICY = None
+PROCESSOR = None
+DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+def load_openfly_agent(model_name_or_path="IPEC-COMMUNITY/openfly-agent-7b"):
+    """加载 OpenFly VLA 模型和处理器，只执行一次。"""
+    global POLICY, PROCESSOR
+    if POLICY is not None or not OPENFLY_AVAILABLE:
+        return
+        
+    print(f"Loading OpenFly VLA Agent from {model_name_or_path} on {DEVICE}...")
+    try:
+        PROCESSOR = AutoProcessor.from_pretrained(model_name_or_path)
+        POLICY = AutoModelForVision2Seq.from_pretrained(
+            model_name_or_path, 
+            attn_implementation="flash_attention_2",
+            torch_dtype=torch.bfloat16 if DEVICE == "cuda:0" else torch.float32, 
+            low_cpu_mem_usage=True, 
+            trust_remote_code=True,
+        ).to(DEVICE)
+        print("✅ OpenFly VLA Agent 加载成功。")
+    except Exception as e:
+        print(f"❌ 无法加载 OpenFly 模型: {e}. VLA 模式将不可用。")
+        POLICY = None
+        PROCESSOR = None
+
+# # ----------------- 动作辅助函数 (直接复用) -----------------
+
+# def get_images(lst,if_his,step):
+#     # (保持您提供的 get_images 函数不变)
+#     # ...
+
+# def convert_to_action_id(action):
+#     # (保持您提供的 convert_to_action_id 函数不变)
+#     # ...
+#     action_dict = {
+#         "0": np.array([1, 0, 0, 0, 0, 0, 0, 0]).astype(np.float32),  # stop
+#         # ... (其他动作) ...
+#     }
+#     # ...
+#     return result
+
+# def get_action(policy, processor, image_list, text, his, if_his=False, his_step=0):
+#     # (保持您提供的 get_action 函数不变)
+#     # ...
+#     return cur_action
+
+# def getPoseAfterMakeAction(current_pose, action):
+#     # (保持您提供的 getPoseAfterMakeAction 函数不变)
+#     # ...
+#     return [x, y, z, yaw]
+
+# ----------------- AirSim 图像获取辅助函数 -----------------
+
+def _get_airsim_image():
+    """使用 AirSimClient 实例获取 RGB 图像 (Scene 模式)。"""
+    _ensure_client_ready()
+    
+    responses = CLIENT_INSTANCE.client.simGetImages([
+        airsim.ImageRequest('front_custom', airsim.ImageType.Scene, False, False)
+    ])
+    response = responses[0]
+    
+    # 转换为 NumPy 数组 (RGB 格式)
+    img_data = np.frombuffer(response.image_data_uint8, dtype=np.uint8)
+    img_data = img_data.reshape(response.height, response.width, 3)
+    
+    # AirSim 默认 BGR，转换为 RGB
+    img_data_rgb = cv2.cvtColor(img_data, cv2.COLOR_BGR2RGB)
+    return img_data_rgb
+
+
+# ----------------- 核心 VLA 执行函数 -----------------
+
 
 def execute_vln_instruction(language_instruction: str) -> str:
     """

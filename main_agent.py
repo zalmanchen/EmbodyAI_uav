@@ -68,6 +68,8 @@ AVAILABLE_TOOLS = {
     "report_finding": lambda coords, desc: f"REPORT: 发现目标于 {coords}。详情: {desc}"
 }
 
+
+
 # --- 模拟 LLM 接口 (双层 Agent 模拟) ---
 
 def mock_llm_call(messages: List[Dict[str, Any]], schemas: Dict[str, Any]) -> Dict[str, Any]:
@@ -293,4 +295,4 @@ def run_agent(initial_goal: str):
 
 if __name__ == "__main__":
     # 运行 Agent 任务
-    run_agent("去坐标 (47.6418, -122.14) 附近的区域，寻找红色的标记物或失踪者。")
+    run_agent("去坐标 (122, 122) 附近的区域，寻找红色的标记物或失踪者。")

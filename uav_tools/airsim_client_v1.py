@@ -1,39 +1,18 @@
 # 📁 airsim_client.py
 
-import os
 import airsim
 import time
 from typing import Dict, Any
-# from flight_controls import _ensure_client_ready
-
-import subprocess, threading
 
 class AirSimClient:
     """
     AirSim RPC 客户端封装，处理连接、初始化和基础控制。
     """
     
-    def __init__(self, vehicle_name: str = "Drone1", env_name: str = "env_airsim_16"):
-        self.env_name = env_name
+    def __init__(self, vehicle_name: str = "Drone1"):
         self.vehicle_name = vehicle_name
-        self._sim_thread = threading.Thread(target=self._init_airsim_sim)
-        self._sim_thread.start()
-        time.sleep(10)
-        self.client = airsim.MultirotorClient()
+        self.client = None
         self.max_retries = 5
-
-    def _init_airsim_sim(self):
-
-        env_dir = "envs/airsim/" + self.env_name
-
-        if not os.path.exists(env_dir):
-            raise ValueError(f"Specified directory {env_dir} does not exist")
-        
-        command = ["bash", f"{env_dir}/LinuxNoEditor/start.sh"]
-        self.process = subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = self.process.communicate()
-        # print("Command output:\n", stdout)
-
 
     def connect_and_initialize(self) -> bool:
         """
