@@ -77,25 +77,6 @@ def initialize_agent_system(scene_name: str, scene_config: Dict[str, Any]):
     return True
 
 
-
-
-# # --- 初始化全局工具和客户端 ---
-
-# # 1. 客户端和连接 
-# AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
-# if not AIRSIM_CLIENT.connect_and_initialize():
-#     print("FATAL ERROR: AirSim 连接失败，程序退出。")
-#     exit()
-
-# # ************ 新增的关键步骤 ************
-# # 将 AirSimClient 实例绑定到 flight_controls 模块
-# set_airsim_client(AIRSIM_CLIENT) 
-
-# # 将 AirSimClient 实例绑定到视觉模块
-# set_vision_client(AIRSIM_CLIENT) # <-- 新增
-# # ****************************************
-
-
 # --- 初始化 OpenAI 客户端 ---
 try:
     # 客户端将自动查找 OPENAI_API_KEY 环境变量
