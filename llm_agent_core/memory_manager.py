@@ -46,49 +46,60 @@ class MemoryManager:
     SEG_MAP_BASE_DIR = 'scene_data/seg_map'
     CHROMA_DB_BASE_DIR = "./chroma_dbs"
     
-    # 更改 __init__ 方法，接受一个 scene_id
-    def __init__(self, scene_name: str, embedding_dim: int = 384):
+    def __init__(self, scene_name: str, load_static_map: bool = False, embedding_dim: int = 384):
         """
-        初始化 ChromaDB 客户端和向量集合，使用场景名称进行持久化。
+        初始化 MemoryManager。
         
         参数:
             scene_name (str): 当前场景的唯一标识符。
+            load_static_map (bool): 是否在初始化时导入静态地图数据。
         """
         self.scene_name = scene_name
-        self.collection_name = f"uav_memory_{scene_name}"
+        self.load_static_map = load_static_map
         self.embedding_dim = embedding_dim
         
-        # 1. 初始化 ChromaDB 客户端 (使用持久化模式)
-        # 数据库将存储在 ./chroma_dbs/YourSceneName/
-        db_path = os.path.join(self.CHROMA_DB_BASE_DIR, scene_name)
+        # 🌟 关键修正 1: 定义 collection_name
+        self.collection_name = f"uav_memory_{scene_name}" 
         
-        # 确保路径存在
+        # 1. 初始化 ChromaDB 客户端 (使用持久化模式)
+        db_path = os.path.join(self.CHROMA_DB_BASE_DIR, scene_name)
         os.makedirs(db_path, exist_ok=True) 
         self.client = chromadb.PersistentClient(path=db_path)
         
-        # 2. 创建或获取向量集合
+        # 🌟 关键修正 2: 使用 collection_name 创建集合
+        # 注意：在真实的 ChromaDB 集成中，name 参数是 get_or_create_collection 必需的
         self.collection = self.client.get_or_create_collection(
-            name=self.collection_name
+            name=self.collection_name  # <--- 使用定义的名称
+            # embedding_function=... # 真实项目需指定
         )
-        print(f"记忆管理器初始化成功，场景: {self.scene_name}，集合: {self.collection_name}")
         
-    # --- 新增初始化检查方法 ---
+        print(f"记忆管理器初始化成功，场景: {self.scene_name}，集合: {self.collection_name}")
+        print(f"静态地图加载状态: {'启用' if self.load_static_map else '禁用'}。") 
 
+    
     def check_and_initialize_scene_data(self) -> str:
         """
-        检查场景静态数据是否已导入。如果未导入，则执行导入操作。
-        它会根据 self.scene_name 构建 JSONL 文件路径。
+        检查场景静态数据是否已导入。现在受 load_static_map 标志控制。
         """
-        jsonl_filename = f"{self.scene_name}.jsonl" # 假设文件命名约定
+        
+        # 如果 load_static_map 为 False，则直接跳过导入
+        if not self.load_static_map:
+            return f"OBSERVATION: 静态地图数据加载已禁用 (load_static_map=False)。"
+
+        # 如果 load_static_map 为 True，则继续检查集合是否有数据
+        
+        jsonl_filename = f"{self.scene_name}_seg_map.jsonl" # 假设文件命名约定
         jsonl_filepath = os.path.join(self.SEG_MAP_BASE_DIR, jsonl_filename)
         
         if self.collection.count() > 0:
+            # 注意：即使 load_static_map=True，如果数据库中已有数据，我们仍然跳过导入，使用已有的持久化数据
             print(f"✅ 场景 '{self.scene_name}' 记忆库已包含 {self.collection.count()} 条记录，跳过静态导入。")
-            return f"OBSERVATION: 场景 '{self.scene_name}' 记忆库已初始化。"
+            return f"OBSERVATION: 场景 '{self.scene_name}' 记忆库已初始化（包含静态数据）。"
         else:
-            print(f"⚠ 场景 '{self.scene_name}' 记忆库为空，正在尝试从 {jsonl_filepath} 导入...")
+            print(f"⚠ 场景 '{self.scene_name}' 记忆库为空，load_static_map=True，正在尝试从 {jsonl_filepath} 导入...")
+            # 导入静态数据
             return self.import_semantic_jsonl_data(jsonl_filepath)
-        
+            
 
     def _get_embedding(self, text: str) -> List[float]:
         """

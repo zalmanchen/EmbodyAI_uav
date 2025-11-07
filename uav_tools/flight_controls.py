@@ -8,6 +8,8 @@ import torch
 # 导入 airsim 库以便使用其类型定义
 import airsim
 
+import re # 用于解析语言指令
+
 # --- 导入 AirSim Client 实例 ---
 # 注意: 为了避免循环导入，我们假设 main_agent.py 会将连接好的 AIRSIM_CLIENT 传入
 # 或者我们通过一个延迟绑定机制获取客户端。这里为了简化 PoC，我们使用一个全局占位符。
@@ -134,6 +136,40 @@ def _get_nearest_obstacle_distance(lidar_name: str = "Lidar1", max_range: float 
     except Exception as e:
         print(f"Warning: Lidar 数据获取失败 ({e})，返回最大安全距离。")
         return max_range
+
+def _parse_vla_instruction(instruction: str) -> dict:
+    """
+    解析 VLA 语言指令，提取动作、距离和目标语义。
+    这是一个简化的、基于规则的解析器，用于模拟 VLA 的理解能力。
+    """
+    params = {
+        "action": "move",
+        "distance": 15.0, # 默认移动距离
+        "target_semantic": None,
+        "mode": "search" # search 或 avoid
+    }
+
+    instruction = instruction.lower()
+
+    # 1. 解析动作和模式
+    if "绕过" in instruction or "避开" in instruction:
+        params["mode"] = "avoid"
+    elif "搜索" in instruction or "寻找" in instruction or "盘旋" in instruction:
+        params["mode"] = "search"
+    
+    # 2. 解析语义目标 (简化版，提取常见的关键词)
+    target_match = re.search(r'寻找(.*?)的物体', instruction)
+    if not target_match:
+        target_match = re.search(r'寻找(.*?)(?:\.|,|，|并|且|。)', instruction + '.') # 尝试提取一个描述
+    if target_match:
+        params["target_semantic"] = target_match.group(1).strip()
+
+    # 3. 解析距离 (使用正则表达式匹配数字和单位)
+    distance_match = re.search(r'(\d+)\s*米', instruction)
+    if distance_match:
+        params["distance"] = float(distance_match.group(1))
+
+    return params
 
 
 # --- 2. 局部避障移动工具 ---
@@ -303,40 +339,66 @@ def _get_airsim_image():
 
 # ----------------- 核心 VLA 执行函数 -----------------
 
-
 def execute_vln_instruction(language_instruction: str) -> str:
     """
     【LLM 工具】激活 OpenFly VLA 模型，执行视觉-语言导航任务。
-    LLM 将控制权移交给 VLA 模型进行精细、反应式的导航。
     
-    在这个 PoC 中，我们模拟 VLA 模型的运行和结果。
+    我们通过解析语言指令，将其转化为 AirSim 的速度控制，并模拟 VLA 的实时性。
     """
     _ensure_client_ready()
     
-    # --- VLA 模型模拟/集成点 ---
+    # 1. 解析指令
+    vla_params = _parse_vla_instruction(language_instruction)
+    distance_to_travel = vla_params["distance"]
+    mode = vla_params["mode"]
     
-    # 1. 模拟 VLA 启动和推理
+    # 2. VLA 模拟执行参数
+    # 在搜索模式下，无人机低速飞行以利于视觉感知
+    speed = 2.0  # 低速（m/s）
+    duration = distance_to_travel / speed 
+    
+    # 3. 模拟 VLA 启动和推理 (打印给控制台)
     print(f"\n[VLA 启动] 接收到指令：'{language_instruction}'")
+    print(f"[VLA 解析] 模式: {mode}, 目标: {vla_params['target_semantic']}, 距离: {distance_to_travel}m")
     
-    # 2. 模拟 VLA 运行循环 (实际中这里是 VLA 模型实时获取图像->推理->发送控制指令)
-    run_time = 5  # 模拟 VLA 执行 5 秒
-    print(f"[VLA 运行] 模拟 VLA 模型正在实时控制无人机进行搜索... 持续 {run_time} 秒。")
+    # --- 4. 执行 VLA 动作 (使用 AirSim API 模拟运动) ---
     
-    # 模拟 VLA 的低级控制输出 (例如，前进 2m, 偏航 30度)
-    # 实际中 VLA 会持续输出动作
-    
-    # 模拟 VLA 找到目标，并返回精确的位置
-    time.sleep(run_time) 
-    
-    # 3. 模拟 VLA 返回精确的发现位置
-    mock_found_coords = f"Lat: 47.6417, Lon: -122.1401, Alt: 27.0m"
-    
-    # --- VLA 模拟结束 ---
-    
-    return (f"OBSERVATION: VLA 模型已完成导航指令 '{language_instruction}'。 "
-            f"VLA 报告：成功在目标附近找到线索。精确位置: {mock_found_coords}。")
+    try:
+        if mode == "search" and distance_to_travel > 0:
+            # 模拟 VLA 执行一个前向的、避障的低速移动
+            print(f"[VLA 运行] 执行低速前向移动 {distance_to_travel}m，持续 {duration:.1f}s...")
+            # 使用 moveByVelocityAsync 实现速度控制，并依赖 AirSim 自身的简单碰撞检测
+            # AirSim客户端默认为 MultirotorClient
+            CLIENT_INSTANCE.client.moveByVelocityAsync(
+                vx=speed, vy=0, vz=0, duration=duration, 
+                drivetrain=airsim.DrivetrainType.ForwardOnly, 
+                yaw_mode=airsim.YawMode(is_rate=False, yaw_or_rate=0)
+            ).join() # .join() 确保动作执行完毕
+            
+        elif mode == "avoid":
+            # 模拟 VLA 执行更复杂的避障和局部绕行
+            print(f"[VLA 运行] 模拟 VLA 执行复杂避障绕行，持续 5s...")
+            CLIENT_INSTANCE.client.moveByVelocityAsync(vx=1.0, vy=1.0, vz=0, duration=5).join()
+            time.sleep(2) # 模拟 VLA 思考时间
+            
+        else:
+            # 默认盘旋或悬停
+            CLIENT_INSTANCE.client.hoverAsync().join()
 
+        # 5. 模拟 VLA 结果判断和报告
+        if vla_params["target_semantic"]:
+            # 假设 VLA 在移动过程中识别到了目标
+            current_pose = CLIENT_INSTANCE.get_current_pose()
+            return (f"OBSERVATION: VLA 执行了'{mode}'任务并移动了约 {distance_to_travel:.1f}m。 "
+                    f"VLA报告：在当前位置 (NED X={current_pose['x']:.2f}) 附近发现【{vla_params['target_semantic']}】线索。 "
+                    f"控制权已交还给 LLM 规划器。")
+        else:
+            return (f"OBSERVATION: VLA 完成了 {mode} 任务，移动了约 {distance_to_travel:.1f}m，未发现明确目标。 "
+                    f"控制权已交还给 LLM 规划器。")
 
+    except Exception as e:
+        CLIENT_INSTANCE.client.reset()
+        return f"ERROR: VLA 执行失败，AirSim 客户端发生错误: {e}"
 
 # -------------------------------------------------------------
 # 您需要在 main_agent.py 中添加 set_airsim_client 的调用！

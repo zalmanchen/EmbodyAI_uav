@@ -30,13 +30,13 @@ AVAILABLE_TOOLS = {}
 
 # --- 全局客户端和工具初始化 (封装到函数中) ---
 
-def initialize_agent_system(scene_name: str, scene_config: Dict[str, Any]):
+def initialize_agent_system(scene_name: str, initial_goal: str, load_static_map: bool): # <-- add new parameters
     """初始化 AirSim 客户端、记忆管理器和所有工具函数。"""
     
     global AIRSIM_CLIENT, MEMORY_MANAGER, AVAILABLE_TOOLS
     
     # 1. 初始化 AirSim 客户端
-    AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1")
+    AIRSIM_CLIENT = AirSimClient(vehicle_name="Drone1", env_name=scene_name)
     if not AIRSIM_CLIENT.connect_and_initialize():
         print("FATAL ERROR: AirSim 连接失败，程序退出。")
         return False
@@ -45,7 +45,7 @@ def initialize_agent_system(scene_name: str, scene_config: Dict[str, Any]):
     set_airsim_client(AIRSIM_CLIENT) 
 
     # 3. 初始化 Memory Manager (使用场景 ID)
-    MEMORY_MANAGER = MemoryManager(scene_name=scene_name)
+    MEMORY_MANAGER = MemoryManager(scene_name=scene_name, load_static_map=load_static_map)
     
     # 4. 检查并导入场景的静态语义数据
     # 路径构建逻辑已封装在 MemoryManager.check_and_initialize_scene_data() 内部
@@ -324,7 +324,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--scene_name", 
         type=str, 
-        required=True, 
+        default= "env_airsim_16",
         help="指定当前的场景名称（例如: env_sim_16），用于记忆隔离和加载seg_map数据。"
     )
     parser.add_argument(
@@ -333,10 +333,18 @@ if __name__ == "__main__":
         default="在搜索区域内寻找任何高价值目标或失踪线索。",
         help="本次任务的初始自然语言目标。"
     )
+    # 新增命令行参数：控制是否加载静态地图数据
+    parser.add_argument(
+        "--load_static_map",
+        action="store_true", # 如果命令行提供了此参数，则为 True，否则为 False
+        default=False,
+        help="如果设置，则从 /scene_data/seg_map 中导入静态语义分割地图信息。"
+    )
+
     args = parser.parse_args()
     
     # 1. 初始化系统
     print(f"=== 启动场景: {args.scene_name} ===")
-    if initialize_agent_system(args.scene_name, args.goal):
+    if initialize_agent_system(args.scene_name, args.goal, args.load_static_map):
         # 2. 运行 Agent
         run_agent(args.goal)

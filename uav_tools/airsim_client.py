@@ -24,7 +24,7 @@ class AirSimClient:
 
     def _init_airsim_sim(self):
 
-        env_dir = "envs/airsim/" + self.env_name
+        env_dir = "/home/cx/Desktop/cx_work/UAV/envs/airsim/" + self.env_name
 
         if not os.path.exists(env_dir):
             raise ValueError(f"Specified directory {env_dir} does not exist")
