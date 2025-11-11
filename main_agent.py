@@ -242,8 +242,8 @@ def run_agent(initial_goal: str):
     
     # b. 构造消息列表
     messages = [
-        # # 必须是列表的第一个元素 (或之一)
-        # {"role": "system", "content": system_prompt}, 
+        # 必须是列表的第一个元素 (或之一)
+        {"role": "system", "content": system_prompt}, 
         
         # ✅ 关键修正：添加用户指令，驱动第一次响应
         {"role": "user", "content": f"请开始执行任务。任务目标是：{initial_goal}"} 
@@ -330,7 +330,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--goal",
         type=str,
-        default="在搜索区域内寻找任何高价值目标或失踪线索。",
+        default="寻找最高的楼",
         help="本次任务的初始自然语言目标。"
     )
     # 新增命令行参数：控制是否加载静态地图数据

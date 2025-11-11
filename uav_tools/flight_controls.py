@@ -250,15 +250,15 @@ def move_with_local_avoidance(target_distance: float, lidar_name: str = "Lidar1"
 # 注意：您可能需要在您的环境中手动处理这些导入
 try:
     from transformers import AutoConfig, AutoImageProcessor, AutoModelForVision2Seq, AutoProcessor
-    from extern.hf.configuration_prismatic import OpenFlyConfig
-    from extern.hf.modeling_prismatic import OpenVLAForActionPrediction
-    from extern.hf.processing_prismatic import PrismaticImageProcessor, PrismaticProcessor
+    from .extern.hf.configuration_prismatic import OpenFlyConfig
+    from .extern.hf.modeling_prismatic import OpenVLAForActionPrediction
+    from .extern.hf.processing_prismatic import PrismaticImageProcessor, PrismaticProcessor
     # 注册配置 (确保这些配置在您的环境中被正确识别)
     AutoConfig.register("openvla", OpenFlyConfig)
     AutoImageProcessor.register(OpenFlyConfig, PrismaticImageProcessor)
     AutoProcessor.register(OpenFlyConfig, PrismaticProcessor)
     AutoModelForVision2Seq.register(OpenFlyConfig, OpenVLAForActionPrediction)
-    
+
     OPENFLY_AVAILABLE = True
 except ImportError:
     print("Warning: OpenFly/Prismatic dependencies not found. VLA execution will be simulated.")
