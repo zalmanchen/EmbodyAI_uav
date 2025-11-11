@@ -330,7 +330,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--goal",
         type=str,
-        default="寻找最高的楼",
+        default="寻找周围10m最高的楼",
         help="本次任务的初始自然语言目标。"
     )
     # 新增命令行参数：控制是否加载静态地图数据
