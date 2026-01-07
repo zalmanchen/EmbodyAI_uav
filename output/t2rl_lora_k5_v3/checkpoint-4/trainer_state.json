@@ -1,0 +1,94 @@
+{
+  "best_global_step": null,
+  "best_metric": null,
+  "best_model_checkpoint": null,
+  "epoch": 1.8,
+  "eval_steps": 500,
+  "global_step": 4,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 0.4,
+      "grad_norm": 6.24440336227417,
+      "learning_rate": 0.0,
+      "logits/chosen": 4.364266395568848,
+      "logits/rejected": 3.3576371669769287,
+      "logps/chosen": -58.448814392089844,
+      "logps/rejected": -37.829139709472656,
+      "loss": 0.6845,
+      "rewards/accuracies": 0.0,
+      "rewards/chosen": 0.0,
+      "rewards/margins": 0.0,
+      "rewards/rejected": 0.0,
+      "step": 1
+    },
+    {
+      "epoch": 0.8,
+      "grad_norm": 5.234052658081055,
+      "learning_rate": 0.0002,
+      "logits/chosen": 3.885451316833496,
+      "logits/rejected": 4.105496883392334,
+      "logps/chosen": -84.28512573242188,
+      "logps/rejected": -45.28214645385742,
+      "loss": 0.6786,
+      "rewards/accuracies": 0.0,
+      "rewards/chosen": 0.0,
+      "rewards/margins": 0.0,
+      "rewards/rejected": 0.0,
+      "step": 2
+    },
+    {
+      "epoch": 1.4,
+      "grad_norm": 7.1486663818359375,
+      "learning_rate": 0.00019594929736144976,
+      "logits/chosen": 4.7465739250183105,
+      "logits/rejected": 4.07747745513916,
+      "logps/chosen": -140.0322265625,
+      "logps/rejected": -63.1225471496582,
+      "loss": 0.5977,
+      "rewards/accuracies": 1.0,
+      "rewards/chosen": 0.19309425354003906,
+      "rewards/margins": 0.17845536768436432,
+      "rewards/rejected": 0.014638901688158512,
+      "step": 3
+    },
+    {
+      "epoch": 1.8,
+      "grad_norm": 4.167974472045898,
+      "learning_rate": 0.00018412535328311814,
+      "logits/chosen": 4.156248092651367,
+      "logits/rejected": 3.2127280235290527,
+      "logps/chosen": -44.09944152832031,
+      "logps/rejected": -36.64849090576172,
+      "loss": 0.473,
+      "rewards/accuracies": 1.0,
+      "rewards/chosen": 0.746425449848175,
+      "rewards/margins": 0.5039637684822083,
+      "rewards/rejected": 0.2424616813659668,
+      "step": 4
+    }
+  ],
+  "logging_steps": 1,
+  "max_steps": 12,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 4,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 0.0,
+  "train_batch_size": 1,
+  "trial_name": null,
+  "trial_params": null
+}
