@@ -129,7 +129,7 @@ def convert_to_action_id(action):
             return idx
     return 0
 
-def get_action(policy, processor, image_list, text, acts, if_his=True, his_step=2):
+def get_action(policy, processor, image_list, instruction, acts, if_his=True, his_step=2):
     image_list = get_images(image_list, if_his, his_step)
     
     if isinstance(image_list, np.ndarray):
@@ -137,7 +137,7 @@ def get_action(policy, processor, image_list, text, acts, if_his=True, his_step=
     else:
         images = [Image.fromarray(img) for img in image_list]
     
-    inputs = processor(text, images).to("cuda:0", dtype=torch.bfloat16)
+    inputs = processor(instruction, images).to("cuda:0", dtype=torch.bfloat16)
     action = policy.predict_action(**inputs, unnorm_key="vlnv1", do_sample=False)
     action = action.round().astype(int)
     return convert_to_action_id(action)
@@ -163,24 +163,22 @@ def getPoseAfterMakeAction(new_pose, action):
 # ========== 核心评估逻辑 ==========
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--log", type=str, required=True, 
+    parser.add_argument("--input", type=str, default="/home/cx/Desktop/UAV/OpenFly/train_t2rl_lora/data/t2rl_train_with_translated.json", 
                         help="输入日志路径 (e.g., logs_train_k5_n3.json)")
-    parser.add_argument("--output", type=str, default="logs/rollout_with_trajectory.json",
+    parser.add_argument("--output", type=str, default="./t2rl/data/rollout_with_trajectory.json",
                         help="输出带轨迹的日志路径")
     args = parser.parse_args()
 
     # 加载翻译结果
-    with open(args.log, 'r') as f:
+    with open(args.input, 'r') as f:
         all_eval_info = json.load(f)
-    print(f"📦 Loaded {len(all_eval_info)} translations from {args.log}")
+    print(f"📦 Loaded {len(all_eval_info)} translations from {args.input}")
     
     # 加载 VLA Agent (固定 Proxy)
-    model_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/openfly-agent"
+    model_path = "./model/openfly-agent"
     processor = AutoProcessor.from_pretrained(
         model_path,
-        # use_fast=False,
-        # local_files_only=True,
-        # trust_remote_code=True,
+        trust_remote_code=True,
     )
     policy = AutoModelForVision2Seq.from_pretrained(
         model_path,
@@ -196,113 +194,121 @@ def main():
     data_num = 0
     MAX_STEP = 100
 
-
     env_name = "env_airsim_18"
-    print(f"\n🚀 Starting environment: {env_name} ({len(all_eval_info)} samples)"
+    print(f"\n🚀 Starting environment: {env_name} ({len(all_eval_info)} samples)")
     
     env_bridge = AirsimBridge(env_name)
+    pos_ratio = 1.0  # AirSim 坐标缩放比例
+    time.sleep(5)
 
 
-    # 处理每个环境
-    for env_name, eval_info in env_groups.items():
-        print(f"\n🚀 Starting environment: {env_name} ({len(eval_info)} samples)")
-        env_bridge = AirsimBridge(env_name)
-        time.sleep(5)
+    for idx, item in enumerate(all_eval_info):
+        pos_list = item['pos']
+        
+        #### 需要 修正的地方：使用 translated_instruction 作为 VLA 输入！ ####
 
-        for idx, item in enumerate(eval_info):
+        new_item = item.copy()
+        for i in range(4):
+            acts = [] # reset action list for each sample
             data_num += 1
-            print(f"\n--- [{idx+1}/{len(eval_info)}] Sample: {item.get('id', 'N/A')} ---")
 
-            # 提取轨迹元数据
-            pos_list = item.get("trajectory_meta", {}).get("pos", [[0,0,0]])
-            yaw_list = item.get("trajectory_meta", {}).get("yaw", [0])
-            start_pos = pos_list[0]
-            start_yaw = yaw_list[0]
-            end_pos = pos_list[-1]
-
-            # ✅ 关键修正：使用 translated_instruction 作为 VLA 输入！
-            instruction = item.get("translated_instruction", item["weakened_instruction"])
-            print(f"   📌 Using translated instruction: {instruction[:80]}...")
-
+            if i==0:
+                instruction_name = 'weaken_instruction' 
+            else:
+                instruction_name = f'translated_instruction_{i}'
+            
+            instruction = item[instruction_name]
+            print(f"Processing sample {idx}, instruction variant {i}")  
             # 初始化无人机
-            pitch = -45.0 if 'high' in item.get("image_path", "") else 0.0
+            start_position = pos_list[0]
+            start_yaw = item['yaw'][0]
+            new_pose = [start_position[0], start_position[1], start_position[2], start_yaw]
+            end_position = pos_list[-1]
+            print(f"Sample {idx}: {start_position} -> {end_position}, initial heading: {start_yaw}")
+            
+            stop_error = 1
+            image_error = False
+
+            # set camera pose
+            pitch = -45.0 if 'high' in item['image_path'] else 0.0
             env_bridge.set_camera_pose(
-                start_pos[0], start_pos[1], start_pos[2],
-                pitch, np.rad2deg(start_yaw), 0
+                start_position[0]/pos_ratio, 
+                start_position[1]/pos_ratio, 
+                start_position[2]/pos_ratio, 
+                pitch, 
+                np.rad2deg(start_yaw), 
+                0
             )
 
-            # 执行轨迹
             step = 0
-            acts = []
+            flag_osr = 0
             image_list = []
-            old_pose = [start_pos[0], start_pos[1], start_pos[2], start_yaw]
-            new_pose = old_pose.copy()
-            image_error = False
+            env_bridge.pass_len = 1e-3
+            old_pose = new_pose
 
             while step < MAX_STEP:
                 try:
                     raw_image = env_bridge.get_camera_data()
+                    cv2.imwrite("test/cur_img.jpg", raw_image)
                     image = raw_image
+                    
                     image_list.append(image)
-
-                    # ✅ 核心：用翻译后的指令生成动作
-                    model_action = get_action(
-                        policy, processor, image_list, instruction, acts,
-                        if_his=True, his_step=2
-                    )
+                    model_action = get_action(policy, processor, image_list, instruction, acts, if_his=True, his_step=2)
                     acts.append(model_action)
                     new_pose = getPoseAfterMakeAction(new_pose, model_action)
-
-                    # 更新相机位姿
+                    print(f"Environment: {env_name}, Sample: {idx}, Step: {step}, Action: {model_action}, New position: {new_pose}")
                     env_bridge.set_camera_pose(
-                        new_pose[0], new_pose[1], new_pose[2],
-                        pitch, np.rad2deg(new_pose[3]), 0
+                        new_pose[0]/pos_ratio, 
+                        new_pose[1]/pos_ratio, 
+                        new_pose[2]/pos_ratio, 
+                        pitch, 
+                        np.rad2deg(new_pose[3]), 
+                        0
                     )
-                    env_bridge.pass_len += calculate_distance(old_pose[:3], new_pose[:3])
+                    env_bridge.pass_len += calculate_distance(old_pose, new_pose)
+                    dis = calculate_distance(end_position, new_pose)
+                    if dis < 20 and flag_osr != 2:
+                        flag_osr = 2
+                        env_bridge.osr.append(1)
                     old_pose = new_pose
-                    step += 1
 
-                    if model_action == 0:  # stop action
+                    if model_action == 0:
+                        stop_error = 0
                         break
-
+                    step += 1
                 except Exception as e:
-                    print(f"⚠️ Sample {item.get('id')} failed: {e}")
+                    print(f"Error processing image: {e}")
                     image_error = True
                     break
 
+
             # 计算指标
             final_pos = new_pose[:3]
-            dis = calculate_distance(end_pos, final_pos)
-            traj_len = calculate_distance(start_pos, end_pos)
+            dis = calculate_distance(end_position, final_pos)
+            traj_len = calculate_distance(start_position, end_position)
             success = 1 if dis < 20 else 0
             spl = traj_len / env_bridge.pass_len if success else 0.0
             reward = 0.5*success + 0.3*spl + 0.2*math.exp(-0.1*dis/max(traj_len, 1e-3))
 
-            # 保存完整日志
-            rlaif_logs.append({
-                "id": item.get("id"),
-                "weakened_instruction": item["weakened_instruction"],
-                "translated_instruction": instruction,
-                "sample_id": item.get("sample_id", 1),
-                "k_shot": item.get("k_shot"),
-                "diversity_strategy": item.get("diversity_strategy", "unknown"),
-                "success": success,
-                "spl": spl,
-                "end_dist": dis,
-                "traj_len": traj_len,
-                "pass_len": env_bridge.pass_len,
-                "reward": reward,
-                "actions": acts,
-                "trajectory": [start_pos, final_pos],  # 简化轨迹
-                "env_name": env_name
-            })
+            new_item[f'{instruction_name}_reward'] = reward
+            new_item[f'{instruction_name}_success'] = success
+            new_item[f'{instruction_name}_spl'] = spl
 
-            print(f"   ✅ Result: SR={success}, SPL={spl:.3f}, Reward={reward:.3f}")
+            if image_error:
+                continue
 
-        # 清理环境
-        kill_env_process("AirVLN")
-        del env_bridge
-        torch.cuda.empty_cache()
+        
+        # 保存完整日志
+        rlaif_logs.append(new_item)
+
+        print(f"✅ Result: SR={success}, SPL={spl:.3f}, Reward={reward:.3f}")
+
+            
+
+    # 清理环境
+    kill_env_process("AirVLN")
+    del env_bridge
+    torch.cuda.empty_cache()
 
     # 保存结果
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -310,14 +316,14 @@ def main():
         json.dump(rlaif_logs, f, indent=2)
     
     # 最终统计
-    sr = sum(r["success"] for r in rlaif_logs) / len(rlaif_logs)
-    avg_reward = sum(r["reward"] for r in rlaif_logs) / len(rlaif_logs)
+    # sr = sum(r["success"] for r in rlaif_logs) / len(rlaif_logs)
+    # avg_reward = sum(r["reward"] for r in rlaif_logs) / len(rlaif_logs)
     
-    print(f"\n✅ Rollout complete!")
-    print(f"   - Total samples: {len(rlaif_logs)}")
-    print(f"   - Avg Success Rate: {sr:.2%}")
-    print(f"   - Avg Reward: {avg_reward:.3f}")
-    print(f"   - Output saved to: {args.output}")
+    # print(f"\n✅ Rollout complete!")
+    # print(f"   - Total samples: {len(rlaif_logs)}")
+    # print(f"   - Avg Success Rate: {sr:.2%}")
+    # print(f"   - Avg Reward: {avg_reward:.3f}")
+    # print(f"   - Output saved to: {args.output}")
 
 if __name__ == '__main__':
     main()
