@@ -30,12 +30,50 @@ from typing import List, Dict
 from collections import defaultdict
 
 
+def increment_version_and_mkdir(path_str: str, version_prefix: str = "_v") -> str:
+    """
+    自动加版本号 + 检测路径是否存在 + 创建目录
+    Args:
+        path_str: 原始路径
+        version_prefix: 版本号前缀
+    Returns:
+        可用的新路径（确保目录不存在，自动创建）
+    """
+    def get_new_path(original_path):
+        """内部函数：单次版本号加1"""
+        pattern = re.compile(f"{version_prefix}(\\d+)")
+        match = pattern.search(original_path)
+        if not match:
+            return original_path + version_prefix + "1"
+        else:
+            version_num = int(match.group(1))
+            version_str = match.group(1)
+            new_version_num = version_num + 1
+            new_version_str = f"{new_version_num:0{len(version_str)}d}"
+            return pattern.sub(f"{version_prefix}{new_version_str}", original_path)
+    
+    # 循环检测：若新路径已存在，继续加1
+    new_path = get_new_path(path_str)
+    while os.path.exists(new_path):
+        new_path = get_new_path(new_path)
+    
+    # 创建目录（支持多层级）
+    os.makedirs(new_path, exist_ok=True)
+    
+    return new_path
+
+
+
+
 DATASET_ROOT_PATH = "../data/openfly/traj"
 TEMP_IMAGE_DIR = './tmp/qwen_vl_imgs'
 TARGET_SIZE = (448, 448)
 
-model_path = "./model/qwen/Qwen2.5-VL-7B-Instruct_v2"
-rollout_path = './train_t2rl_lora/data_v2'
+version = 2
+model_path = f"./model/qwen/Qwen2.5-VL-7B-Instruct_v2"
+rollout_path = f'./train_t2rl_lora/data_v2'
+
+save_model_path = increment_version_and_mkdir(model_path, "-v")
 
 
 def build_multimodal_dpo_dataset(rollout_path: str) -> Dataset:
@@ -64,7 +102,7 @@ def build_multimodal_dpo_dataset(rollout_path: str) -> Dataset:
         
         # 提取 3 种翻译及其奖励
         candidates = []
-        for i in range(1, 4):
+        for i in range(1, 5):
             text_key = f"translated_instruction_{i}"
             reward_key = f"translated_instruction_{i}_reward"
             
@@ -588,10 +626,12 @@ def run_experiment(
     trainer.train()
     
     # 8. 保存模型
-    final_path = os.path.join(output_dir, exp_name, "final")
-    peft_model.save_pretrained(final_path)
+    final_path = save_model_path
+
+    merged_model = peft_model.merge_and_unload()
+    merged_model,save_pretrained(final_path)
     processor.save_pretrained(final_path)
-    print(f"✅ Experiment {exp_name} completed! Saved to: {final_path}")
+    print(f"✅ Experiment {exp_na me} completed! Saved to: {final_path}")
     
     return final_path
 
@@ -605,7 +645,7 @@ def main():
     parser = argparse.ArgumentParser(description="Multi-Modal DPO Training")
     parser.add_argument("--rollout_path", type=str, default=f"{rollout_path}/rollout_with_trajectory_k20_n3.json",
                        help="Path to rollout log JSON file")
-    parser.add_argument("--output_dir", type=str, default=f"{rollout_path}/output/v2",
+    parser.add_argument("--output_dir", type=str, default=f"{save_model_path}",
                        help="Output directory")
     parser.add_argument("--experiment", choices=["all", "baseline", "diversity", "adaptive"],
                        default="baseline", help="Which experiment to run")
@@ -623,7 +663,7 @@ def main():
     
     # Baseline DPO 实验
     if args.experiment in ["all", "baseline"]:
-        results["baseline"] = run_experiment(
+        results["baseline"] = run_expe/home/cx/Desktop/UAV/OpenFly/train_t2rl_lora/data_v2/t2rl_train_k20_n3_with_translated.jsonriment(
             exp_name="baseline_dpo",
             #trainer_cls=MultimodalDPOTrainer,
             rollout_path=args.rollout_path,
@@ -655,7 +695,7 @@ def main():
         )
     
     # 保存实验结果
-    results_path = os.path.join(args.output_dir, "experiment_results.json")
+    results_path = os.path.join(save_model_path, "experiment_results.json")
     with open(results_path, "w") as f:
         json.dump(results, f, indent=2)
     

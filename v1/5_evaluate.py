@@ -9,8 +9,6 @@ import os
 import json
 import glob
 import gc
-
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import torch
 import copy
 import pandas as pd
@@ -28,7 +26,10 @@ TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
 EVAL_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval.json"
-OUTPUT_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval_with_translated_k20.json"
+OUTPUT_JSON_PATH = "./train_t2rl_lora/data_v2/t2rl_eval_with_translated_k20.json"
+LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/data_v2/output/v2/baseline_dpo/final"
+
+output_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_v3" # save the updated model
 
 # ======================
 # 🧼 初始化
@@ -89,27 +90,23 @@ def load_image_paths(item: dict) -> list:
 # ======================
 def build_system_prompt(agent_name: str = "openfly") -> str:
     role = (
-    "You are a precision UAV instruction translator specialized in aerial navigation.\n"
-    "Your task is to convert high-level human instructions into detailed, executable flight commands\n"
-    "that maintain strict adherence to the observed visual trajectory and flight sequence."
-)
-
+        "You are an Intent-Driven Instruction Translator for UAV navigation.\n"
+        "Your task is to convert vague human instructions into precise, executable commands "
+        "that strictly follow the style of the target VLA agent. "
+        "You will receive CONTINUOUS UAV trajectory frames (6~30+), follow the flight order strictly for translation."
+    )
     few_shot = """
-    ### Navigation Command Style (Observe Pattern):
-    "Head directly toward the tall, light beige building with many windows. Then, slightly turn right and proceed to another large building characterized by its light gray color and balcony-like structures. Finally, slightly turn left and continue straight towards a tall, multi-story skyscraper with large, beige windows featuring arched tops."
-    "Proceed directly to the grey urban rooftop featuring antennas and equipment on a medium-sized building. Then, slightly turn left and head straight towards it."
-    "Advance towards the gray skyscraper characterized by a tall building. Then, slightly turn right and proceed to it. Finally, slightly turn left and continue straight to it."
-    """.strip()
-
+### Few-Shot Examples :
+"Head directly toward the tall , light beige building with many windows . Then , slightly turn right and proceed to another large building characterized by its light gray color and balcony - like structures . Finish by slightly turning left , continuing straight towards a tall , multi - story skyscraper with large , beige windows featuring arched tops ."
+"Proceed directly to the grey urban rooftop featuring antennas and equipment on a medium - sized building , then slightly turn left and head straight towards it ."
+"Advance towards the gray skyscraper characterized by a tall building , then slightly turn right slightly and proceed to it . Finally , slightly turn left and continue straight to it ."
+""".strip()
     constraints = (
-        "\n### Translation Requirements:\n"
-        "• MAINTAIN flight order: preserve the exact sequence of targets\n"
-        "• GROUND in visuals: describe only objects and features visible in the trajectory\n"
-        "• NO hallucinations: omit objects, colors, or structures not present in frames\n"
-        "\n### Output Specifications:\n"
-        "- Single coherent paragraph\n"
-        "- Complete sentences with proper punctuation\n"
-        "- Professional technical language suitable for UAV operations"
+        "\n### Critical Constraints (MUST FOLLOW FOR LONG TRAJECTORY):\n"
+        "- STRICTLY ground all descriptions in the CONTINUOUS trajectory frames, follow the flight order completely.\n"
+        "- DO NOT hallucinate objects, colors, structures or directions absent in the visuals.\n"
+        "- PRESERVE the user's core intent and flight sequence, never change target order or invert directions.\n"
+        "- Output fluent, multi-step, descriptive English that strictly matches the Few-Shot style, no redundant words.\n"
     )
     return f"{role}\n\n{few_shot}\n{constraints}"
 
@@ -196,11 +193,17 @@ def merge_lora(base_model_path: str, lora_path: str) -> AutoModelForVision2Seq:
     print(f"✅ Final verification | Max diff: {max_diff:.6f} {'🟢 SUCCESS' if max_diff > 1e-5 else '🔴 FAILED'}")
 
     del base_model_for_check
-    return base_model.to(device="cuda", dtype=torch.bfloat16)
 
-# ======================
-# 🧠 官方兼容推理
-# ======================
+    # 保存模型和配置
+
+    merged_model.save_pretrained(output_path, safe_serialization=True)
+    
+    # 复制 processor 配置
+    from transformers import AutoProcessor
+    processor = AutoProcessor.from_pretrained(base_model_path, trust_remote_code=True)
+    processor.save_pretrained(output_path)
+
+    return merged_model.to(device="cuda", dtype=torch.bfloat16)
 
 from qwen_vl_utils import process_vision_info
 
@@ -210,14 +213,9 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
     content = []
 
     # 添加图像（路径字符串，processor 会自动加载）
-    # for p in image_paths:
-    #     content.append({"type": "image", "image": p["path"]})
-
-    # 添加图像（使用 file:// 协议）
     for p in image_paths:
-        abs_path = os.path.abspath(p["path"])
-        content.append({"type": "image", "image": f"file://{abs_path}"})
-    
+        content.append({"type": "image", "image": p["path"]})
+
     content.append({"type": "text", "text": instruction})
     messages = [
         {"role": "system", "content": system_prompt},
@@ -232,13 +230,6 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
 
     # process_vision_info 内部会处理图像路径 以及 chunking 多图像
     image_inputs, video_inputs = process_vision_info(messages)
-
-    # # 验证 iamge by vision encoder
-    # with torch.no_grad():
-    #     vision_outputs = model.visual(
-    #         pixel_values=image_inputs
-    #     )
-    # print(f"  ✅ Vision features shape: {vision_outputs.last_hidden_state.shape}")
 
     # processing inputs
     inputs = processor(
@@ -274,11 +265,11 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
 if __name__ == "__main__":
     # 加载模型
     model = merge_lora(
-        base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct",
-        lora_path="/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/output/dpo_multimodal_k20/checkpoint-80"
+        base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
+        lora_path=LORA_PATH
     )
     processor = AutoProcessor.from_pretrained(
-        "./model/qwen/Qwen2.5-VL-7B-Instruct",
+        "./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
         trust_remote_code=True
     )
     processor.tokenizer.padding_side = "left"
@@ -311,15 +302,8 @@ if __name__ == "__main__":
         if not image_paths:
             continue
         
-        # 推理
-        # batch_item = {
-        #     "weakened": weaken,
-        #     "image_paths": image_paths,
-        #     "orig_item": item
-        # }
 
         response = inference(processor, model, image_paths, weaken, system_prompt)
-        
         print(f"  ✅ {response[:80]}...")
         
         # 保存

@@ -25,14 +25,14 @@ def main():
     #n_train = int(0.85 * len(train_data))
     n_train = 100
     splits = {
-        "train": train_data[:100],
-        "val": train_data[100:200],
+        "train": train_data[:20],
+        "val": train_data[20:40],
         "eval": eval_data  # 冻结！
     }
     
     # 保存
     for name, data in splits.items():
-        path = os.path.join(OUTPUT_DIR, f"t2rl_{name}.json")
+        path = os.path.join(OUTPUT_DIR, f"t2rl_{name}_k20.json")
         with open(path, 'w') as f:
             json.dump(data, f, indent=2)
         print(f"✅ {name}: {len(data)} items → {path}")
