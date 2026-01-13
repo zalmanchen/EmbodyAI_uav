@@ -7,6 +7,8 @@ Multi-Modal DPO Training Script
 
 import os
 import json
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3,4,5,6,7"
 import torch
 import argparse
 import warnings
@@ -52,6 +54,7 @@ def build_multimodal_dpo_dataset(rollout_path: str) -> Dataset:
         image_path = log.get("image_path", "")
         index_list = log.get("index_list", [])
         weaken_instruction = log.get("weaken_instruction", "").strip()
+        weaken_reward = log.get("weaken_instruction_reward") # get weaken_reward 
         
         if not weaken_instruction or not index_list:
             print(f"  ⚠️ Skip sample {log_idx}: missing instruction or frames")
@@ -76,13 +79,20 @@ def build_multimodal_dpo_dataset(rollout_path: str) -> Dataset:
                 except (ValueError, TypeError) as e:
                     print(f"  ⚠️ Sample {log_idx} translation {i} reward error: {e}")
         
-        print(f"  ✅ {len(candidates)} valid translations found")
-        
+        print(f"  ✅ {len(candidates)} valid translations found")        
         if len(candidates) < 2:
             continue
         
         # 按 reward 排序
         candidates.sort(key=lambda x: x["reward"], reverse=True)
+
+        # 🔑 关键条件：最高奖励必须高于 weaken_reward
+        max_reward = candidates[0]["reward"]
+        if max_reward <= weaken_reward:
+            print(f"  ⚠️ Skip sample {log_idx}: max_reward ({max_reward:.3f}) <= weaken_reward ({weaken_reward:.3f})")
+            continue
+        
+        print(f"  ✅ Accepted: max_reward ({max_reward:.3f}) > weaken_reward ({weaken_reward:.3f})")
         
         # 创建tmp image and tmp iamge pahth
         image_paths = []
@@ -381,7 +391,8 @@ def run_experiment(
     diversity_type: str = "cosine",
     epochs: int = 3,
     **trainer_kwargs
-):
+    ):
+    
     """运行单个实验"""
     print(f"\n🚀 Starting experiment: {exp_name}")
     
@@ -590,13 +601,13 @@ def run_experiment(
 
 def main():
     parser = argparse.ArgumentParser(description="Multi-Modal DPO Training")
-    parser.add_argument("--rollout_path", type=str, default="./train_t2rl_lora/data/rollout_with_trajectory.json",
+    parser.add_argument("--rollout_path", type=str, default="./train_t2rl_lora/data/rollout_with_trajectory_k100_n3.json",
                        help="Path to rollout log JSON file")
-    parser.add_argument("--output_dir", type=str, default="./train_t2rl_lora/output/checkpoints",
+    parser.add_argument("--output_dir", type=str, default="./train_t2rl_lora/output/checkpoints_k100",
                        help="Output directory")
     parser.add_argument("--experiment", choices=["all", "baseline", "diversity", "adaptive"],
                        default="baseline", help="Which experiment to run")
-    parser.add_argument("--epochs", type=int, default=3, help="Number of epochs")
+    parser.add_argument("--epochs", type=int, default=20, help="Number of epochs")
     parser.add_argument("--diversity_weight", type=float, default=0.3,
                        help="Diversity loss weight")
     args = parser.parse_args()

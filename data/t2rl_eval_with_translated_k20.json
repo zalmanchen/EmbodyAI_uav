@@ -123,7 +123,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall gray and black building with the glass sides and grid lines. Turn left and go to the tall white and black building with the glass and grid patterns. It is a big office place.",
-    "translated_instruction": "Head directly towards the tall gray and black building with glass sides and grid lines. Then, slightly turn left and proceed to the tall white and black building with glass and grid patterns. This is a big office place."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray and black building that has glass sides and grid lines. Then, turn left and proceed until you see the tall white and black building with similar glass and grid patterns. This is the big office place you are looking for."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_1-59-10_1353668775",
@@ -177,7 +179,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the tall, dark building with white lines and a round part with windows. Turn left and go to it.",
-    "translated_instruction": "Head directly towards the tall, dark building with white lines and a round part with windows. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has a dark section with white lines and a rounded part that has windows. Then, turn left and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_20-26-7_1081174232",
@@ -319,7 +323,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall white building with square windows, turn left and go to the small white building with rows of windows.",
-    "translated_instruction": "Head directly towards the tall white building with square windows. Then, slightly turn left and proceed to the small white building with rows of windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building that has square windows. Then, turn left and proceed until you see the small white building with rows of windows on your right side. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_2-31-44_1767110751",
@@ -397,7 +403,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big light beige building with rows of square windows. Turn left and go to the tall white building with dark window squares.",
-    "translated_instruction": "Head directly towards the big light beige building with rows of square windows. Then, slightly turn left and proceed to the tall white building with dark window squares."
+    "translated_instruction": [
+      "Continue straight until you reach the big building that has light beige color and square windows arranged in rows. Then, turn left and proceed until you see the tall building that is white with dark squares in the windows. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-24-58_873199181",
@@ -499,7 +507,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall brown building with a pink top and big windows. It is bigger than other buildings. Turn left and go straight to it.",
-    "translated_instruction": "Head directly towards the tall brown building with a pink top and big windows. It is larger than other buildings. Then, slightly turn left and proceed straight towards it."
+    "translated_instruction": [
+      "Continue forward until you see the tall brown building with a pink top and large windows. It should be larger than the surrounding buildings. Then, slightly turn left and proceed straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_0-39-22_177332700",
@@ -633,7 +643,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall gray building with shiny windows and a big size. Turn right, then go straight. Turn left and go to the dark brick building with small square windows and metal sides.",
-    "translated_instruction": "Head directly towards the tall gray building with shiny windows and a large size. Then, slightly turn right and proceed straight. Finally, turn left and continue towards the dark brick building with small square windows and metal sides."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building that has shiny windows and is large in size. Then, turn right and proceed straight ahead. Next, turn left and continue until you find the dark brick building that has small square windows and metal sides on the sides."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-43-1_61101360",
@@ -735,7 +747,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the brown building with small windows, then turn left and go to the dark gray building with white window frames and a flat roof.",
-    "translated_instruction": "Head directly to the brown building with small windows, then slightly turn left and proceed to the dark gray building with white window frames and a flat roof."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building that has small windows. Then, slightly turn left and proceed until you see the dark gray building with white window frames and a flat roof. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_2-34-29_701943705",
@@ -821,7 +835,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark brown building with brick walls and big rectangular windows, then turn left a little before you get there.",
-    "translated_instruction": "Head directly towards the dark brown building with brick walls and big rectangular windows. Once you're close, slightly turn left before reaching it."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your left, which has dark brown walls and large rectangular windows. Continue in this direction until you reach the specified building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_23-25-17_1238498976",
@@ -891,7 +907,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall brown building with window lines, then turn right and go to the dark building with shiny windows.",
-    "translated_instruction": "Head directly towards the tall brown building with horizontal window lines. Then, slightly turn right and proceed to the dark building with shiny windows."
+    "translated_instruction": [
+      "Continue straight until you see the tall brown building with distinct window lines on your right. Then, turn right and proceed until you reach the dark building that has shiny windows on its side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_0-47-47_1510906527",
@@ -961,7 +979,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the white building with a flat roof, then turn left and go to the tall round gray building with shiny glass walls.",
-    "translated_instruction": "Head directly to the white building with a flat roof, then slightly turn left and proceed to the tall, round gray building with shiny glass walls."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has a flat roof. Then, turn left and proceed until you see the tall round gray building with shiny glass walls. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-54-18_2009726312",
@@ -1039,7 +1059,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall white building with many square windows, then turn left and go to the next big white building with windows.",
-    "translated_instruction": "Head directly towards the tall white building with many square windows. Then, slightly turn left and proceed to the next big white building with windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building that has square windows. Then, turn left and proceed until you see the next big white building with windows ahead. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_22-5-51_993967637",
@@ -1125,7 +1147,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray building with a tall rectangle shape and many windows. Turn a little left, go straight, then turn a little right and keep going.",
-    "translated_instruction": "Head directly towards the large gray building with a rectangular shape and numerous windows. Slightly turn left, proceed straight ahead, then make a slight right turn and continue moving forward."
+    "translated_instruction": [
+      "Continue straight until you see the big gray building on your right side. Then, turn left a bit and proceed straight until you reach the building. Finally, turn right a little and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_20-27-59_485560280",
@@ -1171,7 +1195,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the dark gray building with brick and small square windows.",
-    "translated_instruction": "Head directly towards the dark gray building with brick and small square windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your right. Then, slightly turn left and proceed until you find the building that has similar dark gray color and small square windows, continuing straight ahead."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-11-16_234262547",
@@ -1257,7 +1283,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the light brown building with windows in rows and a medium size. Then turn right and go to the white modern building with rectangle windows.",
-    "translated_instruction": "Head directly towards the light brown building with windows arranged in rows and of medium size. Then, slightly turn right and proceed to the white modern building characterized by rectangular windows."
+    "translated_instruction": [
+      "Continue straight until you see the light brown building with windows arranged in rows. Then, turn right and proceed until you reach the white modern building that has rectangle-shaped windows on its sides."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_2-9-3_258219170",
@@ -1287,7 +1315,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the white building with windows that show light and dark.",
-    "translated_instruction": "Head directly towards the white building with windows showing light and dark."
+    "translated_instruction": [
+      "Continue straight until you reach the next building, where the windows alternate between light and dark shades. Then, slightly turn right and proceed until you find the building that continues in the same pattern. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-15-59_711645630",
@@ -1397,7 +1427,9 @@
       0.5235987755982988
     ],
     "weaken_instruction": "Go to the brown building with dark and light window parts and a bright spot at the bottom right. Turn left and go to the dark gray building with square windows and brick design. It is big and has many floors.",
-    "translated_instruction": "Head directly towards the brown building with dark and light window parts and a bright spot at the bottom right. Then, slightly turn left and proceed to the dark gray building with square windows and brick design. This building is big and has many floors."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building that has dark and light window parts and a bright spot at the bottom right. Then, turn left and proceed until you find the dark gray building with square windows and a brick design. This building should be large and have many floors."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-23-45_1946710049",
@@ -1435,7 +1467,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the big white building with a flat roof and roof things.",
-    "translated_instruction": "Head directly towards the large white building with a flat roof and some structures on top."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building that has a flat roof and visible roof structures such as vents and a ladder. Then, slightly turn right and proceed until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-45-28_1219407971",
@@ -1529,7 +1563,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the big brown building with brick walls and arched windows. Turn left and go to the big dark gray building with brick walls and both flat and arched windows.",
-    "translated_instruction": "Head directly towards the big brown building with brick walls and arched windows. Then, slightly turn left and proceed to the big dark gray building with brick walls and both flat and arched windows."
+    "translated_instruction": [
+      "Continue straight until you reach the big brown building that has brick walls and arched windows. Then, turn left and proceed to the big dark gray building which has both flat and arched windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_22-37-56_35756851",
@@ -1615,7 +1651,9 @@
       0.5235987755983084
     ],
     "weaken_instruction": "Go to the gray building with brick walls and big arched windows. Turn right and go to it. This tall building is for homes or old use.",
-    "translated_instruction": "Head directly to the gray building with brick walls and big arched windows. Then, slightly turn right and proceed to it. This tall building is for homes or old use."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has brick walls and large arched windows on one side. Then, turn right and proceed until you find the building that looks like it is used for homes or has an older design."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-28-13_1137949908",
@@ -1693,7 +1731,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the gray building with bricks and big windows. Turn right and keep going straight to it. It may be a home or a place for work.",
-    "translated_instruction": "Head directly towards the gray building with brick walls and large windows. Then, slightly turn right and proceed straight until you reach it. This structure could be a residence or a workplace."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has gray bricks and large windows on the side. Then, turn right and proceed straight until you find the gray building you are looking for."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_23-37-43_2118801173",
@@ -1763,7 +1803,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the big white building with square windows, then turn left and go straight to the medium light brown office building with grid windows and a simple front.",
-    "translated_instruction": "Head directly to the large white building with square windows, then make a left turn and proceed straight to the medium-sized light brown office building with grid windows and a simple front."
+    "translated_instruction": [
+      "Continue straight until you reach the big white building that has square windows. Then, turn left and proceed straight until you see the medium light brown office building, which has grid windows and a simple front design. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_22-3-55_126107205",
@@ -1801,7 +1843,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray tall building with big windows and brick walls.",
-    "translated_instruction": "Head directly towards the gray tall building with big windows and brick walls."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building on your right. Then, slightly turn left and proceed until you find the gray building that has large windows and brick walls. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-13-29_1756915667",
@@ -1855,7 +1899,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the dark building with cream edges and shiny windows.",
-    "translated_instruction": "Head directly towards the dark building with cream edges and shiny windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your right. Then, slightly turn left and proceed until you find the building that has darker walls with creamy edges and reflective windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-4-54_1364180570",
@@ -1917,7 +1963,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big white building with windows in rows, then turn left to the large modern building with beige and dark glass.",
-    "translated_instruction": "Head directly towards the large white building with rows of windows. Then, slightly turn left and proceed to the large modern building with beige and dark glass windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your left. That will be the large modern building characterized by windows in rows and a combination of beige and dark glass panels. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_16-42-32_1590079444",
@@ -2011,7 +2059,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the brown building with black windows in a grid, medium size. Then turn left and go to the tall, thin black and gold building with shiny glass.",
-    "translated_instruction": "Head directly towards the brown building with black windows arranged in a grid pattern, which is of medium size. After reaching it, slightly turn left and proceed to the tall, slender black and gold building with shiny glass windows."
+    "translated_instruction": [
+      "Continue straight until you see the brown building with black windows arranged in a grid pattern. Turn left and proceed until you reach the tall, thin building that is black and gold with shiny glass windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_18-48-13_1669475776",
@@ -2097,7 +2147,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall white building with square windows, then turn right and go straight to it.",
-    "translated_instruction": "Head directly towards the tall white building with square windows. Then, slightly turn right and proceed straight to it."
+    "translated_instruction": [
+      "Continue straight until you reach the next tall building on the right side. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_16-36-24_243268139",
@@ -2159,7 +2211,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall building with black and white squares and big glass windows. Turn left and go toward it.",
-    "translated_instruction": "Head directly towards the tall building with black and white squares and big glass windows. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has black and white square patterns on its facade and large glass windows. Then, turn left and proceed straight until you see the building ahead."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_22-16-32_1655035325",
@@ -2261,7 +2315,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray building with arched windows. Turn right to find the tall shiny building with glass walls. Keep going straight, then turn a little left to reach the big white and dark glass building.",
-    "translated_instruction": "Head directly towards the gray building with arched windows. Then, slightly turn right and proceed to the tall shiny building with glass walls. Continue straight ahead, then make a slight left turn to reach the big white and dark glass building."
+    "translated_instruction": [
+      "Continue straight until you see the gray building with arched windows on your left. Then, turn right and proceed until you find the tall building with shiny glass walls. Keep going straight ahead, and slightly turn left to reach the building that has both white and dark glass walls."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_19-57-17_1456339643",
@@ -2323,7 +2379,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the white and black building with the grid pattern.",
-    "translated_instruction": "Head directly towards the white and black building with a grid pattern."
+    "translated_instruction": [
+      "Continue straight until you reach the next building that has a similar white and black grid pattern on its facade. Then, slightly turn right and proceed until you see the building continue straight ahead."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_16-27-9_1186452551",
@@ -2361,7 +2419,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall dark building with shiny grid windows and a curved shape.",
-    "translated_instruction": "Head directly towards the tall dark building with shiny grid windows and a curved shape."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building on your right. Slightly turn right and proceed until you find the tall dark building that has shiny grid windows and a curved top structure. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_18-15-27_35756851",
@@ -2439,7 +2499,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the dark gray tall building with many windows and a big size. Turn left and go to the dark blue building with tall shapes and shiny windows.",
-    "translated_instruction": "Head directly towards the dark gray tall building with many windows and a big size. Then, slightly turn left and proceed to the dark blue building with tall shapes and shiny windows."
+    "translated_instruction": [
+      "Continue straight until you reach the dark gray tall building that has many windows and is large in size. Then, turn left and proceed until you see the dark blue building that has tall shapes and shiny windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_19-3-9_396377017",
@@ -2493,7 +2555,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall, light-colored building with many small windows and a big gray band in the middle.",
-    "translated_instruction": "Head directly towards the tall, light-colored building with numerous small windows and a prominent gray band in the middle."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has a similar appearance, with small windows and a prominent gray band running through the middle of it. Continue forward until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-6-53_1520223205",
@@ -2523,7 +2587,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the tall dark building with white lines and curved glass. It is big and in the middle.",
-    "translated_instruction": "Head directly towards the tall dark building with white lines and curved glass located in the middle."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building, which is tall, dark with white lines, and has curved glass panels. Keep going until you arrive at the middle building, and then turn left to continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-13-8_501772890",
@@ -2641,7 +2707,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big square gray place with a concrete floor. Then go straight to the dark brown building with many same windows and roof things. Turn right and go to the tall light gray building with a red side, flat roof, and roof things. It is bigger than the other buildings.",
-    "translated_instruction": "Head directly to the large square area with a concrete floor. Continue straight until you reach the dark brown building with numerous windows and roof structures. Slightly turn right and proceed to the tall light gray building with a red side, flat roof, and roof structures. This building is larger compared to the others."
+    "translated_instruction": [
+      "Continue straight until you reach the big square area with a concrete floor. Then, turn right and keep going straight until you find the dark brown building that has many windows similar to the previous ones and some roof structures on top. Turn right again and proceed until you see the tall light gray building, which is larger than the others. This building has a red side, a flat roof, and some roof structures on top."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_16-20-47_1713258270",
@@ -2679,7 +2747,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the tall gray building with shiny windows and a window grid.",
-    "translated_instruction": "Head directly towards the tall gray building with shiny windows and a window grid."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building on your right. Then, slightly turn left and proceed until you find the tall gray building that has shiny windows arranged in a grid pattern. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_19-23-29_1968922326",
@@ -2717,7 +2787,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go straight to the tall building with the dark front and white lines.",
-    "translated_instruction": "Continue straight until you reach the tall building with a dark facade and white horizontal lines."
+    "translated_instruction": [
+      "Continue straight until you reach the next building, which has a dark front and distinct white lines running vertically. Then, slightly turn right and proceed until you find the building that continues in the same direction. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-38-58_70788355",
@@ -2763,7 +2835,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall dark building with lighted windows in a grid pattern.",
-    "translated_instruction": "Head directly towards the tall dark building with lighted windows arranged in a grid pattern."
+    "translated_instruction": [
+      "Continue straight until you reach the next building, which has darker panels and similar lighted windows arranged in a grid. Then, slightly turn right and proceed until you see the building continue in the same direction. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_21-41-1_1318141009",
@@ -2809,7 +2883,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall building with light beige walls and dark windows.",
-    "translated_instruction": "Head directly towards the tall building with light beige walls and dark windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building that has similar light beige walls and dark windows. Then, slightly turn right and proceed until you find the building that continues in the same direction. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-55-18_1291554098",
@@ -2871,7 +2947,9 @@
       -1.047197551196588
     ],
     "weaken_instruction": "Go to the big black and white building with lines like a solar panel. Turn right and go to the tall dark building with lights and windows.",
-    "translated_instruction": "Head directly towards the large structure with black and white panels resembling solar panels. After reaching it, make a right turn and proceed to the tall building with numerous lights and windows."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has large sections resembling solar panels. Then, turn right and proceed until you see a taller building ahead, which has lights and windows on it. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_19-11-55_915711850",
@@ -2933,7 +3011,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the tall gray building with black windows and a grid pattern.",
-    "translated_instruction": "Head directly towards the tall gray building with black windows and a grid pattern."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your right. Then, slightly turn left and continue straight until you arrive at the tall gray building that has black windows arranged in a grid pattern."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_20-21-24_1582482437",
@@ -3019,7 +3099,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the white building with square windows and flat roof. Then turn right and go to the reddish-brown big building with square windows and vertical bars.",
-    "translated_instruction": "Head directly to the white building with square windows and a flat roof. Then, slightly turn right and proceed to the reddish-brown building with square windows and vertical bars."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has square windows and a flat roof. Then, turn right and proceed until you see the reddish-brown big building, which has square windows and vertical bars on it. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_21-58-5_1488873165",
@@ -3089,7 +3171,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall brown and purple building with arched windows, column-like tops, and a purple roof cover.",
-    "translated_instruction": "Head directly towards the tall brown and purple building with arched windows and column-like tops, then slightly turn right and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has arched windows and column-like tops, and is covered with a purple roof. Continue forward until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-11-9_1277849958",
@@ -3167,7 +3251,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the white building with small windows, then turn left to the light gray building with big dark windows.",
-    "translated_instruction": "Head directly to the white building with small windows, then slightly turn left and proceed to the light gray building with big dark windows."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has small windows. Then, turn left and proceed to the light gray building which has big dark windows on its side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_16-46-29_707900973",
@@ -3245,7 +3331,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the gray road with lines, then turn left to the tall gray building with many windows, then go straight to the light brown building with many windows and roof things.",
-    "translated_instruction": "Head directly to the gray road with white lines, then slightly turn left and proceed to the tall gray building with many windows. Continue straight until you reach the light brown building with many windows and roof structures."
+    "translated_instruction": [
+      "Continue straight until you find the gray road with lines. Then, turn left and proceed until you see the tall gray building that has many windows. Keep going straight until you reach the light brown building, which has many windows and some objects on the roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_16-36-57_515530019",
@@ -3379,7 +3467,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the gray building with a flat roof, then turn right and go to the big dark building with windows, then turn left and go to it.",
-    "translated_instruction": "Head directly to the gray building with a flat roof, then slightly turn right and proceed to the big dark building with windows. Finally, slightly turn left and continue straight to it."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has a flat roof. Then, turn right and proceed to the big dark building with visible windows. Finally, turn left and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_19-51-2_1038626924",
@@ -3513,7 +3603,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the big building with white walls and dark windows. It has a flat roof. Turn left and go straight to it.",
-    "translated_instruction": "Head directly towards the large structure with white walls and dark windows. It features a flat roof. After reaching it, slightly turn left and proceed straight ahead."
+    "translated_instruction": [
+      "Continue forward until you reach the building that has white walls and dark windows. Then, turn left and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_17-18-40_707900973",
@@ -3607,7 +3699,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall dark gray building with big glass windows and a grid pattern, then turn right and go to it.",
-    "translated_instruction": "Head directly towards the tall dark gray building with big glass windows and a grid pattern. Then, slightly turn right and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the tall dark gray building that has big glass windows arranged in a grid pattern. Then, slightly turn right and proceed until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_20-57-30_415522325",
@@ -3757,7 +3851,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray open place with few trees. Turn left and go to the green area with paths and grass. Turn left again into the open grassy space. Keep going toward the big green square. Then turn a little right and go straight to the tall dark brown building with arched windows.",
-    "translated_instruction": "Head directly to the large open area with sparse trees. Slightly turn left and proceed to the green area with pathways and grass. Continue turning left into the open grassy space. Keep moving forward until you reach the big green square. Then, make a slight right turn and proceed straight towards the tall dark brown building with arched windows."
+    "translated_instruction": [
+      "Continue straight until you reach the open area that has a few trees. Then, turn left and proceed to the green space with paths and grass. Keep going until you turn left into another open grassy area. Continue straight until you reach the big green square. Slightly turn right and keep going straight until you find the tall building that is dark brown with arched windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_20-53-29_96055805",
@@ -3867,7 +3963,9 @@
       0.5235987755982988
     ],
     "weaken_instruction": "Go to the big white building with square windows, turn left, then right, and walk to the tall white building with black window edges and one green-yellow light.",
-    "translated_instruction": "Head directly to the large white building with square windows. Then, slightly turn left and proceed to it. Next, make a slight right turn and move towards the tall white building with black window edges and a single green-yellow light."
+    "translated_instruction": [
+      "Continue straight until you reach the big white building with square windows. Then, turn left and proceed straight until you see another building. Turn right and continue until you find the tall white building that has black window edges and one green-yellow light on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_22-20-0_660916487",
@@ -3985,7 +4083,9 @@
       2.094395102393205
     ],
     "weaken_instruction": "Go to the brown building with big windows that have curved tops. Turn a little right and go straight to it.",
-    "translated_instruction": "Head directly towards the brown building with big windows that have curved tops. Then, slightly turn right and proceed straight to it."
+    "translated_instruction": [
+      "Continue forward until you reach the next brown building. Then, slightly turn right and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_20-11-35_857490000",
@@ -4135,7 +4235,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the big building with white and black walls and windows in a grid. Turn left and go to the large gray building with glass and concrete. Turn right and go to the tall building with white and dark gray walls and a flat roof.",
-    "translated_instruction": "Head directly to the large building with white and black walls and windows arranged in a grid pattern. Then, slightly turn left and proceed to the large gray building with glass and concrete walls. Afterward, make a right turn and continue straight towards the tall building with white and dark gray walls and a flat roof."
+    "translated_instruction": [
+      "Continue straight until you reach the big building that has white and black walls with windows arranged in a grid pattern. Then, turn left and proceed to the large gray building that has glass and concrete structure. Turn right and continue straight until you reach the tall building with white and dark gray walls and a flat roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_16-31-45_1610120709",
@@ -4237,7 +4339,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the gray building with roof things, turn left, and go to the big black building with white lines and square windows.",
-    "translated_instruction": "Head directly to the gray building with roof features, then slightly turn left and proceed to the large black building with white lines and square windows."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has roof structures. Then, slightly turn left and proceed until you see the big black building with white lines and square windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_19-49-53_1089653714",
@@ -4371,7 +4475,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the big gray and black building with windows in a grid, then turn left and go to it.",
-    "translated_instruction": "Head directly towards the large gray and black building with a grid pattern of windows. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the next big building that has gray and black color with windows arranged in a grid pattern. Then, turn left and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-10_0-15-37_1781485213",
@@ -4481,7 +4587,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the tall brown building with round-top windows, then turn left and go to the big building with brown bricks and red-beige parts.",
-    "translated_instruction": "Head directly towards the tall brown building with round-top windows. Then, slightly turn left and proceed to the big building with brown bricks and red-beige parts."
+    "translated_instruction": [
+      "Continue straight until you reach the tall brown building that has round-top windows. Then, turn left and proceed until you see the big building which has brown bricks and some red-beige parts on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_21-26-41_562395735",
@@ -4615,7 +4723,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the gray building with big grid windows, turn left and go to the tall dark building with white grids and stripes.",
-    "translated_instruction": "Head directly to the gray building with big grid windows, then slightly turn left and proceed to the tall dark building with white grids and stripes."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has big grid windows. Then, turn left and proceed until you see the tall dark building with white grids and stripes. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_16-51-22_1884661237",
@@ -4741,7 +4851,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big green grass place, turn left, and go to the tall building with black and white windows.",
-    "translated_instruction": "Head directly to the large area covered with green grass. Then, slightly turn left and proceed to the tall building with black and white windows."
+    "translated_instruction": [
+      "Continue straight until you reach the big green grass area. Then, turn left and proceed until you see the tall building that has black and white windows on it. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-10_1-37-30_955798986",
@@ -4851,7 +4963,9 @@
       0.0
     ],
     "weaken_instruction": "Go to the big gray building with square windows and a round tower. Turn right, then left, and go to the tall black building with shiny grid windows and white edges.",
-    "translated_instruction": "Head directly to the large gray building with square windows and a round tower. Then, slightly turn right and proceed to the tall black building with shiny grid windows and white edges."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray building that has square windows and a round tower on one side. Slightly turn right and continue until you see the tall black building. Then, turn left and go straight until you reach the building with shiny grid windows and white edges."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-10_1-38-1_859310840",
@@ -4969,7 +5083,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall brown building with many windows.",
-    "translated_instruction": "Head directly towards the tall brown building with numerous windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your right. That will be the tall brown building with multiple windows. Continue forward to your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_21-34-35_379461075",
@@ -5063,7 +5179,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray building with square windows and a flat roof, then turn right and go straight to it.",
-    "translated_instruction": "Head directly towards the gray building with square windows and a flat roof, then slightly turn right and proceed straight to it."
+    "translated_instruction": [
+      "Continue forward until you reach the next building that has square windows and a flat roof. Then, slightly turn right and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_23-47-41_1245644428",
@@ -5149,7 +5267,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall, wide building with dark blue and black colors and shiny grid windows.",
-    "translated_instruction": "Head directly towards the tall, wide building with dark blue and black colors and shiny grid windows."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has wider structure and is colored in dark blue and black with shiny grid patterns on its windows. Then, slightly turn right and proceed until you find the building you are aiming for."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-10_1-39-49_2070707654",
@@ -5267,7 +5387,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the big white building with many small windows. Turn right and go to the tall, narrow light gray building with rectangular windows and vertical lines.",
-    "translated_instruction": "Head directly towards the big white building with numerous small windows. Then, slightly turn right and proceed to the tall, slender light gray structure with rectangular windows and vertical lines."
+    "translated_instruction": [
+      "Continue straight until you reach the big white building that has small windows. Then, turn right and proceed to the tall, narrow light gray building which has rectangular windows and vertical lines on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_18-31-4_2004504234",
@@ -5393,7 +5515,9 @@
       -2.617993877991494
     ],
     "weaken_instruction": "Go to the tall dark building with many windows. Turn a little left and go to the red brick building with glass windows. Turn a little right and go to the tall brown building with grid windows.",
-    "translated_instruction": "Head directly towards the tall dark building with many windows. Then, slightly turn left and proceed to the red brick building with glass windows. Afterward, slightly turn right and continue towards the tall brown building with grid windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall dark building with many windows. Then, turn left a bit and go until you see the red brick building with glass windows. Slightly turn right and continue until you reach the tall brown building with grid windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_16-41-28_1231192379",
@@ -5527,7 +5651,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the green and gray place with grass, trees, and paths. Turn left and go to the big white building with black windows, roof things, and a small rooftop structure.",
-    "translated_instruction": "Head directly to the green and gray area with grass, trees, and pathways. Then, slightly turn left and proceed to the large white building with black windows, roof features, and a small rooftop structure."
+    "translated_instruction": [
+      "Continue straight until you reach the area with green grass, trees, and paths. Then, turn left and proceed until you find the big building that has white walls, black windows, and a small structure on its rooftop."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_16-14-55_2137100237",
@@ -5821,7 +5947,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the tall white building with windows in a grid. Walk to it, turn right, and go to the medium gray building with black window frames and old-looking walls.",
-    "translated_instruction": "Head directly towards the tall white building with windows arranged in a grid pattern. Once you reach it, make a right turn and proceed to the medium gray building, which has black window frames and appears to have old-looking walls."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building with windows arranged in a grid pattern. Then, turn right and proceed until you see the medium gray building that has black window frames and appears to have older-looking walls. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_14-11-40_2001229904",
@@ -6123,7 +6251,9 @@
       -2.6179938779914944
     ],
     "weaken_instruction": "Go to the tall gray building with small windows in a grid, then turn right and go to the dark building with metal and glass walls on big pillars.",
-    "translated_instruction": "Head directly to the tall gray building with small windows arranged in a grid pattern. After reaching it, slightly turn right and proceed to the dark building with metal and glass walls supported by large pillars."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray building that has small windows arranged in a grid pattern. Then, turn right and proceed until you reach the dark building which has metal and glass walls supported by large pillars."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short_updown/2025-1-14_13-4-57_1820388464",
@@ -6329,7 +6459,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the light gray building with big square windows, turn right and go straight, then go down to the white building with tall windows, and find the light beige building with the big grid window.",
-    "translated_instruction": "Head directly towards the light gray building with big square windows. Then, slightly turn right and proceed straight until you reach the white building with tall windows. Finally, turn left and continue straight to locate the light beige building with the big grid window."
+    "translated_instruction": [
+      "Continue straight until you see the light gray building with big square windows on your right. Then, turn right and keep going straight until you reach the white building. Continue straight until you find the light beige building that has a big grid window on its side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_14-54-53_282828202",
@@ -6615,7 +6747,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the big yellow building with black window frames. Go straight to the big brown building with old brick and many windows. Turn a little right to the beige building with brick and arched windows. Stop and go down to it.",
-    "translated_instruction": "Head directly towards the big yellow building with black window frames. Then, proceed straight to the big brown building with old brick and many windows. Slightly turn right and head towards the beige building with brick and arched windows. Stop and descend to it."
+    "translated_instruction": [
+      "Continue straight until you see the big brown building with old brick and many windows. Then, turn a little to the right and go straight until you reach the beige building with brick and arched windows. Stop there and descend to that location."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_17-47-53_114760235",
@@ -6973,7 +7107,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the white and black building with many small windows in rows. Then go to the beige and dark gray building with the same kind of windows. Turn a little right and go straight to the tall beige building with lines and shiny glass. Stop when you get to it.",
-    "translated_instruction": "Head directly towards the white and black building with many small windows arranged in rows. Then, proceed to the beige and dark gray building with similar small windows. Slightly turn right and continue straight until you reach the tall beige building with lines and shiny glass. Stop there."
+    "translated_instruction": [
+      "Continue straight until you see the white and black building with small windows arranged in rows. Then, turn right and proceed until you find the beige building that has similar windows and dark gray parts. Keep going straight until you reach the tall beige building with lines and shiny glass. Stop there."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_11-46-56_1189641421",
@@ -7355,7 +7491,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the white building with big windows. Then go to the brown building with windows and arches. Turn a little left and go straight. Stop and go down to the brown office building with black glass and big windows on legs.",
-    "translated_instruction": "Head directly towards the white building with large windows. Then, slightly turn right and proceed to the brown building with windows and arches. Finish by slightly turning left, continuing straight towards the brown office building with black glass and large windows on legs."
+    "translated_instruction": [
+      "Continue straight until you see the white building with big windows. Then, turn right and keep going until you find the brown building that has windows shaped like arches. Slightly turn left and continue straight until you reach the brown office building. Stop there and go down to the building with black glass and big windows on the legs."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-1-14_18-49-41_962033002",
@@ -7833,7 +7971,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the gray building with many windows. Then go to the tall round glass building. Turn right to the big gray and black building with arched windows. Go to the white and black office building with shiny glass. Turn right and go to the dark water with light reflections.",
-    "translated_instruction": "Head directly to the gray building with numerous windows. Then, proceed to the tall, round glass building. Slightly turn right and move towards the large gray and black building with arched windows. Continue straight to the white and black office building with shiny glass. Finally, turn right and fly over the dark water with light reflections."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has many windows. Then, keep going until you see the tall round glass building. Slightly turn right and continue until you find the big gray and black building that has arched windows. Proceed straight until you reach the white and black office building with shiny glass. Turn right and continue until you arrive at the dark water with light reflections."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_15-12-35_1344247686",
@@ -8111,7 +8251,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the light gray big building with a flat roof, then go to the other big gray building with large windows. Stop for a moment, then go down to the big dark building with shiny glass.",
-    "translated_instruction": "Head directly to the light gray building with a flat roof, then slightly turn right and proceed to the other big gray building with large windows. Stop momentarily, then descend to the big dark building with shiny glass."
+    "translated_instruction": [
+      "Continue straight until you reach the light gray building that has a flat roof. Then, turn right and proceed to the next big gray building that has large windows. Stop there for a moment, then turn left and go down until you reach the big dark building with shiny glass windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-44-22_136495343",
@@ -8197,7 +8339,9 @@
       -1.0471975511965883
     ],
     "weaken_instruction": "Go to the tall brown building with square windows and many floors. Turn a little right and go straight to it.",
-    "translated_instruction": "Head directly towards the tall brown building with square windows and many floors. Then, slightly turn right and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has square windows and is taller than the current one. Then, slightly turn right and keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_average/2025-01-18_23-41-41_950779",
@@ -8379,7 +8523,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big beige building with many square windows, then climb to the small same-color roof structure with a ladder on one side. Go to the tall modern building with dark gray shiny walls and straight lines like windows. Turn a little left and go straight to the big building with dark parts and bright grid windows that shine. Then go down to it.",
-    "translated_instruction": "Head directly towards the big beige building with many square windows. Then, climb to the small same-color roof structure with a ladder on one side. Proceed to the tall modern building with dark gray shiny walls and straight lines-like windows. Slightly turn left and continue straight to the big building with dark parts and bright grid windows that shine. Finally, descend to it."
+    "translated_instruction": [
+      "Continue straight until you reach the big building with square windows. Keep going until you find the small roof structure that has the same color as the building, with a ladder on one side. Proceed to the tall building with dark gray walls that have straight lines, resembling windows. Slightly turn left and continue straight until you reach the big building with dark parts and bright grid windows that shine. Then, go down to that building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-01-19_03-08-19_23694",
@@ -8521,7 +8667,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall gray round building, then go to the big dark gray building with pointy tops, then turn left to the dark tall building with few lights.",
-    "translated_instruction": "Head directly to the tall gray round building, then proceed to the big dark gray building with pointy tops. Finally, turn left to the dark tall building with few lights."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray round building. Then, turn right and proceed to the big dark gray building that has pointy tops. Finally, turn left and continue straight until you reach the dark tall building with few lights."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-01-19_02-31-00_536040",
@@ -8679,7 +8827,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the gray building with glass windows, then go to the big gray building with a flat roof and water stains. Turn right and go to the large white building with black windows in rows. Turn left and go to the gray building with a flat roof and dark patches. Finally, go to the medium brick building with square glass windows.",
-    "translated_instruction": "Head directly to the gray building with glass windows. Then, proceed to the large gray building with a flat roof and water stains. Slightly turn right and move towards the large white building with black windows arranged in rows. Afterward, make a left turn and approach the gray building with a flat roof and dark patches. Lastly, navigate to the medium-sized brick building with square glass windows."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has glass windows on one side. Then, keep going until you see the big gray building with a flat roof and some water stains. Slightly turn right and proceed until you find the large white building that has black windows arranged in rows. Turn left and continue until you reach the gray building with a flat roof and dark patches. Finally, go straight until you arrive at the medium brick building that has square glass windows on one side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_short/2025-01-19_06-54-00_156295",
@@ -8861,7 +9011,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big dark gray building with brick walls and rectangle windows. Then go up to the flat gray roof with peeling parts. Turn left and go straight to the brown and red brick building with tall rectangle windows. Turn right, then left, and go down to it. Walk straight to it.",
-    "translated_instruction": "Head directly to the big dark gray building with brick walls and rectangle windows. Then proceed to the flat gray roof with peeling parts. Slightly turn left and continue straight to the brown and red brick building with tall rectangle windows. Slightly turn right, then left, and proceed to it. Walk straight to it."
+    "translated_instruction": [
+      "Continue straight until you reach the big dark gray building that has brick walls and rectangle windows. Then, continue until you find the flat gray roof with peeling parts. Slightly turn left and proceed straight until you see the brown and red brick building with tall rectangle windows. Turn right, then left, and go down to that building. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-01-19_01-08-06_438584",
@@ -9059,7 +9211,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the gray building with big arched windows and columns. Walk up a little to find a stone creature that looks like a crouching animal. Turn right a little to the large brown building with arched windows. Then turn left a little toward another brown building with big rectangular windows and a red top part. Walk down to a tall building with many small rectangle windows and arches on top.",
-    "translated_instruction": "Head directly to the gray building with big arched windows and columns. Ascend slightly to locate a stone creature resembling a crouching animal. Slightly turn right to reach the large brown building with arched windows. Then, slightly turn left to approach another brown building with big rectangular windows and a red top section. Descend to the tall building with numerous small rectangle windows and arches at the top."
+    "translated_instruction": [
+      "Continue straight until you see the gray building with big arched windows and columns. Continue forward until you find a stone creature that resembles a crouching animal. Then, turn right a little and keep going until you reach the large brown building with arched windows. Slightly turn left and continue until you see another brown building with big rectangular windows and a red top part. Go down to the tall building with many small rectangle windows and arches on top."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-01-19_02-04-31_274831",
@@ -9233,7 +9387,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the dark building with light grid lines and shiny windows. Then go up to the big beige roof with small buildings on it. Walk straight to the gray-brown building with a flat roof and marks. Turn a little right to the tall gray and beige building with window squares. Turn a little left to the medium gray building with AC units on the roof. Finally, go to the gray and.",
-    "translated_instruction": "Go to the dark building with light grid lines and shiny windows. Then go up to the big beige roof with small buildings on it. Walk straight to the gray-brown building with a flat roof and marks. Turn a little right to the tall gray and beige building with window squares. Turn a little left to the medium gray building with AC units on the roof. Finally, go to the gray and brown building with a flat roof and marks."
+    "translated_instruction": [
+      "straight until you reach the tall building that has dark walls with light grid lines and shiny windows. Continue up to the big roof that is beige in color and has small buildings around it. Keep going straight until you reach the gray-brown building with a flat roof and some marks on it. Slightly turn to the right and continue until you see the tall building that is gray and beige with window squares. Then, turn left and go straight until you reach the medium gray building with AC units on its roof. Continue straight until you reach the gray and."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-01-19_00-32-24_758316",
@@ -9423,7 +9579,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark building with white lines and a grid of big rectangles. Find the small white box on the roof with a flat top, vents, and a ladder. Then go straight to the tall white building with black window frames and shadows. Go down to it.",
-    "translated_instruction": "Head directly towards the dark building with white lines and a grid of big rectangles. Locate the small white box on the roof, which has a flat top, vents, and a ladder. Continue straight until you reach the tall white building with black window frames and shadows. Descend to this building."
+    "translated_instruction": [
+      "Continue straight until you find the dark building that has white lines and a grid of big rectangles. Keep going until you see a small white box on the roof, which has a flat top, some vents, and a ladder next to it. Then, proceed straight until you reach the tall white building with black window frames and shadows. Continue down to that building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-01-19_00-40-16_776421",
@@ -9661,7 +9819,9 @@
       -9.43689570931383e-15
     ],
     "weaken_instruction": "Go to the small gray building with a flat roof and grid windows. Turn left to find a park with green grass and trees. Keep going, then turn right toward a big dark building with white grid lines. Go up to a tall dark gray building with large glass windows. Then go straight to a medium building with roof things on a gray, brown, and red roof. Go down to a large.",
-    "translated_instruction": "Head directly to the small gray building with a flat roof and grid windows. Then, slightly turn left and proceed to the park with green grass and trees. Continue straight, then turn right towards the big dark building with white grid lines. Approach the tall dark gray building with large glass windows. Finally, go straight to the medium building with roof things on a gray, brown, and red roof."
+    "translated_instruction": [
+      "straight until you reach a small gray building that has a flat roof and grid windows. Continue left and keep going until you see a park with green grass and trees. Turn right and continue until you find a big dark building with white grid lines. Go up to the next tall dark gray building that has large glass windows. Then, go straight until you reach a medium building with roof things on a gray, brown, and red roof. Continue down until you arrive at a large building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-01-19_02-05-00_393756",
@@ -9851,7 +10011,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark gray building with a flat roof, window grid, and roof things. It is big and has rough spots and tall parts. Keep going straight.",
-    "translated_instruction": "Head directly towards the dark gray building with a flat roof, window grid, and roof things. It is big and has rough spots and tall parts. Continue straight ahead."
+    "translated_instruction": [
+      "Continue straight until you reach the next building that has a flat roof, similar window grid pattern, and some tall, rough sections. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-01-18_22-45-56_113782",
@@ -10025,7 +10187,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray and white building with the curved roof and spines. Then go to the medium light brown building with rectangle windows. Turn a little right and go straight to the medium yellow office building with same-size windows.",
-    "translated_instruction": "Head directly towards the big gray and white building with the curved roof and spines. Then, slightly turn right and proceed to the medium light brown building with rectangle windows. Continue straight until you reach the medium yellow office building with same-size windows."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray and white building that has a curved roof and spines. Then, turn right and proceed to the medium light brown building with rectangle windows. Keep going straight until you reach the medium yellow office building that has windows of the same size."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-01-18_23-45-36_642101",
@@ -10335,7 +10499,9 @@
       9.43689570931383e-15
     ],
     "weaken_instruction": "Go to the big gray box with roof things. Then go straight to the gray building with many small windows. Go down to the white building with many windows. Turn a little right and go to the gray building with a grid front. Go down to the tall gray building with shiny walls, then turn a little left and go to the light gray building with small windows.",
-    "translated_instruction": "Head directly towards the large gray structure with a flat roof, then proceed straight to the gray building with numerous small windows. Descend to the white building with multiple windows. Slightly turn right and move towards the gray building with a grid-like facade. Descend to the tall gray building with reflective surfaces, then make a slight left turn and approach the light gray building with smaller windows."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has roof structures on top. Keep going straight until you see the gray building with many small windows. Go down until you find the white building with numerous windows. Slightly turn to the right and proceed to the gray building that has a grid pattern on its front. Continue down until you reach the tall gray building with shiny walls. Then, turn a little to the left and go until you find the light gray building that has small windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-01-18_22-08-24_294515",
@@ -10461,7 +10627,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the white building with many black windows. Then go to the light beige building with big grid windows. Turn left and go to the light gray building with a flat roof and peeling paint. Turn right and go to the white modern building with grid windows.",
-    "translated_instruction": "Head directly towards the white building with numerous black windows. Then, proceed to the light beige structure with large grid windows. Slightly turn left and move towards the light gray building with a flat roof and peeling paint. Finally, turn right and continue straight to the white modern building with grid windows."
+    "translated_instruction": [
+      "Continue straight until you see the white building with many black windows on your right. Then, keep going until you reach the light beige building that has big grid windows. Slightly turn left and proceed to the light gray building with a flat roof and peeling paint. Turn right and continue straight until you find the white modern building with grid windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-01-18_22-57-42_70155",
@@ -10619,7 +10787,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the gray building with square windows and castle-like top. It is medium size. Then go up to another gray building with brick walls and square windows. Turn left a little and go down to it. This building has tall windows, arch frames on top, and is medium height.",
-    "translated_instruction": "Head directly to the gray building with square windows and a castle-like top. Then, proceed to another gray building with brick walls and square windows. Slightly turn left and descend to this building, which features tall windows, arch frames at the top, and is of medium height."
+    "translated_instruction": [
+      "Continue straight until you see the gray building that has square windows and a castle-like top. Keep going until you reach another gray building with brick walls and square windows. Slightly turn left and go down until you find the building that has tall windows with arch frames on top, and is medium in height."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-01-19_06-30-39_72894",
@@ -10769,7 +10939,9 @@
       2.094395102393193
     ],
     "weaken_instruction": "Go to the white building with big square windows, then go up to the gray building with a flat roof. Turn right toward the tall gray building with curved windows, a big office place. Then go down to the gray and white building with columns that stick out.",
-    "translated_instruction": "Head directly to the white building with large square windows. Then ascend to the gray building with a flat roof. Slightly turn right and proceed to the tall gray building with curved windows, which appears to be a significant office space. Finally, descend to the gray and white building with columns that protrude outward."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has big square windows. Then, ascend to the gray building with a flat roof. Turn right and proceed until you see the tall gray building that has curved windows, which is the big office place. Finally, go down to the gray and white building where you will notice columns sticking out."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-01-19_05-18-33_691054",
@@ -10959,7 +11131,9 @@
       2.6179938779914944
     ],
     "weaken_instruction": "Go to the tall white building with many windows. Walk up a little and keep going straight. Turn right and go to the small tan pyramid building. Then walk down a little, turn right again, and go to the small beige building with a pyramid roof that looks old.",
-    "translated_instruction": "Head directly towards the tall white building with numerous windows. Ascend slightly and continue straight ahead. Slightly turn right and proceed to the small tan pyramid-shaped building. Descend a bit, then make a right turn and move towards the small beige building with a pyramid-shaped roof that appears aged."
+    "translated_instruction": [
+      "Continue straight until you see the tall white building with many windows. Keep going straight until you find a small tan pyramid building. Then, turn right and continue until you reach the small beige building that has an old pyramid roof. Finally, go down a bit and turn right, continue straight until you find the small beige building with the old pyramid roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-01-19_06-36-16_10021",
@@ -11133,7 +11307,9 @@
       -2.094395102393205
     ],
     "weaken_instruction": "Go to the big gray building with a flat roof and triangle shape. Climb to the top where there are roof things. Then go to another big gray building with windows in a grid pattern. Turn a little right and go straight down to it. Then turn a little left and go to the tall, narrow modern building with a crisscross shape and dark shiny glass.",
-    "translated_instruction": "Head directly towards the large gray building with a flat roof and triangular structure. Ascend to the rooftop where you'll find various rooftop features. Next, move to another substantial gray building marked by a grid-like arrangement of windows. Slightly turn right and proceed straight until you reach it. Finally, make a slight left turn and continue straight towards the tall, slender modern building distinguished by a crisscross design and dark reflective glass panels."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray building that has a flat roof and a triangle shape on top. Keep going until you find the spot where there are roof structures. Then, turn right and proceed straight until you see another big gray building with windows arranged in a grid pattern. Turn a little right and continue straight until you reach the next building. Turn left and go straight until you find the tall, narrow modern building with a crisscross shape and dark shiny glass."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-01-19_04-45-53_509745",
@@ -11331,7 +11507,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the dark gray building with the triangle roof. Then go up a little and turn right to the light gray tall building. Keep going to the next light gray building with square windows. Turn left and go to it. Then go down to the dark gray building with many rows of square windows and narrow white strips on top.",
-    "translated_instruction": "Head directly to the dark gray building with a triangular roof. Then ascend slightly and make a right turn to the light gray tall building. Continue to the next light gray building with square windows. Make a left turn and proceed to it. Finally, descend to the dark gray building with multiple rows of square windows and narrow white strips at the top."
+    "translated_instruction": [
+      "Continue straight until you reach the dark gray building that has a triangle-shaped roof. Then, slightly go up and turn right to the light gray tall building. Keep going until you reach the next light gray building with square windows. Turn left and continue to that building. Finally, go down to the dark gray building which has many rows of square windows and narrow white strips on top."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-01-19_08-32-33_526809",
@@ -11641,7 +11819,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the white building with many windows, then go to the brown building with arched windows, turn left and go straight to the big brown building with glass walls on concrete legs.",
-    "translated_instruction": "Head directly to the white building with numerous windows, then proceed to the brown building with arched windows. Afterward, slightly turn left and continue straight until you reach the large brown building with glass walls supported by concrete legs."
+    "translated_instruction": [
+      "Continue forward until you see the white building with multiple windows. Then, turn right and keep going until you find the brown building that has windows shaped like arches. Next, turn left and proceed straight until you reach the big brown building that has glass walls and stands on concrete legs."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_18-46-34_2007905771",
@@ -11791,7 +11971,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the tall gray building with big windows. Turn right, go straight, turn left, and go to the small gray building.",
-    "translated_instruction": "Head directly towards the tall gray building with big windows. Then, slightly turn right and proceed straight ahead. Afterward, turn left and continue straight until you reach the small gray building."
+    "translated_instruction": [
+      "Continue forward until you reach the tall gray building with large windows. Then, turn right and proceed straight until you see a small gray building. Finally, turn left and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-01-19_08-46-55_277119",
@@ -12117,7 +12299,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go up to the white building with a clock above the entrance, then go straight to the light gray building with a big ledge and an arch on top. Walk up a little and go forward to the gray building with many square windows. Turn a bit left and go straight, then turn a bit right and go ahead. Finally, walk down a little to the gray building with big round columns.",
-    "translated_instruction": "Head directly towards the white building with a clock above the entrance. Continue straight until you reach the light gray building with a big ledge and an arch on top. Ascend slightly and proceed straight to the gray building with numerous square windows. Slightly turn left and move forward. Then, make a slight right turn and continue straight. Finally, descend a bit and approach the gray building with large round columns."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has a clock above its entrance. Keep going straight until you see the light gray building with a big ledge and an arch on top. Move forward a bit and continue to the gray building that has many square windows. Turn to the left a little and go straight. Then, turn to the right and continue forward. Finally, go down a little until you reach the gray building with big round columns."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_19-11-51_771151432",
@@ -12299,7 +12483,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the beige building with bumpy walls and box windows. Turn left, then right, then right again and go straight to it.",
-    "translated_instruction": "Head directly towards the beige building with bumpy walls and box windows. Then, slightly turn left and proceed to it. Next, slightly turn right and continue straight towards it. Finally, make another slight right turn and keep going straight until you reach your destination."
+    "translated_instruction": [
+      "Continue straight until you see the beige building with bumpy walls and box-shaped windows on the right side. Turn left, then right, and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_20-11-7_995706887",
@@ -12465,7 +12651,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the big building with the white and black square pattern. Turn right and go straight to the gray curved building. Turn left and go to the tall light brown building with big windows.",
-    "translated_instruction": "Head directly towards the large building with a white and black square pattern. Then, slightly turn right and proceed to the gray curved building. Afterward, turn left and continue straight towards the tall, light brown building with big windows."
+    "translated_instruction": [
+      "Continue straight until you see the big building with white and black square patterns on the right. Then, turn right and keep going straight until you reach the gray building with a curved top. Slightly turn left and continue straight until you find the tall building that has light brown color and large windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_19-2-30_1231192379",
@@ -12663,7 +12851,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the gray building with arched windows. Turn left and go straight to the tall dark building with shiny gold windows. Turn right and go straight to the tall shiny gold building with a grid of windows. Turn left and go to the tall black and gold glass building with bright shine in the middle.",
-    "translated_instruction": "Head directly towards the gray building with arched windows. Then, slightly turn left and proceed straight to the tall dark building with shiny gold windows. Next, turn right and continue straight to the tall shiny gold building with a grid of windows. Finally, turn left and move towards the tall black and gold glass building with bright shine in the middle."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has arched windows. Then, turn left and keep going straight until you find the tall dark building with shiny gold windows. Turn right and continue straight until you see the tall shiny gold building with a grid of windows. Finally, turn left and go straight until you reach the tall black and gold glass building where the middle part shines brightly."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-01-19_09-31-35_622001",
@@ -13149,7 +13339,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the brown building with big square windows. Then go to the big light brown building with columns. Turn right, then go to the brown building with arched windows and orange roof trim. Turn right again and go to the white building with square parts and a clean look. Go down a little and stop at that place.",
-    "translated_instruction": "Head directly towards the brown building with big square windows. Then, proceed to the big light brown building with columns. Slightly turn right and continue towards the brown building with arched windows and orange roof trim. Slightly turn right again and move towards the white building with square parts and a clean look. Descend a bit and stop at that location."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building that has big square windows. Then, turn right and proceed until you see the big light brown building with columns. Turn right again and continue until you find the brown building that has arched windows and orange roof trim. Turn right and go straight until you reach the white building with square parts and a clean appearance. Stop a little before the end of this building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_20-21-15_1756915667",
@@ -13315,7 +13507,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the big modern building with the dark gray triangle roof. Turn left a little, then right, then right again and go straight to the big office building with the dark brown wall and no windows.",
-    "translated_instruction": "Head directly towards the big modern building with the dark gray triangle roof. Then, slightly turn left, followed by a right turn, and finally another right turn. Continue straight until you reach the big office building with the dark brown wall and no windows."
+    "translated_instruction": [
+      "Continue straight until you see the big modern building with the dark gray triangle roof on your right. Slightly turn left, then right, and continue straight until you reach the big office building with the dark brown wall and no windows on your right."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_20-44-40_201690613",
@@ -13489,7 +13683,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall gray building with a spire, turn left, and walk to the small dark gray building with roof things.",
-    "translated_instruction": "Head directly towards the tall gray building with a spire, then slightly turn left and proceed to the small dark gray building with roof things."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray building with a spire on the right side. Then, slightly turn left and keep going until you reach the small dark gray building that has some objects on its roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_20-26-31_619054081",
@@ -13663,7 +13859,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the tall dark gray building with many windows. Turn right and go to the big dark gray building with a flat roof. Turn left to the gray building with brick walls and many windows. Keep going to the large dark gray building with big windows. Turn right and go to the medium gray building with roof things.",
-    "translated_instruction": "Head directly towards the tall, dark gray building with numerous windows. Slightly turn right and proceed to the large, dark gray building with a flat roof. Continue by turning left to reach the gray building with brick walls and multiple windows. Keep moving forward until you arrive at the large, dark gray building with expansive windows. Finally, turn right and head towards the medium gray building with rooftop structures."
+    "translated_instruction": [
+      "Continue straight until you reach the tall dark gray building with many windows. Then, turn right and proceed to the big dark gray building that has a flat roof. Slightly turn left and continue until you see the gray building with brick walls and many windows. Keep going until you reach the large dark gray building with big windows. Turn right and go to the medium gray building with roof things. You have reached your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_4-11-43_1209734969",
@@ -13845,7 +14043,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray building with big square windows. It is tall and wide. Turn right and go to it.",
-    "translated_instruction": "Head directly towards the gray building with big square windows. It is tall and wide. Then, slightly turn right and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has large square windows. Then, turn right and proceed until you see the building ahead. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_2-32-26_857490000",
@@ -14019,7 +14219,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the gray building with the pointy roof, then turn left and go to the tall dark gray building with the triangle top.",
-    "translated_instruction": "Head directly to the gray building with the pointy roof, then slightly turn left and proceed to the tall dark gray building with the triangle top."
+    "translated_instruction": [
+      "Continue straight until you see the gray building with a pointy roof on your left. Then, turn left and keep going until you reach the tall dark gray building that has a triangle shape on its top."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_20-32-23_1111783898",
@@ -14217,7 +14419,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall gray building with shiny walls, turn left and go to the big gray building with square windows, keep going left to the round gray building with grid windows, then turn right and go to the medium gray building with a triangle top.",
-    "translated_instruction": "Head directly to the tall gray building with shiny walls, then slightly turn left and proceed to the big gray building with square windows. Continue turning left until you reach the round gray building with grid windows. Finally, turn right and head to the medium gray building with a triangle top."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building with shiny walls. Then, turn left and proceed to the big gray building that has square windows. Keep going left until you find the round gray building with grid windows. After that, turn right and continue straight until you reach the medium gray building with a triangle top on top."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long/2025-1-8_21-4-27_739273303",
@@ -14391,7 +14595,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the white building with big windows. Turn left and go to the dark building with many windows and roof things. Turn right, then turn right again and go to it.",
-    "translated_instruction": "Head directly towards the white building with large windows. Then, slightly turn left and proceed to the dark building with numerous windows and roof structures. Next, make a right turn and continue straight until you reach your destination."
+    "translated_instruction": [
+      "Continue straight until you see the white building with big windows on the right. Turn left and keep going until you find the dark building that has many windows and some objects on the roof. Slightly turn right and continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_5-40-18_1835342733",
@@ -14517,7 +14723,9 @@
       0.5235987755982988
     ],
     "weaken_instruction": "Go to the brown building, then turn left and go to the gray building with arched windows and metal on top.",
-    "translated_instruction": "Head directly to the brown building, then slightly turn left and proceed to the gray building with arched windows and metal on top."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building. Then, turn left and proceed until you find the gray building that has arched windows and some metal structures on top. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_3-28-10_413360099",
@@ -14683,7 +14891,9 @@
       0.0
     ],
     "weaken_instruction": "Go to the big white building with square windows, turn left and go to the tall golden-brown tower with diamond shapes, turn right and go to the big dark gray building with glass, then turn right again and go to the medium brown building with bumpy walls.",
-    "translated_instruction": "Head directly to the big white building with square windows, then slightly turn left and proceed to the tall golden-brown tower with diamond shapes. Afterward, slightly turn right and move towards the big dark gray building with glass. Finally, turn right again and continue straight to the medium brown building with bumpy walls."
+    "translated_instruction": [
+      "Continue straight until you see the big white building with square windows. Then, turn left and keep going until you find the tall golden-brown tower that has diamond shapes on it. Turn right and proceed until you reach the big dark gray building with glass. Finally, turn right again and continue straight until you see the medium brown building with bumpy walls."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_1-3-50_1021784812",
@@ -14881,7 +15091,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the big dark gray building with windows in a grid, then turn right and go to the big gray building with a flat roof and worn walls. Then turn left and go to the big beige building with sharp edges and rough texture. Then turn left again and go to the tall gray building with glass windows in a grid. Finally, turn right and go to the medium gray building with a flat.",
-    "translated_instruction": "Head directly to the big dark gray building with windows arranged in a grid pattern. Then, slightly turn right and proceed to the big gray building with a flat roof and visibly worn walls. Next, turn left and move towards the big beige building with sharp edges and a rough texture. Afterward, turn left again and continue straight towards the tall gray building with glass windows arranged in a grid. Finally, turn right and head to the medium gray building with a flat roof."
+    "translated_instruction": [
+      "Continue straight until you see the big dark gray building with windows in a grid. Then, turn right and proceed to the big gray building that has a flat roof and worn walls. Slightly turn left and continue straight until you reach the big beige building with sharp edges and rough texture. Turn left again and go straight until you find the tall gray building with glass windows in a grid. Finally, turn right and continue until you reach the medium gray building with a flat roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-8_21-30-5_971899228",
@@ -15055,7 +15267,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the tall, dark gray building with big square windows. Turn left and go to it. Then turn right and go to the dark brick building with arched windows. Turn right again and go straight to it.",
-    "translated_instruction": "Head directly towards the tall, dark gray building with big square windows. Then, slightly turn left and proceed to it. Next, turn right and head towards the dark brick building with arched windows. Finally, turn right again and continue straight to reach your destination."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has dark gray walls and square windows. Slightly turn left and proceed to that building. Then, turn right and go straight until you see the dark brick building with arched windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_0-6-45_1411328205",
@@ -15253,7 +15467,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go to the dark building with brick and rectangle windows, turn right, go straight to the tall gray building with shiny glass, turn left to the gray historic building with brick and decorations, walk straight to it, turn right and go to the white modern building with a triangle shape.",
-    "translated_instruction": "Head directly towards the dark building with brick and rectangle windows. Then, slightly turn right and proceed to the tall gray building with shiny glass. Finish by slightly turning left, continuing straight towards the gray historic building with brick and decorations. Walk straight to it, then turn right and go to the white modern building with a triangle shape."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building with shiny glass. Then, turn left and proceed straight until you see the gray historic building with brick and decorations. Keep going straight until you turn right and continue to the white modern building with a triangle shape."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_4-34-20_25084100",
@@ -15387,7 +15603,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the light gray building with square windows, turn right to the dark gray building with big windows and arches on top floors, then go to the mid-rise dark gray building with light gray parts, square and arched windows, and a flat roof.",
-    "translated_instruction": "Head directly to the light gray building with square windows, then slightly turn right to the dark gray building with big windows and arches on top floors. Finally, proceed to the mid-rise dark gray building with light gray parts, square and arched windows, and a flat roof."
+    "translated_instruction": [
+      "Continue straight until you reach the light gray building that has square windows. Then, turn right and proceed to the dark gray building which has big windows and arches on the top floors. Finally, continue straight until you find the mid-rise dark gray building that has light gray parts, square and arched windows, and a flat roof."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_7-8-4_99568484",
@@ -15577,7 +15795,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the light brown building with big windows and curved lower windows, turn left and go to the tall gray building with glass walls, turn right and go to the brown building with brick walls and tall windows, turn right again and go to the dark gray building with a flat roof and roof things.",
-    "translated_instruction": "Head directly to the light brown building with big windows and curved lower windows. Then, slightly turn left and proceed to the tall gray building with glass walls. Next, turn right and move towards the brown building with brick walls and tall windows. Finally, turn right again and continue to the dark gray building with a flat roof and roof things."
+    "translated_instruction": [
+      "Continue straight until you see the light brown building with big windows and curved lower windows. Then, turn left and proceed until you reach the tall gray building with glass walls. Turn right and continue until you find the brown building with brick walls and tall windows. Turn right again and go straight until you see the dark gray building with a flat roof and roof things."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-8_23-12-4_1908518808",
@@ -15751,7 +15971,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big dark-gray building with arched windows. Turn right and go to the large gray building with a flat roof and windows. Turn left and go to the medium gray office building with a tall front and big windows.",
-    "translated_instruction": "Head directly towards the large, dark-gray building with arched windows. Then, slightly turn right and proceed to the large gray building with a flat roof and windows. Finally, slightly turn left and continue straight towards the medium gray office building with a tall front and big windows."
+    "translated_instruction": [
+      "Continue straight until you reach the big dark-gray building with arched windows. Then, turn right and proceed to the large gray building with a flat roof and windows. Finally, turn left and continue straight until you reach the medium gray office building with a tall front and big windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_1-16-55_524133589",
@@ -15957,7 +16179,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the big gray building with square windows and a black roof. Turn left to the tall white building with windows in a grid. Keep going straight to the medium light gray building with dark window frames and marks on the walls.",
-    "translated_instruction": "Head directly to the big gray building with square windows and a black roof. Then, slightly turn left and proceed to the tall white building with windows arranged in a grid. Continue straight until you reach the medium light gray building with dark window frames and visible marks on the walls."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray building that has square windows and a black roof. Then, turn left and proceed to the tall white building with windows arranged in a grid pattern. Keep going straight until you reach the medium light gray building, which has dark window frames and some marks on the walls."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-8_21-40-31_352118606",
@@ -16139,7 +16363,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the big building with black and white glass walls. Turn left to the gray office building with columns and roof things. Then turn right and go straight to it.",
-    "translated_instruction": "Head directly towards the large building with black and white glass walls. Then, slightly turn left and proceed to the gray office building with columns and roof features. Finally, turn right and continue straight towards it."
+    "translated_instruction": [
+      "Continue forward until you see the big building with black and white glass walls on your right. Turn left and proceed to the gray office building that has columns and roof structures. Then, turn right and keep going straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_1-2-29_786039021",
@@ -16361,7 +16587,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the big beige building with brick walls and rectangle windows. Turn a little right and go to the medium gray building with many small square windows. Turn left and go to the big brown building with brick walls and rectangle windows. Go to the tall brown round building with a flat roof. Go to the big gray building with a flat roof and small things on top. Turn a little right and go.",
-    "translated_instruction": "Head directly towards the big beige building with brick walls and rectangle windows. Then, slightly turn right and proceed to the medium gray building with many small square windows. Finish by slightly turning left, continuing straight towards the big brown building with brick walls and rectangle windows. Next, go to the tall brown round building with a flat roof. Finally, go to the big gray building with a flat roof and small things on top."
+    "translated_instruction": [
+      "Continue straight until you see the big beige building with brick walls and rectangle windows. Slightly turn right and proceed to the medium gray building with many small square windows. Then, turn left and continue straight until you reach the big brown building with brick walls and rectangle windows. Go straight until you find the tall brown round building with a flat roof. Keep going straight until you see the big gray building with a flat roof and small things on top. Slightly turn right and continue until your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_7-33-24_1946710049",
@@ -16511,7 +16739,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the big beige building with many windows and a special top, then turn right and go to the other big beige building with bumpy walls and roof things.",
-    "translated_instruction": "Head directly towards the big beige building with many windows and a special top. Then, slightly turn right and proceed to the other big beige building with bumpy walls and roof things."
+    "translated_instruction": [
+      "Continue straight until you see the big building with beige windows and a unique top structure. Then, turn right and proceed until you reach the other big building that has bumpy walls and roof protrusions."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_4-32-24_292423943",
@@ -16701,7 +16931,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the big gray building with many windows in a grid. Then stop before you reach the medium blue glass building.",
-    "translated_instruction": "Head directly towards the big gray building with many windows arranged in a grid pattern. Once you're close enough, stop before reaching the medium blue glass building."
+    "translated_instruction": [
+      "Continue straight until you see the big gray building that has windows arranged in a grid pattern. Stop your flight before you reach the medium blue glass building on the right side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_12-3-36_859484421",
@@ -17083,7 +17315,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark gray building with small windows. Then go straight, turn right a little, and go to the big black building with long panels. Then turn left a little, go straight, and go down to the medium building with dark brick and rectangle windows.",
-    "translated_instruction": "Head directly towards the dark gray building with small windows. Then, proceed straight ahead, slightly turn right, and move towards the big black building with long panels. Afterward, slightly turn left, continue straight, and descend to the medium-sized building with dark brick and rectangular windows."
+    "translated_instruction": [
+      "Continue straight until you see the dark gray building with small windows on your right. Then, turn right a little and go straight until you reach the big black building with long panels. Slightly turn left and go straight until you arrive at the medium building with dark brick and rectangle windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_7-12-23_1042517543",
@@ -17289,7 +17523,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray building with square windows, then turn left to another same-looking building. Keep going to the big beige building that is tall with many square windows. Turn right to another similar building, then go to the tall dark building with stacked parts. Turn a little left and go straight to the tall narrow dark gray building with window squares.",
-    "translated_instruction": "Head directly to the big gray building with square windows. Then, slightly turn left and proceed to another building with square windows. Continue straight to the tall beige building with many square windows. Slightly turn right and move to another similar building. Finally, turn a little left and go straight to the tall dark building with stacked parts."
+    "translated_instruction": [
+      "Continue straight until you see the big gray building with square windows on your right. Turn left and proceed to the next building that looks the same. Keep going until you reach the big beige building that is tall and has many square windows. Turn right and continue to the next similar building. Then, turn right and go straight until you find the tall dark building with stacked parts. Turn a little left and continue straight until you reach the tall narrow dark gray building with window squares."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-1-14_15-10-7_1856669179",
@@ -17711,7 +17947,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark gray building with pointy roofs and many windows. Then go to the big dark gray building with a flat roof and brick walls. Turn a little left, then go to the large gray building with shiny glass. Turn a little right and walk to the big dark building with glass that shows light and water. Stop there.",
-    "translated_instruction": "Head directly towards the dark gray building with pointy roofs and many windows. Then, proceed to the big dark gray building with a flat roof and brick walls. Slightly turn left and continue straight towards the large gray building with shiny glass. Slightly turn right and proceed to the big dark building with glass that shows light and water. Stop there."
+    "translated_instruction": [
+      "Continue straight until you see the dark gray building with pointy roofs and many windows. Then, keep going until you find the big dark gray building with a flat roof and brick walls. Slightly turn left and proceed to the large gray building with shiny glass. Turn a little right and continue until you reach the big dark building with glass that shows light and water. Stop there."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_3-49-1_1026413173",
@@ -17877,7 +18115,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go up to the big gray building with a box shape. Go straight to the medium white building with four floors and square windows. Turn a little left and go to the big beige building with a flat roof and dark spots. Stop a moment, then go down to the big dark gray building with many floors, arched windows, and metal roof covers.",
-    "translated_instruction": "Ascend to the large gray building with a rectangular structure. Proceed straight until you reach the medium-sized white building with four stories and square windows. Slightly turn left and move towards the big beige building with a flat roof and dark spots. Pause briefly before descending to the tall dark gray building with multiple floors, arched windows, and metal roof covers."
+    "translated_instruction": [
+      "Continue straight until you reach the medium white building that has four floors and square windows. Then, turn left and proceed to the big beige building with a flat roof and dark spots. Stop here for a moment, then turn back and go down to the big dark gray building that has many floors, arched windows, and metal roof covers. Continue straight until you stop."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_12-54-35_352406219",
@@ -18243,7 +18483,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray building with many small windows, turn right a little, go to the tall dark blue building with shiny glass, then go to the wide dark gray building with glass and round columns.",
-    "translated_instruction": "Head directly to the big gray building with numerous small windows. Slightly turn right and proceed to the tall dark blue building with shiny glass. Finally, move forward to the wide dark gray building with glass and round columns."
+    "translated_instruction": [
+      "Continue straight until you see the big gray building with many small windows. Then, turn right a little and proceed until you reach the tall dark blue building that has shiny glass. Finally, continue straight until you find the wide dark gray building with glass and round columns."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_13-6-14_1231192379",
@@ -18545,7 +18787,9 @@
       1.0471975511965883
     ],
     "weaken_instruction": "Go to the tall gray building with big windows and a flat roof. Then go straight to the dark gray building with rectangle windows and arches. Turn left a little, then go straight to another big building with rectangle windows. Stop and go down to the big glass skyscraper that is gray.",
-    "translated_instruction": "Head directly towards the tall gray building with big windows and a flat roof. Then proceed straight to the dark gray building with rectangular windows and arches. Slightly turn left and continue straight to another big building with rectangular windows. Stop and descend to the large glass skyscraper which is gray."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray building with big windows and a flat roof. Keep going straight until you reach the dark gray building with rectangle windows and arches. Slightly turn left and continue straight until you find another big building with rectangle windows. Stop and descend to the gray skyscraper that has big glass windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short_updown/2025-1-14_14-34-56_561717988",
@@ -18815,7 +19059,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall white building with grid windows, then the big gray building with rectangle windows. Turn right, then left, and go to the yellow glowing building with grid windows. Stop at the medium gray building with tall narrow windows and brick walls.",
-    "translated_instruction": "Head directly to the tall white building with grid windows. Then, proceed to the big gray building with rectangle windows. Slightly turn right and continue straight. Next, make a slight left turn and proceed to the yellow glowing building with grid windows. Finally, stop at the medium gray building with tall narrow windows and brick walls."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building with grid windows. Then, turn right and proceed to the big gray building with rectangle windows. Slightly turn left and continue until you see the yellow glowing building with grid windows. Stop at the medium gray building with tall narrow windows and brick walls. You have reached your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_long_updown/2025-1-14_13-11-39_631704567",
@@ -19253,7 +19499,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big white and black building with many windows. Go straight, then turn left and go to the brown building with brick walls and curved windows. Turn left again and go to the tall dark building with glass walls. Stop there.",
-    "translated_instruction": "Head directly towards the large white and black building with numerous windows. Continue straight until you reach the brown building with brick walls and curved windows. Slightly turn left and proceed to the tall dark building with glass walls. Stop at this location."
+    "translated_instruction": [
+      "Continue straight until you see the big white and black building with many windows. Then, turn left and proceed until you find the brown building that has brick walls and curved windows. Slightly turn left again and go straight until you reach the tall dark building with glass walls. Stop at that location."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average_updown/2025-1-14_4-59-51_1003886059",
@@ -19419,7 +19667,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the red-brown building with arched windows. Then go to the white building with grid windows. Turn right, go straight, and stop. Then go to the gray building with big columns and grid windows.",
-    "translated_instruction": "Head directly towards the red-brown building with arched windows. Then, proceed to the white building with grid windows. Slightly turn right and continue straight until you reach the gray building with big columns and grid windows."
+    "translated_instruction": [
+      "Continue straight until you see the red-brown building on your left side with arched windows. Then, turn right and keep going straight until you reach the white building with grid windows. Turn right again and continue straight until you stop at the gray building that has big columns and grid windows on the right side."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average_updown/2025-1-14_18-14-51_550245196",
@@ -19785,7 +20035,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the beige building with stone walls and tall parts. Walk straight to another beige building with box windows. Turn a little left to the beige building with brick and wood window frames. Then stop and go down to the black and white building with a grid front.",
-    "translated_instruction": "Head directly to the beige building with stone walls and tall parts. Continue straight until you reach another beige building with box windows. Slightly turn left to the beige building with brick and wood window frames. Stop and descend to the black and white building with a grid front."
+    "translated_instruction": [
+      "Continue straight until you reach the beige building that has stone walls and taller sections. Keep going straight to the next beige building, which has box-shaped windows. Slightly turn left and continue until you reach the beige building with brick and wooden window frames. Stop there and go down to the black and white building that has a grid pattern on its front."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short_updown/2025-1-14_13-36-51_476667372",
@@ -20015,7 +20267,9 @@
       0.5235987755982988
     ],
     "weaken_instruction": "Go to the brown building with medium windows. Then go to the tall white building with many medium windows. Turn right and go to the gray building with a big flat roof. Finally, go to the modern building with brown and white colors, square windows, and white columns at the bottom. It is medium to large in size.",
-    "translated_instruction": "Head directly towards the brown building with medium windows. Then, proceed to the tall white building with many medium windows. Slightly turn right and move towards the gray building with a big flat roof. Finally, continue straight to the modern building with brown and white colors, square windows, and white columns at the bottom."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building that has medium-sized windows. Then, turn left and go straight until you see the tall white building with many medium windows. Turn right and proceed until you find the gray building that has a large flat roof. Finally, continue straight until you reach the modern building that has brown and white colors, square windows, and white columns at the bottom. This building is medium to large in size."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-8_23-44-52_860516127",
@@ -20197,7 +20451,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big dark gray building with roof things. Turn left and go to it.",
-    "translated_instruction": "Head directly towards the large, dark gray building with visible roof structures. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you see the big dark gray building that has protruding roof structures on top. Then, turn left and proceed straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_7-48-38_1353668775",
@@ -20403,7 +20659,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall gray-blue building with windows in a grid, then turn left toward the dark gray building with shiny grid windows, and find the red building with roof things.",
-    "translated_instruction": "Head directly to the tall gray-blue building with windows arranged in a grid pattern. Once there, make a left turn and proceed towards the dark gray building with shiny grid windows. Finally, locate the red building with roof features."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray-blue building with windows in a grid. Then, turn left and proceed until you reach the dark gray building that has shiny grid windows. Keep going until you find the red building with roof structures."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_16-52-51_1474612399",
@@ -20569,7 +20827,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall dark building with roof things and a small structure. Turn right and keep going.",
-    "translated_instruction": "Head directly towards the tall dark building with a roof structure and a small attached structure. Then, slightly turn right and continue straight ahead."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has dark roof sections and a small attached structure. Then, turn right and proceed straight ahead."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-8_20-53-54_603570492",
@@ -20751,7 +21011,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall beige building with big windows, then turn left to the light tan building with large windows. Go straight, turn right a little, and go to it.",
-    "translated_instruction": "Head directly towards the tall beige building with big windows. Then, slightly turn left and proceed to the light tan building with large windows. Continue straight, turn right a little, and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you see the tall beige building with big windows on your right. Then, turn left and proceed until you reach the light tan building with large windows. Keep going straight, turn right a little, and continue until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_5-50-21_1565306616",
@@ -20909,7 +21171,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go to the dark brown building with a flat roof and few windows. Turn left and go to the tall building with black and white glass. Turn right and go straight to it.",
-    "translated_instruction": "Head directly towards the dark brown building with a flat roof and few windows. Then, slightly turn left and proceed to the tall building with black and white glass. Finally, turn right and continue straight towards it."
+    "translated_instruction": [
+      "Continue forward until you reach the dark brown building that has a flat roof and few windows. Then, turn left and proceed to the tall building with black and white glass. After that, turn right and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_23-42-59_101323875",
@@ -21083,7 +21347,9 @@
       0.0
     ],
     "weaken_instruction": "Go to the brown building with big windows, then turn right and go to the brown and pink building with red walls and long lines.",
-    "translated_instruction": "Head directly towards the brown building with large windows. Then, slightly turn right and proceed to the brown and pink building with red walls and long lines."
+    "translated_instruction": [
+      "Continue straight until you reach the brown building that has big windows. Then, turn right and proceed until you see the brown and pink building with red walls and long lines. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_6-32-19_1891066487",
@@ -21249,7 +21515,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray and black building with big windows and lights inside. Turn left and go straight to the tall dark building with orange-yellow shine and grid lines.",
-    "translated_instruction": "Head directly towards the gray and black building with big windows and lights inside. Then, slightly turn left and proceed straight to the tall dark building with orange-yellow shine and grid lines."
+    "translated_instruction": [
+      "Continue straight until you reach the gray and black building that has big windows and lights inside. Then, turn left and keep going straight until you see the tall dark building with orange-yellow shine and grid lines on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_5-51-11_1857300821",
@@ -21495,7 +21763,9 @@
       -0.5235987755983084
     ],
     "weaken_instruction": "Go to the tall gray building with vertical windows, turn right, go straight, turn right again, then go left toward the big gray building with same-size windows. Keep going to the white building with a flat top and windows in rows. Turn slightly left, go straight to the black building with horizontal stripes, then turn left again toward the dark gray round building it is the tallest one.",
-    "translated_instruction": "Head directly to the tall gray building with vertical windows. Slightly turn right and proceed straight. Continue straight, then make a slight right turn. Move forward until you reach the big gray building with similar-sized windows. Head left toward the white building with a flat top and windows arranged in rows. Make a slight left turn and continue straight until you see the black building with horizontal stripes. Finally, turn left again and move toward the dark gray round building, which is the tallest one."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray building with vertical windows. Turn right and go straight until you reach another building. Turn right again and go straight until you find the big gray building that has windows of the same size. Continue straight until you see the white building with a flat top and windows arranged in rows. Turn slightly left and go straight until you reach the black building with horizontal stripes. Then, turn left and continue straight until you see the dark gray round building, which is the tallest one."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_4-3-0_1564003050",
@@ -21701,7 +21971,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the big green grassy square, turn right and go to another big green square, turn right and go to the tall dark brown building with roof things, then turn right and go to the small brown and gray building on the rooftop.",
-    "translated_instruction": "Head directly to the large green grassy area, then slightly turn right and proceed to another large green square. Continue straight until you reach the tall dark brown building with roof structures. Slightly turn right and move forward to the small brown and gray building located on the rooftop."
+    "translated_instruction": [
+      "Continue straight until you reach the big green grassy square. Then, turn right and proceed to the next big green square. After that, turn right and go until you find the tall dark brown building with roof structures. Continue straight until you reach the small brown and gray building on the rooftop."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_21-26-10_1452888574",
@@ -21859,7 +22131,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the black wide road with lines, turn left into the big smooth open place, go to the gray rooftop with structures on a medium building, then turn right and go to the tall office building with black and white glass.",
-    "translated_instruction": "Head directly to the black wide road with white lines, then make a left turn into the large open area. Proceed until you reach the gray rooftop with structures on a medium-sized building. Next, take a right turn and continue straight towards the tall office building with black and white glass windows."
+    "translated_instruction": [
+      "Continue straight until you reach the black wide road with lines. Then, turn left and proceed until you find the big open place. Keep going until you see the gray rooftop with structures on a medium building. Turn right and continue straight until you reach the tall office building with black and white glass."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_16-38-17_137806862",
@@ -22041,7 +22315,9 @@
       0.0
     ],
     "weaken_instruction": "Go to the tall white building with many windows. Turn right and go straight to the dark brown building with many windows. Turn left and go to it.",
-    "translated_instruction": "Head directly towards the tall white building with numerous windows. Slightly turn right and proceed straight to the dark brown building with multiple windows. Then, turn left and continue straight towards it."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building with many windows. Then, turn right and proceed straight until you see the dark brown building with many windows. Slightly turn left and continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_5-43-8_2020432100",
@@ -22191,7 +22467,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall gray and black building with windows in a grid. Then turn right and go straight. Then turn left and go to the tall dark building with shiny edges and lines up and down.",
-    "translated_instruction": "Head directly towards the tall gray and black building with windows arranged in a grid pattern. Then, slightly turn right and proceed straight ahead. Finally, turn left and continue straight until you reach the tall dark building with shiny edges and vertical lines running up and down."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray and black building with windows in a grid. Then, turn right and proceed straight. Finally, turn left and continue until you reach the tall dark building with shiny edges and lines up and down."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_16-40-16_2084420925",
@@ -22349,7 +22627,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the tall white building with black window lines, then turn right and go to the big yellow building with shiny walls and many same-size windows.",
-    "translated_instruction": "Head directly towards the tall white building with black window lines. Then, slightly turn right and proceed to the big yellow building with shiny walls and many same-size windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall white building that has black window lines. Then, turn right and proceed until you see the big yellow building with shiny walls and windows of the same size. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_19-38-15_1908518808",
@@ -22531,7 +22811,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the big brown brick building with many windows, turn left a little, go to the big white building with square windows, turn right a little, then go straight to it.",
-    "translated_instruction": "Head directly to the big brown brick building with many windows. Then, slightly turn left and proceed to the big white building with square windows. Afterward, slightly turn right and continue straight towards it."
+    "translated_instruction": [
+      "Continue forward until you reach the big brown brick building with rectangular windows. Then, turn left a bit and proceed to the big white building that has square windows. After that, turn right a little and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_20-11-38_1543755629",
@@ -22697,7 +22979,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the gray building with roof things, then turn left and go straight.",
-    "translated_instruction": "Head directly to the gray building with roof features, then slightly turn left and proceed straight ahead."
+    "translated_instruction": [
+      "Continue forward until you reach the building that has gray roof structures. Then, slightly turn left and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_16-8-43_846930886",
@@ -22895,7 +23179,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the small gray building with roof things. Turn right and go to the tall dark gray building with many windows. Turn right, then go straight. Turn left and go to it.",
-    "translated_instruction": "Head directly to the small gray building with roof features. Slightly turn right and proceed to the tall dark gray building with numerous windows. Continue straight after turning right. Finally, turn left and move forward to reach your destination."
+    "translated_instruction": [
+      "Continue straight until you reach the small gray building that has roof structures on it. Then, turn right and proceed to the tall dark gray building with numerous windows. Slightly turn right and continue straight until you see the next building. Turn left and go straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_22-30-20_746349250",
@@ -23053,7 +23339,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall dark gray building with the roof thing, then turn right and go to the other dark gray building with bricks and few windows.",
-    "translated_instruction": "Head directly towards the tall dark gray building with the roof structure. Then, slightly turn right and proceed to the other dark gray building with brick walls and a few windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall dark gray building that has a distinct roof structure. Then, turn right and proceed until you find the other dark gray building, which has bricks and a few windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_1-16-19_829570037",
@@ -23203,7 +23491,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the black and white building with big grid windows, turn right and go to the gray roof with a medium helipad, turn left and go to the dark gray tall building with grid windows and shiny walls, turn left and go to it.",
-    "translated_instruction": "Head directly to the black and white building with big grid windows. Then, slightly turn right and proceed to the gray roof with a medium helipad. Next, turn left and continue straight towards the dark gray tall building with grid windows and shiny walls. Finally, turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the black and white building with big grid windows. Then, turn right and proceed to the gray roof that has a medium-sized helipad. Turn left and continue straight until you see the dark gray tall building with grid windows and shiny walls. Turn left and go straight to reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_3-16-22_1684677418",
@@ -23361,7 +23651,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray building with grid windows. Turn left to the beige building with medium windows. Go straight to the white building with rectangle windows and flat roof. Turn right to the dark gray tall building with glass and grid pattern.",
-    "translated_instruction": "Head directly to the gray building with grid windows. Then, slightly turn left and proceed to the beige building with medium windows. Continue straight until you reach the white building with rectangle windows and a flat roof. Finally, turn right to the dark gray tall building with glass and grid pattern."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has grid windows on it. Then, turn left and proceed to the beige building which has medium-sized windows. Keep going straight until you see the white building with rectangle windows and a flat roof. Turn right and continue straight until you reach the dark gray tall building that has a glass and grid pattern on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_0-32-31_1449228398",
@@ -23559,7 +23851,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the open place with green, gray, and a few trees. Turn left and go to the tall, narrow white building with many small windows. Turn right and go to the big, tall gray-brown building with old-looking walls. Turn left and go straight to the large building on the right.",
-    "translated_instruction": "Head directly to the open area with greenery and a few trees. Then, slightly turn left and proceed to the tall, narrow white building with numerous small windows. Afterward, turn right and move towards the big, tall gray-brown building with aged walls. Finally, turn left and continue straight until you reach the large building on your right."
+    "translated_instruction": [
+      "Continue straight until you reach the open area that has green grass and a few trees. Then, turn left and proceed to the tall, narrow building that is white with many small windows. Turn right and continue to the big, tall building that has gray-brown walls and looks old. Finally, turn left and go straight until you reach the large building on the right."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_20-36-15_1186631626",
@@ -23701,7 +23995,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the big gray building with shiny windows, then turn left and go to the tall dark building with white lines and grid things on the right.",
-    "translated_instruction": "Head directly to the large gray building with reflective windows, then make a left turn and proceed to the tall dark structure with white lines and grid patterns on the right side."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray building that has shiny windows. Then, turn left and proceed until you see the tall dark building on the right side, which has white lines and grid patterns on it. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-9_20-57-35_37487770",
@@ -23875,7 +24171,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go to the dark gray building with pink edges and a flat roof with roof things, medium size. Turn right and go to the big gray building with a flat roof and not much on it. Turn right again and go to the tall gray and black building with a grid front and dark panels.",
-    "translated_instruction": "Head directly towards the dark gray building with pink edges and a flat roof with roof things, which is of medium size. Then, slightly turn right and proceed to the big gray building with a flat roof and minimal features. Afterward, make another slight right turn and continue straight towards the tall gray and black building with a grid front and dark panels."
+    "translated_instruction": [
+      "Continue straight until you reach the dark gray building that has pink edges and a flat roof with some objects on it. Then, turn right and proceed to the big gray building with a flat roof and fewer objects on it. Finally, turn right again and continue straight until you reach the tall gray and black building that has a grid pattern on the front and dark panels."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_long/2025-1-10_6-27-32_1412017135",
@@ -24049,7 +24347,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the big green grass place with roads and buildings around it. Turn left and go to the white building with many windows. Turn left again and go straight to it.",
-    "translated_instruction": "Head directly towards the area with green grass, roads, and surrounding buildings. Slightly turn left and proceed to the white building with numerous windows. Continue by turning left again and moving straight until you reach your destination."
+    "translated_instruction": [
+      "Continue straight until you reach the big green area with roads and buildings around. Then, turn left and proceed until you find the white building that has many windows. Slightly turn left again and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_21-27-24_1007277217",
@@ -24175,7 +24475,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the white and gray building with big windows in a grid and columns. Then turn right and go to the white building with a window grid, like an office.",
-    "translated_instruction": "Head directly towards the white and gray building with big windows arranged in a grid pattern and vertical columns. Then, slightly turn right and proceed to the white building with a window grid resembling an office structure."
+    "translated_instruction": [
+      "Continue straight until you reach the white and gray building that has big windows arranged in a grid pattern and columns. Then, turn right and proceed until you see the white building with windows in a grid pattern, similar to an office structure. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_20-38-12_1025125849",
@@ -24309,7 +24611,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the dark brown building with big windows, then turn right and go to the beige office building with many small same-size windows.",
-    "translated_instruction": "Head directly towards the dark brown building with big windows. Then, slightly turn right and proceed to the beige office building with many small same-size windows."
+    "translated_instruction": [
+      "Continue straight until you reach the dark brown building that has large windows. Then, turn right and proceed until you see the beige office building, which has many small windows of the same size. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_22-21-1_1078898506",
@@ -24395,7 +24699,9 @@
       0.5235987755982988
     ],
     "weaken_instruction": "Go to the tall gray building with many windows in a line. Turn left and go to the white building with square window patterns.",
-    "translated_instruction": "Head directly towards the tall gray building with many windows in a line. Then, slightly turn left and proceed to the white building with square window patterns."
+    "translated_instruction": [
+      "Continue straight until you see the tall gray building on your left side. Then, turn left and proceed until you reach the white building that has square window patterns on it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_22-57-6_1446648412",
@@ -24537,7 +24843,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big dark gray building with square windows, turn right, go straight to the tall dark building with many windows, turn left, and go to the medium dark building with a window grid.",
-    "translated_instruction": "Head directly to the big dark gray building with square windows. Then, slightly turn right and proceed to the tall dark building with many windows. Afterward, turn left and continue straight to the medium dark building with a window grid."
+    "translated_instruction": [
+      "Continue straight until you see the big dark gray building with square windows on your right. Then, turn right and proceed straight until you reach the tall dark building with many windows. Turn left and continue until you find the medium dark building with a window grid."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_0-33-18_550804899",
@@ -24679,7 +24987,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall gray building with many glass windows.",
-    "translated_instruction": "Head directly towards the tall gray building with numerous glass windows."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has tall gray walls and is filled with glass windows on its sides. Then, turn right and proceed until you find the building that continues in the same direction. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_21-21-24_1500474762",
@@ -24797,7 +25107,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the big brown building with windows, then turn left and go to the taller brown building with many square windows.",
-    "translated_instruction": "Head directly towards the big brown building with windows. Then, slightly turn left and proceed to the taller brown building with many square windows."
+    "translated_instruction": [
+      "Continue straight until you reach the big brown building with square windows. Then, turn left and proceed until you see the taller brown building with many square windows ahead. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_20-26-21_1297893529",
@@ -24931,7 +25243,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the big white building with square windows. Turn left and go to the medium beige building with long windows and a white front. It is shorter than the tall buildings nearby.",
-    "translated_instruction": "Head directly towards the big white building with square windows. Then, slightly turn left and proceed to the medium beige building with long windows and a white front. This building is shorter than the surrounding tall buildings."
+    "translated_instruction": [
+      "Continue straight until you see the big white building with square windows on your right. Then, turn left and keep going until you find the medium beige building that has long windows and a white front. This building should be shorter than the tall buildings around it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_18-53-35_654887343",
@@ -24969,7 +25283,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall white building with black windows. It is taller than the other buildings around it.",
-    "translated_instruction": "Head directly towards the tall white building with black windows. It is taller than the surrounding structures."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the building that stands taller than the surrounding structures. This will be your destination. Continue straight until you arrive at the tall white building with black windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_19-0-5_1143408282",
@@ -25015,7 +25331,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go to the gray building with square windows, then turn right and go to the white building with a flat roof.",
-    "translated_instruction": "Head directly to the gray building with square windows, then slightly turn right and proceed to the white building with a flat roof."
+    "translated_instruction": [
+      "Continue straight until you reach the gray building that has square windows. Then, slightly turn right and proceed until you see the white building with a flat roof. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_23-48-3_518434573",
@@ -25173,7 +25491,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall gold building with big window grids. Turn right a little, then go straight to the gray building with empty window holes, no glass, and looks old or not done.",
-    "translated_instruction": "Head directly towards the tall, gold building with big window grids. Then, slightly turn right and proceed to the gray building with empty window holes, no glass, and appears old or unfinished."
+    "translated_instruction": [
+      "Continue straight until you see the tall building with gold-colored walls and large window grids on the right. Slightly turn right and proceed straight until you reach the gray building that has empty window holes and appears to be old or unfinished."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_2-38-17_978053418",
@@ -25283,7 +25603,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the big brick building with the brown walls and rectangle windows, then turn right and go straight to it.",
-    "translated_instruction": "Head directly towards the large brick building with brown walls and rectangular windows. Then, slightly turn right and proceed straight to it."
+    "translated_instruction": [
+      "Continue forward until you reach the building that has brown walls and rectangular windows. Then, turn right and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_4-12-27_1602182790",
@@ -25401,7 +25723,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the white modern building, then turn left and go to the light beige building with grid windows like the others.",
-    "translated_instruction": "Head directly to the white modern building, then slightly turn left and proceed to the light beige building with grid windows similar to the others."
+    "translated_instruction": [
+      "Continue straight until you reach the white modern building. Then, slightly turn left and proceed until you see the light beige building that has grid windows similar to the ones you've been following. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_22-37-30_772634225",
@@ -25511,7 +25835,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the big, black and white building with glass windows, then turn left and go to the white building with vertical slats.",
-    "translated_instruction": "Head directly towards the large, black and white building with glass windows. Then, slightly turn left and proceed to the white building with vertical slats."
+    "translated_instruction": [
+      "Continue straight until you reach the big building that has black and white patterns and glass windows. Then, turn left and proceed until you see the white building that has vertical slats on its sides. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_17-58-13_2001100545",
@@ -25565,7 +25891,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall gray building with shiny glass and a window grid. Turn left and go to the next glass building that looks black and beige.",
-    "translated_instruction": "Head directly towards the tall gray building with shiny glass and a window grid. Then, slightly turn left and proceed to the next glass building that appears black and beige."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has shiny glass and a grid pattern on the windows. Then, turn left and proceed until you find the next building that is black and has beige accents. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_3-28-57_1798027458",
@@ -25691,7 +26019,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the tall beige building with arched windows, then turn left and go to the big brown brick building.",
-    "translated_instruction": "Head directly towards the tall beige building with arched windows. Then, slightly turn left and proceed to the big brown brick building."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has arched windows on its side. Then, turn left and keep going until you see the big building made of brown bricks. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_19-29-27_446340713",
@@ -25777,7 +26107,9 @@
       1.0471975511966072
     ],
     "weaken_instruction": "Go to the big building with golden-brown glass. Turn right a little and go straight.",
-    "translated_instruction": "Head directly towards the large building with golden-brown glass. Then, slightly turn right and proceed straight ahead."
+    "translated_instruction": [
+      "Continue forward until you reach the next building on your right side. Then, keep going straight until you see the big building with golden-brown glass on your left."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_20-10-43_2416949",
@@ -25855,7 +26187,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the small gray building with a box shape and many square windows. Turn left and go to it.",
-    "translated_instruction": "Head directly towards the small gray building with a box shape and many square windows. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the small gray building that has a box shape and many square windows on its side. Then, turn left and proceed until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_0-13-54_67874133",
@@ -26029,7 +26363,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the gray building with big windows. Turn left to the white building with a flat roof and go to it. Turn right and go to the dark gray building with glowing windows and brick walls.",
-    "translated_instruction": "Head directly to the gray building with big windows. Then, slightly turn left and proceed to the white building with a flat roof. Finally, turn right and head to the dark gray building with glowing windows and brick walls."
+    "translated_instruction": [
+      "Continue straight until you see the gray building with big windows on your right. Then, turn left and proceed until you reach the white building with a flat roof. Keep going straight until you turn right to the dark gray building that has glowing windows and walls made of bricks."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-19-37_918483162",
@@ -26107,7 +26443,9 @@
       -1.0471975511966072
     ],
     "weaken_instruction": "Go to the dark brown building with small glass windows.",
-    "translated_instruction": "Head directly towards the dark brown building with small glass windows."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has dark brown walls and small rectangular windows. This will be your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_20-18-29_14989683",
@@ -26145,7 +26483,9 @@
       0.0
     ],
     "weaken_instruction": "Go to the gray building with grid windows and a worn look.",
-    "translated_instruction": "Head directly towards the gray building with grid windows and a worn appearance."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building on your right. Slightly turn right and proceed until you find the gray building that has grid windows and appears to have a worn texture on its surface. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_2-14-15_1731563037",
@@ -26279,7 +26619,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the gray building with brick and many windows. Turn right a little and go to it.",
-    "translated_instruction": "Head directly to the gray building with brick and many windows. Then, slightly turn right and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on the right side. That is the gray building with brick and many windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-21-22_940472515",
@@ -26349,7 +26691,9 @@
       -2.6179938779915037
     ],
     "weaken_instruction": "Go to the white building with medium windows. Turn right and go to the gray modern building with same windows.",
-    "translated_instruction": "Head directly towards the white building with medium windows. Then, slightly turn right and proceed to the gray modern building with similar windows."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has medium-sized windows. Then, turn right and proceed until you see the gray modern building which has windows similar in size to the one you just passed. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_18-6-40_1875335928",
@@ -26411,7 +26755,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark building with big glass windows. It is tall and looks like a factory.",
-    "translated_instruction": "Head directly towards the dark building with big glass windows. It is tall and resembles a factory."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has larger glass windows compared to the others. This building should be taller and resemble a factory structure. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-27-8_1684259683",
@@ -26481,7 +26827,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the big brown building with square windows. Turn left and go to the medium dark brown building with grid windows and stone walls.",
-    "translated_instruction": "Head directly towards the big brown building with square windows. Then, slightly turn left and proceed to the medium dark brown building with grid windows and stone walls."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has square windows like the current one. Then, turn left and proceed until you see another building that is medium dark brown, with grid windows and stone walls. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_18-57-56_1671294892",
@@ -26551,7 +26899,9 @@
       0.523598775598299
     ],
     "weaken_instruction": "Go left to the big dark gray building with square windows and open arches. Go straight to it. Turn a little right and go to the medium-big dark gray building with glass blocks, one glowing green.",
-    "translated_instruction": "Head left towards the large dark gray building with square windows and open arches. Continue straight until you reach it. Slightly turn right and proceed to the medium-sized dark gray building with glass blocks, where one is glowing green."
+    "translated_instruction": [
+      "Continue straight until you reach the left side. Then, turn left and keep going until you find the big dark gray building that has square windows and open arches. Keep straight until you reach your destination. Slightly turn right and proceed until you see the medium-big dark gray building with glass blocks, and one of them is glowing green. Continue straight to reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_20-17-53_1022089159",
@@ -26629,7 +26979,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the big white building with square windows, turn left, go straight, then turn right and go to it.",
-    "translated_instruction": "Head directly towards the large white building with square windows. Then, slightly turn left and proceed straight ahead. Afterward, turn right and continue towards the building."
+    "translated_instruction": [
+      "Continue straight until you see the big white building with square windows on your left. Then, turn left and keep going straight until you reach the building. Finally, turn right and continue straight until you arrive at your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-58-22_1145975358",
@@ -26699,7 +27051,9 @@
       2.094395102393186
     ],
     "weaken_instruction": "Go to the white building with small square windows and a worn look.",
-    "translated_instruction": "Head directly towards the white building with small square windows and a worn appearance."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has small square windows and appears to have a worn exterior. Continue straight until you see the next building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_22-18-21_1198720172",
@@ -26801,7 +27155,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the dark, medium building with big glass windows. Turn left, go straight, then turn right and keep going.",
-    "translated_instruction": "Head directly towards the dark, medium-sized building with big glass windows. Then, slightly turn left and proceed straight ahead. Afterward, turn right and continue moving forward."
+    "translated_instruction": [
+      "Continue straight until you reach the dark building that has medium-sized windows. Then, turn left and go straight until you see another building. Turn right and continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_22-38-49_457676440",
@@ -26903,7 +27259,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the white building with small windows, turn left, and go to the white building with big black window frames.",
-    "translated_instruction": "Head directly towards the white building with small windows. Then, slightly turn left and proceed to the white building with big black window frames."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has small windows. Then, turn left and proceed until you see another white building with big black window frames. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-9_0-15-25_979601485",
@@ -26941,7 +27299,9 @@
       2.0943951023931953
     ],
     "weaken_instruction": "Go to the small light beige building with a flat roof and many little windows.",
-    "translated_instruction": "Head directly towards the small, light beige building with a flat roof and numerous small windows."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building on your right. Turn slightly left and proceed until you find the small building that has a flat roof and appears to have many small windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-46-13_1904251768",
@@ -27019,7 +27379,9 @@
       -0.5235987755982988
     ],
     "weaken_instruction": "Go to the dark building with big windows that make shadows, turn right, and go to the small business building with dark gray walls and bright windows above.",
-    "translated_instruction": "Head directly towards the dark building with big windows that cast shadows. Then, slightly turn right and proceed to the small business building characterized by dark gray walls and bright windows above."
+    "translated_instruction": [
+      "Continue straight until you reach the dark building with big windows that cast shadows. Then, turn right and proceed until you see the small business building characterized by dark gray walls and bright windows above. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_20-27-16_1105816539",
@@ -27137,7 +27499,9 @@
       1.0471975511965979
     ],
     "weaken_instruction": "Go to the tall gray building with many windows. Turn left to the white building with square windows. Keep going to the medium white building with windows in a grid. Turn right to the brown brick building with white pillars. Turn left to the dark brown building with shiny windows behind the tall beige building.",
-    "translated_instruction": "Head directly to the tall gray building with many windows. Then, slightly turn left and proceed to the white building with square windows. Continue straight to the medium white building with windows arranged in a grid. Next, slightly turn right and head to the brown brick building with white pillars. Finally, turn left and fly towards the dark brown building with shiny windows located behind the tall beige building."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building with many windows. Then, turn left and go to the white building that has square windows. Keep going until you find the medium white building with windows arranged in a grid. Turn right and continue to the brown brick building with white pillars. Finally, turn left to the dark brown building with shiny windows, which is behind the tall beige building."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_17-53-12_1600028624",
@@ -27271,7 +27635,9 @@
       -2.6179938779914944
     ],
     "weaken_instruction": "Go to the beige low building with dark windows. Turn left to the big dark gray building with window squares. Go straight to the medium brown building with brick walls. Turn left, then go straight. Turn right a little and keep going straight.",
-    "translated_instruction": "Head directly to the beige low building with dark windows. Then, slightly turn left and proceed to the big dark gray building with window squares. Continue straight until you reach the medium brown building with brick walls. Next, slightly turn left and go straight. Afterward, turn right a little and keep going straight."
+    "translated_instruction": [
+      "Continue forward until you reach the beige low building with dark windows. Then, turn left and proceed to the big dark gray building that has square windows. Keep going straight until you see the medium brown building with brick walls. Turn left, and continue straight. Slightly turn right and keep going straight until you reach the next direction."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_21-35-3_1490549207",
@@ -27341,7 +27707,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the big white and gray building with square windows and columns. Turn left and go to the large gray building with shiny grid windows.",
-    "translated_instruction": "Head directly towards the large white and gray building with square windows and columns. Then, slightly turn left and proceed to the large gray building with shiny grid windows."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has square windows and columns on both sides. Then, turn left and proceed until you see another large building with gray walls and shiny grid windows. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_21-28-23_1910210050",
@@ -27427,7 +27795,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the dark, tall building with glass walls and straight columns.",
-    "translated_instruction": "Head directly towards the dark, tall building with glass walls and straight columns."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has dark-colored walls and vertical columns, which is the next structure on your right."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-21-28_134591281",
@@ -27489,7 +27859,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the big brown building with large windows, then turn left and go to it.",
-    "translated_instruction": "Head directly towards the large brown building with numerous windows. Then, slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your left. Turn left and proceed straight until you arrive at the big brown building with large windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_20-39-20_298501962",
@@ -27599,7 +27971,9 @@
       3.141592653589793
     ],
     "weaken_instruction": "Go to the tall gray building with shiny glass and a grid pattern. Turn right and go to the medium black building with glass and metal walls.",
-    "translated_instruction": "Head directly towards the tall gray building with shiny glass and a grid pattern. Then, slightly turn right and proceed to the medium-sized black building with glass and metal walls."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building that has shiny glass and a grid pattern. Then, turn right and proceed until you see the medium black building that has glass and metal walls on your right side. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_19-29-32_1057467587",
@@ -27701,7 +28075,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the white building with big square shape and large windows. Turn right to the large gray building with brick walls and arched windows, then go to another similar tall building. Turn a little left and go to the large gray building with arched windows, it is a modern office building.",
-    "translated_instruction": "Head directly towards the white building with a big square shape and large windows. Then, slightly turn right and proceed to the large gray building with brick walls and arched windows. Continue straight to another similar tall building. Slightly turn left and head towards the large gray building with arched windows, which is a modern office building."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has a big square shape and large windows. Then, turn right and proceed to the large gray building with brick walls and arched windows. Keep going straight until you find another tall building that looks similar. Slightly turn left and continue until you reach the large gray building with arched windows, this is the modern office building you are looking for."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_23-54-37_1116945487",
@@ -27819,7 +28195,9 @@
       -2.094395102393186
     ],
     "weaken_instruction": "Go to the tall dark gray building with big walls. Turn left a little and go straight to it. This is a city building from long ago.",
-    "translated_instruction": "Head directly towards the tall, dark gray building with large walls. Then, slightly turn left and proceed straight to it. This is a historic city building."
+    "translated_instruction": [
+      "Continue straight until you reach the next tall dark gray building with large walls. Then, slightly turn left and proceed straight until you reach your destination. This building has a historical appearance, typical of old city structures."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_20-4-26_1795519125",
@@ -27881,7 +28259,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the white building with square windows in rows, then turn left. Go to the next building with dark green-glow windows.",
-    "translated_instruction": "Head directly towards the white building with square windows arranged in rows. Then, slightly turn left and proceed to the next building characterized by dark green-glow windows."
+    "translated_instruction": [
+      "Continue straight until you reach the white building that has windows arranged in rows. Then, turn left and proceed until you see the next building with windows that glow dark green. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-6-41_372160269",
@@ -27991,7 +28371,9 @@
       -2.0943951023931953
     ],
     "weaken_instruction": "Go to the big tall building with dark gray walls and bright windows.",
-    "translated_instruction": "Head directly towards the big tall building with dark gray walls and bright windows."
+    "translated_instruction": [
+      "Continue straight until you reach the next building, which has dark gray walls and windows that reflect light. This will be your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_1-29-2_1316953165",
@@ -28077,7 +28459,9 @@
       3.665191429188092
     ],
     "weaken_instruction": "Go to the big gray building with brick walls and large windows. Turn right and go to another big gray building with windows and arched doors. Turn left and go to the tallest building with a glass top and gray and brown walls.",
-    "translated_instruction": "Head directly towards the big gray building with brick walls and large windows. Then, slightly turn right and proceed to another big gray building with windows and arched doors. Finish by slightly turning left, continuing straight towards the tallest building with a glass top and gray and brown walls."
+    "translated_instruction": [
+      "Continue straight until you see the big gray building with brick walls and large windows on your right. Turn right and proceed to the next big gray building that has windows and arched doors. Then, turn left and continue straight until you reach the tallest building, which has a glass top and gray and brown walls."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_20-33-18_2009726312",
@@ -28211,7 +28595,9 @@
       2.6179938779914944
     ],
     "weaken_instruction": "Go to the big gray building with many windows and roof things, then turn right and go to the dark brown building with grid windows and bumpy walls.",
-    "translated_instruction": "Head directly to the large gray building with numerous windows and rooftop features. Then, slightly turn right and proceed to the dark brown building with grid-like windows and textured walls."
+    "translated_instruction": [
+      "Continue straight until you reach the big gray building that has multiple windows and some roof structures. Then, turn right and proceed until you see the dark brown building with grid-patterned windows and bumpy walls. Keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_19-37-57_780821396",
@@ -28289,7 +28675,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the white building with big square windows, then turn left and go to it.",
-    "translated_instruction": "Head directly towards the white building with large square windows, then slightly turn left and proceed to it."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has large square windows on the side. Then, turn left and proceed straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_21-39-56_1250372661",
@@ -28431,7 +28819,9 @@
       -0.5235987755982894
     ],
     "weaken_instruction": "Go to the brown building with square window lines and some lights.",
-    "translated_instruction": "Head directly towards the brown building with square window lines and some lights."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has square patterns on its windows and a few illuminated windows. This will be your next destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-42-23_1745897490",
@@ -28533,7 +28923,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big building with brown square windows, turn left and go to the big office building with dark purple and brown walls and two bright textured walls.",
-    "translated_instruction": "Head directly to the large building with brown square windows. Then, slightly turn left and proceed to the big office building with dark purple and brown walls and two bright textured walls."
+    "translated_instruction": [
+      "Continue straight until you reach the big building that has brown square windows. Then, turn left and proceed until you see the big office building with dark purple and brown walls, and two sections that have a bright texture. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_23-2-4_445080308",
@@ -28627,7 +29019,9 @@
       2.6179938779915037
     ],
     "weaken_instruction": "Go to the tall gray building with big glass windows and wood frames.",
-    "translated_instruction": "Head directly towards the tall gray building with big glass windows and wooden frames."
+    "translated_instruction": [
+      "Continue straight until you reach the building that has large windows with wooden frames on the sides. This will be your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_1-46-37_1175989877",
@@ -28825,7 +29219,9 @@
       1.5707963267948966
     ],
     "weaken_instruction": "Go to the tall gray building with shiny windows and lines, then turn left to the dark building with square window pattern. Keep going to the light beige building with a grid look, then to the gray building with windows and pillars. Finally, turn right to the white building with grid windows.",
-    "translated_instruction": "Head directly to the tall gray building with shiny windows and lines. Then, slightly turn left and proceed to the dark building with a square window pattern. Continue straight to the light beige building with a grid-like appearance. Next, move forward to the gray building with windows and pillars. Finally, turn right to reach the white building with grid windows."
+    "translated_instruction": [
+      "Continue straight until you reach the tall gray building with shiny windows and lines. Then, turn left and proceed to the dark building that has a square window pattern. Keep going until you find the light beige building with a grid-like appearance. Continue straight until you reach the gray building with windows and pillars. Finally, turn right and go to the white building that has grid windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_23-6-46_1693485026",
@@ -28887,7 +29283,9 @@
       1.0471975511966072
     ],
     "weaken_instruction": "Go to the gray tall building with big glass windows and many columns at the bottom. Then go to it, turn left, and go to the dark wide building with shiny glass and big round pillars.",
-    "translated_instruction": "Head directly to the gray tall building with big glass windows and many columns at the bottom. Then, slightly turn left and proceed to the dark wide building with shiny glass and big round pillars."
+    "translated_instruction": [
+      "Continue straight until you see the gray tall building with big glass windows and many columns at the bottom. Turn left and proceed until you reach the dark wide building that has shiny glass and big round pillars. Continue straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_17-45-23_2040651434",
@@ -28933,7 +29331,9 @@
       -1.0471975511965979
     ],
     "weaken_instruction": "Go to the big gray building with square windows, then turn left and go straight to it.",
-    "translated_instruction": "Head directly towards the large gray building with square windows. Then, slightly turn left and proceed straight to it."
+    "translated_instruction": [
+      "Continue straight until you reach the next building on your left. Turn left and keep going straight until you arrive at the big gray building with square windows."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_average/2025-1-9_1-1-46_877068972",
@@ -29019,7 +29419,9 @@
       0.5235987755982894
     ],
     "weaken_instruction": "Go to the tall, dark gray building with windows in a grid, then turn left and go straight to the other big dark gray building with the same window pattern.",
-    "translated_instruction": "Head directly to the tall, dark gray building with a grid of windows. Then, slightly turn left and proceed to the other large dark gray building with similar window patterns."
+    "translated_instruction": [
+      "Continue straight until you reach the tall building that has windows arranged in a grid pattern. Then, turn left and proceed straight until you see another big building with the same window pattern on the right. Continue straight until you reach it."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_21-46-27_1259577690",
@@ -29129,7 +29531,9 @@
       -1.5707963267948966
     ],
     "weaken_instruction": "Go to the dark, big building with the tall part and many windows, then turn left and go straight.",
-    "translated_instruction": "Head directly towards the dark, big building with the tall part and many windows. Then, slightly turn left and proceed straight."
+    "translated_instruction": [
+      "Continue forward until you reach the building on the left side that has a taller section and multiple windows. Then, turn left and keep going straight until you reach your destination."
+    ]
   },
   {
     "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_19-52-21_1690492373",
@@ -29167,6 +29571,8 @@
       2.6179938779914944
     ],
     "weaken_instruction": "Go to the big beige and red building with roof things.",
-    "translated_instruction": "Head directly towards the large beige and red building with visible roof structures."
+    "translated_instruction": [
+      "Continue straight ahead until you reach the next building, which is larger and has a beige and red color with some structures on its roof. Then, slightly turn right and proceed until you reach your destination."
+    ]
   }
 ]

@@ -61,47 +61,6 @@ class MultimodalDPOTrainer(Trainer):
         super().__init__(**kwargs)
         self.beta = beta
     
-    # def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
-    #     # 过滤 None 参数
-    #     filtered_inputs = {k: v for k, v in inputs.items() if v is not None}
-        
-    #     # 前向 chosen
-    #     chosen_kwargs = {
-    #         "input_ids": filtered_inputs["chosen_input_ids"],
-    #         "attention_mask": filtered_inputs["chosen_attention_mask"],
-    #         "labels": filtered_inputs["chosen_labels"],
-    #     }
-    #     if "pixel_values" in filtered_inputs:
-    #         chosen_kwargs["pixel_values"] = filtered_inputs["pixel_values"]
-    #     if "image_grid_thw" in filtered_inputs:
-    #         chosen_kwargs["image_grid_thw"] = filtered_inputs["image_grid_thw"]
-        
-    #     import pdb; pdb.set_trace()
-    #     chosen_outputs = model(**chosen_kwargs)
-        
-    #     # 前向 rejected
-    #     rejected_kwargs = {
-    #         "input_ids": filtered_inputs["rejected_input_ids"],
-    #         "attention_mask": filtered_inputs["rejected_attention_mask"],
-    #         "labels": filtered_inputs["rejected_labels"],
-    #     }
-    #     if "pixel_values" in filtered_inputs:
-    #         rejected_kwargs["pixel_values"] = filtered_inputs["pixel_values"]
-    #     if "image_grid_thw" in filtered_inputs:
-    #         rejected_kwargs["image_grid_thw"] = filtered_inputs["image_grid_thw"]
-            
-    #     rejected_outputs = model(**rejected_kwargs)
-        
-    #     # 计算 log probabilities (简化版)
-    #     chosen_logps = -chosen_outputs.loss
-    #     rejected_logps = -rejected_outputs.loss
-        
-    #     # DPO loss
-    #     logits = self.beta * (chosen_logps - rejected_logps)
-    #     dpo_loss = -F.logsigmoid(logits).mean()
-        
-    #     return dpo_loss
-
     def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
         """修复：构建完整的 prompt + response 序列"""
         
@@ -348,16 +307,27 @@ def create_multimodal_dpo_trainer(
     print(f"Pixel values shape: {test_batch.get('pixel_values', 'None')}")
     print(f"Number of <image> tokens: {(test_batch['prompt_input_ids'][0] == processor.tokenizer.encode('<image>')[0]).sum()}")
 
+    batch_size = 1
+    grad_acc_steps = 4
+    save_limit = 15
+
+    steps_per_epoch = len(train_dataset) // (batch_size * grad_acc_steps)
+    if len(train_dataset) % (batch_size * grad_acc_steps) != 0:
+        steps_per_epoch += 1
+
+    save_steps = steps_per_epoch * save_limit
+
     # 4. 训练配置
     training_args = TrainingArguments(
-        output_dir="./output/dpo_multimodal",
-        num_train_epochs=3,
-        per_device_train_batch_size=1,
-        gradient_accumulation_steps=4,
-        learning_rate=1e-4,
-        logging_steps=10,
-        save_strategy="steps",
-        save_steps=50,
+        output_dir="./output/v2",
+        num_train_epochs=5,
+        per_device_train_batch_size=batch_size,
+        gradient_accumulation_steps=grad_acc_steps,
+        learning_rate=5e-5,
+        logging_steps=30,
+        save_strategy="epoch",
+        save_steps=save_steps,
+        save_total_limit=save_limit,
         eval_strategy="no",
         # predict_with_generate=False,
         include_inputs_for_metrics=False,
@@ -365,6 +335,10 @@ def create_multimodal_dpo_trainer(
         remove_unused_columns=False,
         report_to="none",
         dataloader_num_workers=0,
+
+        # key: add grad norm
+        max_grad_norm = 1.0, # limit grad_norm
+        warmup_ratio = 0.1 # warmup learning rate
     )
     
     # 5. 创建并训练 DPOTrainer

@@ -26,7 +26,10 @@ TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
 EVAL_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval.json"
-OUTPUT_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval_with_translated.json"
+OUTPUT_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval_with_translated_k100_v6.json"
+LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/output/v2/baseline_dpo/final"
+
+output_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_v2" # save the updated model
 
 # ======================
 # 🧼 初始化
@@ -93,7 +96,7 @@ def build_system_prompt(agent_name: str = "openfly") -> str:
         "You will receive CONTINUOUS UAV trajectory frames (6~30+), follow the flight order strictly for translation."
     )
     few_shot = """
-### Few-Shot Examples (OpenFly Style):
+### Few-Shot Examples :
 "Head directly toward the tall , light beige building with many windows . Then , slightly turn right and proceed to another large building characterized by its light gray color and balcony - like structures . Finish by slightly turning left , continuing straight towards a tall , multi - story skyscraper with large , beige windows featuring arched tops ."
 "Proceed directly to the grey urban rooftop featuring antennas and equipment on a medium - sized building , then slightly turn left and head straight towards it ."
 "Advance towards the gray skyscraper characterized by a tall building , then slightly turn right slightly and proceed to it . Finally , slightly turn left and continue straight to it ."
@@ -190,7 +193,17 @@ def merge_lora(base_model_path: str, lora_path: str) -> AutoModelForVision2Seq:
     print(f"✅ Final verification | Max diff: {max_diff:.6f} {'🟢 SUCCESS' if max_diff > 1e-5 else '🔴 FAILED'}")
 
     del base_model_for_check
-    return base_model.to(device="cuda", dtype=torch.bfloat16)
+
+    # 保存模型和配置
+
+    merged_model.save_pretrained(output_path, safe_serialization=True)
+    
+    # 复制 processor 配置
+    from transformers import AutoProcessor
+    processor = AutoProcessor.from_pretrained(base_model_path, trust_remote_code=True)
+    processor.save_pretrained(output_path)
+
+    return merged_model.to(device="cuda", dtype=torch.bfloat16)
 
 from qwen_vl_utils import process_vision_info
 
@@ -252,11 +265,11 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
 if __name__ == "__main__":
     # 加载模型
     model = merge_lora(
-        base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct",
-        lora_path="./train_t2rl_lora/output/t2rl_lora_k5_v3"
+        base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
+        lora_path=LORA_PATH
     )
     processor = AutoProcessor.from_pretrained(
-        "./model/qwen/Qwen2.5-VL-7B-Instruct",
+        "./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
         trust_remote_code=True
     )
     processor.tokenizer.padding_side = "left"

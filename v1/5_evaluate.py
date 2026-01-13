@@ -9,6 +9,8 @@ import os
 import json
 import glob
 import gc
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import torch
 import copy
 import pandas as pd
@@ -26,7 +28,7 @@ TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
 EVAL_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval.json"
-OUTPUT_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval_with_translated.json"
+OUTPUT_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval_with_translated_k20.json"
 
 # ======================
 # 🧼 初始化
@@ -273,7 +275,7 @@ if __name__ == "__main__":
     # 加载模型
     model = merge_lora(
         base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct",
-        lora_path="./train_t2rl_lora/output/t2rl_lora_k5_v3"
+        lora_path="/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/output/dpo_multimodal_k20/checkpoint-80"
     )
     processor = AutoProcessor.from_pretrained(
         "./model/qwen/Qwen2.5-VL-7B-Instruct",
@@ -310,11 +312,11 @@ if __name__ == "__main__":
             continue
         
         # 推理
-        batch_item = {
-            "weakened": weaken,
-            "image_paths": image_paths,
-            "orig_item": item
-        }
+        # batch_item = {
+        #     "weakened": weaken,
+        #     "image_paths": image_paths,
+        #     "orig_item": item
+        # }
 
         response = inference(processor, model, image_paths, weaken, system_prompt)
         

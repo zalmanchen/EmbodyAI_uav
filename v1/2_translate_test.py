@@ -9,6 +9,9 @@ import os
 import json
 import glob
 import gc
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3,4,5,6,7"
+
 import torch
 import copy
 import argparse
@@ -26,7 +29,9 @@ TARGET_SIZE = (448, 448)
 TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
-OUTPUT_DIR = "./train_t2rl_lora/data_v1"
+OUTPUT_DIR = "./train_t2rl_lora/data_v2"
+
+BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct_v2"
 
 
 # ======================
@@ -108,40 +113,6 @@ def build_system_prompt(agent_name: str = "openfly") -> str:
     )
     return f"{role}\n\n{few_shot}\n{constraints}"
 
-# def build_system_prompt(agent_name: str = "openfly") -> str:
-#     role = (
-#     "You are a precision UAV instruction translator specialized in aerial navigation.\n"
-#     "Your task is to convert high-level human instructions into detailed, executable flight commands\n"
-#     "that maintain strict adherence to the observed visual trajectory and flight sequence."
-# )
-
-#     few_shot = """
-#     ### Navigation Command Style (Observe Pattern):
-#     "Head directly toward the tall, light beige building with many windows. Then, slightly turn right and proceed to another large building characterized by its light gray color and balcony-like structures. Finally, slightly turn left and continue straight towards a tall, multi-story skyscraper with large, beige windows featuring arched tops."
-#     "Proceed directly to the grey urban rooftop featuring antennas and equipment on a medium-sized building. Then, slightly turn left and head straight towards it."
-#     "Advance towards the gray skyscraper characterized by a tall building. Then, slightly turn right and proceed to it. Finally, slightly turn left and continue straight to it."
-#     """.strip()
-
-#     constraints = (
-#         "\n### Translation Requirements:\n"
-#         "• MAINTAIN flight order: preserve the exact sequence of targets\n"
-#         "• GROUND in visuals: describe only objects and features visible in the trajectory\n"
-#         "• NO hallucinations: omit objects, colors, or structures not present in frames\n"
-#         "\n### Output Specifications:\n"
-#         "- Single coherent paragraph\n"
-#         "- Complete sentences with proper punctuation\n"
-#         "- Professional technical language suitable for UAV operations"
-#     )
-#     return f"{role}\n\n{few_shot}\n{constraints}"
-
-
-# STRATEGIES = [
-#     {"temp": 0.1, "top_p": 0.9, "rep_pen": 1.0, "name": "conservative"},
-#     {"temp": 0.7, "top_p": 0.8, "rep_pen": 1.0, "name": "diverse"},
-#     {"temp": 0.4, "top_p": 0.95, "rep_pen": 1.2, "name": "anti-repeat"}
-# ]
-
-
 STRATEGIES = [
     {"temp": 0.1, "top_p": 0.8, "rep_pen": 1.2, "name": "deterministic"},
     {"temp": 0.7, "top_p": 0.95, "rep_pen": 1.0, "name": "diverse"}, 
@@ -149,32 +120,30 @@ STRATEGIES = [
 ]
 
 from qwen_vl_utils import process_vision_info
-
-def inference(processor, model, image_paths: list, instruction: str, system_prompt: str) -> str:
-
+def inference_optimized(processor, model, image_paths: list, instruction: str, system_prompt: str) -> list:
+    """优化版本：只编码一次输入，但分别生成"""
+    
     # 构造 messages
     content = []
-
-    # 添加图像（路径字符串，processor 会自动加载）
     for p in image_paths:
         content.append({"type": "image", "image": p["path"]})
-
     content.append({"type": "text", "text": instruction})
+    
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": content}
     ]
-
+    
+    # 只调用一次 process_vision_info 和 apply_chat_template
     text = processor.apply_chat_template(
         messages, 
         tokenize=False, 
         add_generation_prompt=True
     )
-
-    # process_vision_info 内部会处理图像路径 以及 chunking 多图像
+    
     image_inputs, video_inputs = process_vision_info(messages)
-
-    # processing inputs
+    
+    # 只编码一次
     inputs = processor(
         text=[text],
         images=image_inputs,
@@ -182,10 +151,16 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
         padding=True,
         return_tensors="pt",
     ).to(model.device)
-
-    output = []
-    for i in range(len(STRATEGIES)):
-        cfg = STRATEGIES[i]
+    
+    responses = []
+    STRATEGIES = [
+        {"temp": 0.1, "top_p": 0.8, "rep_pen": 1.2},
+        {"temp": 0.7, "top_p": 0.95, "rep_pen": 1.0}, 
+        {"temp": 1.0, "top_p": 1.0, "rep_pen": 1.0}
+    ]
+    
+    # 分别生成，但重用已编码的 inputs
+    for cfg in STRATEGIES:
         with torch.no_grad():
             generated_ids = model.generate(
                 **inputs,
@@ -194,19 +169,18 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
                 temperature=cfg["temp"],
                 top_p=cfg["top_p"],
                 repetition_penalty=cfg["rep_pen"],
-                use_cache=False,
+                use_cache=True,  # ✅ 启用 KV cache（在单次生成内有效）
+                pad_token_id=processor.tokenizer.pad_token_id,
+                eos_token_id=processor.tokenizer.eos_token_id,
             )
-        # Decode
-        generated_ids_trimmed = [
-            out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
-        ]
-
-        output_text = processor.batch_decode(
-            generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False
-        )
-        output.append(output_text[0].strip())
-
-    return output
+            
+            gen_text = processor.decode(
+                generated_ids[0][inputs.input_ids.shape[1]:], 
+                skip_special_tokens=True
+            ).strip()
+            responses.append(gen_text)
+    
+    return responses
 
 # ======================
 # 🚀 主流程
@@ -216,7 +190,7 @@ def main():
     parser.add_argument("--split", choices=["train", "val", "eval"], required=True)
     parser.add_argument("--k_shot", type=int, default=20,
                         help="Few-shot: 随机采样 K 条数据（例如 5）")
-    parser.add_argument("--n_samples", type=int, default=3,
+    parser.add_argument("--n_samples", type=int, default=100,
                         help="每条指令生成 N 个翻译（Few-Shot 建议 3）")
     # parser.add_argument("--disable_deterministic", action="store_true",
     #                     help="Few-Shot 训练必需：禁用确定性推理")
@@ -252,17 +226,17 @@ def main():
 
 
     # 加载模型
-    base_model_path = "./model/qwen/Qwen2.5-VL-7B-Instruct_v1"
 
     model = AutoModelForVision2Seq.from_pretrained(
-        base_model_path,
+        BASE_MODEL_PATH,
         trust_remote_code=True,
         torch_dtype=torch.float16,
+        device_map='auto',
         low_cpu_mem_usage=True,
-    ).eval().to(device="cuda", dtype=torch.bfloat16)
+    ).eval()
 
     processor = AutoProcessor.from_pretrained(
-        base_model_path,
+        BASE_MODEL_PATH,
         trust_remote_code=True
     )
     processor.tokenizer.padding_side = "left"
@@ -293,7 +267,7 @@ def main():
             continue
         
 
-        response = inference(processor, model, image_paths, weaken, system_prompt)
+        response = inference_optimized(processor, model, image_paths, weaken, system_prompt)
         print(f"  ✅ {response[:80]}...")
         
         # 保存
@@ -318,9 +292,9 @@ def main():
 
 
 if __name__ == "__main__":
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-    os.environ["TORCH_USE_CUDA_DSA"] = "0"
-    os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+    # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+    # os.environ["TORCH_USE_CUDA_DSA"] = "0"
+    # os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
     
     torch.cuda.empty_cache()
     gc.collect()
