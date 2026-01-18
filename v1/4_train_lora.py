@@ -7,6 +7,7 @@ Multi-Modal DPO Training Script
 
 import os
 import json
+import re
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3,4,5,6,7"
 import torch
@@ -70,10 +71,12 @@ TEMP_IMAGE_DIR = './tmp/qwen_vl_imgs'
 TARGET_SIZE = (448, 448)
 
 version = 2
-model_path = f"./model/qwen/Qwen2.5-VL-7B-Instruct_v2"
-rollout_path = f'./train_t2rl_lora/data_v2'
+model_path = f"./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v2"
+rollout_path = f'./train_t2rl_lora/data_v3'
 
-save_model_path = increment_version_and_mkdir(model_path, "-v")
+save_model_path = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v3"
+#increment_version_and_mkdir(model_path, "-v")
+
 
 
 def build_multimodal_dpo_dataset(rollout_path: str) -> Dataset:
@@ -629,9 +632,9 @@ def run_experiment(
     final_path = save_model_path
 
     merged_model = peft_model.merge_and_unload()
-    merged_model,save_pretrained(final_path)
+    merged_model.save_pretrained(final_path)
     processor.save_pretrained(final_path)
-    print(f"✅ Experiment {exp_na me} completed! Saved to: {final_path}")
+    print(f"✅ Experiment {exp_name} completed! Saved to: {final_path}")
     
     return final_path
 
@@ -643,7 +646,7 @@ def run_experiment(
 
 def main():
     parser = argparse.ArgumentParser(description="Multi-Modal DPO Training")
-    parser.add_argument("--rollout_path", type=str, default=f"{rollout_path}/rollout_with_trajectory_k20_n3.json",
+    parser.add_argument("--rollout_path", type=str, default=f"{rollout_path}/rollout_with_trajectory_k100.json",
                        help="Path to rollout log JSON file")
     parser.add_argument("--output_dir", type=str, default=f"{save_model_path}",
                        help="Output directory")
@@ -663,7 +666,7 @@ def main():
     
     # Baseline DPO 实验
     if args.experiment in ["all", "baseline"]:
-        results["baseline"] = run_expe/home/cx/Desktop/UAV/OpenFly/train_t2rl_lora/data_v2/t2rl_train_k20_n3_with_translated.jsonriment(
+        results["baseline"] = run_experiment(
             exp_name="baseline_dpo",
             #trainer_cls=MultimodalDPOTrainer,
             rollout_path=args.rollout_path,

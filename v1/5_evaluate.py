@@ -26,10 +26,12 @@ TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
 EVAL_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval.json"
-OUTPUT_JSON_PATH = "./train_t2rl_lora/data_v2/t2rl_eval_with_translated_k20.json"
-LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/data_v2/output/v2/baseline_dpo/final"
+OUTPUT_JSON_PATH = "./train_t2rl_lora/data_v3/t2rl_eval_with_translated_k100.json" # v1, v2, v3, v4, v5
+LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/data_v1/output/v2/baseline_dpo/final"
 
-output_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_v3" # save the updated model
+base_model_path ="/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_k100_v3" # v1 ,v2, v3, v4, v5
+
+save_model_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_test" # save the updated model
 
 # ======================
 # 🧼 初始化
@@ -196,12 +198,12 @@ def merge_lora(base_model_path: str, lora_path: str) -> AutoModelForVision2Seq:
 
     # 保存模型和配置
 
-    merged_model.save_pretrained(output_path, safe_serialization=True)
+    merged_model.save_pretrained(save_model_path, safe_serialization=True)
     
     # 复制 processor 配置
     from transformers import AutoProcessor
     processor = AutoProcessor.from_pretrained(base_model_path, trust_remote_code=True)
-    processor.save_pretrained(output_path)
+    processor.save_pretrained(save_model_path)
 
     return merged_model.to(device="cuda", dtype=torch.bfloat16)
 
@@ -264,12 +266,20 @@ def inference(processor, model, image_paths: list, instruction: str, system_prom
 # ======================
 if __name__ == "__main__":
     # 加载模型
-    model = merge_lora(
-        base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
-        lora_path=LORA_PATH
-    )
+    # model = merge_lora(
+    #     base_model_path="./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
+    #     lora_path=LORA_PATH
+    # )
+    model = AutoModelForVision2Seq.from_pretrained(
+        base_model_path,
+        trust_remote_code=True,
+        torch_dtype=torch.float16,
+        device_map="auto",
+        low_cpu_mem_usage=True,
+    ).eval()
+
     processor = AutoProcessor.from_pretrained(
-        "./model/qwen/Qwen2.5-VL-7B-Instruct_v1",
+        base_model_path,
         trust_remote_code=True
     )
     processor.tokenizer.padding_side = "left"

@@ -10,7 +10,7 @@ import json
 import glob
 import gc
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3,4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 
 import torch
 import copy
@@ -29,9 +29,9 @@ TARGET_SIZE = (448, 448)
 TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
-OUTPUT_DIR = "./train_t2rl_lora/data_v1"
+OUTPUT_DIR = "./train_t2rl_lora/data_v3"
 
-BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct"
+BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v2" # _, v1, v2, v3, v4, v5
 
 
 # ======================
@@ -200,9 +200,9 @@ def main():
 
     # 加载数据
     input_json_path = {
-        "train": "./train_t2rl_lora/data/t2rl_train_k20.json",
-        "val": "./train_t2rl_lora/data/t2rl_val_k20.json",
-        "eval": "./train_t2rl_lora/data/t2rl_eval_k20.json"
+        "train": "./train_t2rl_lora/data/t2rl_train_k100.json",
+        "val": "./train_t2rl_lora/data/t2rl_val_k100.json",
+        "eval": "./train_t2rl_lora/data/t2rl_eval_k100.json"
     }[args.split]
 
     with open(input_json_path, 'r', encoding='utf-8') as f:

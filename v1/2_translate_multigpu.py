@@ -32,9 +32,9 @@ TARGET_SIZE = (448, 448)
 TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256  # 降低长度以加速
 
-OUTPUT_DIR = "./train_t2rl_lora/data_v1"
+OUTPUT_DIR = "./train_t2rl_lora/data_v2"
 
-BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct"
+BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct_v1"
 
 # ======================
 # 🧼 初始化
