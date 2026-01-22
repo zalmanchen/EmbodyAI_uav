@@ -9,7 +9,7 @@ import os
 import json
 import re
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1,2,3,4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 import torch
 import argparse
 import warnings
@@ -71,10 +71,10 @@ TEMP_IMAGE_DIR = './tmp/qwen_vl_imgs'
 TARGET_SIZE = (448, 448)
 
 version = 2
-model_path = f"./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v2"
-rollout_path = f'./train_t2rl_lora/data_v3'
+model_path = f"./model/qwen/Qwen2.5-VL-7B-Instruct_k100-20_v4" # k100_v3
+rollout_path = f'./train_t2rl_lora/data_v5'
 
-save_model_path = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v3"
+save_model_path = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100-20_v5"
 #increment_version_and_mkdir(model_path, "-v")
 
 
@@ -646,7 +646,7 @@ def run_experiment(
 
 def main():
     parser = argparse.ArgumentParser(description="Multi-Modal DPO Training")
-    parser.add_argument("--rollout_path", type=str, default=f"{rollout_path}/rollout_with_trajectory_k100.json",
+    parser.add_argument("--rollout_path", type=str, default=f"{rollout_path}/rollout_with_trajectory_k100-20.json",
                        help="Path to rollout log JSON file")
     parser.add_argument("--output_dir", type=str, default=f"{save_model_path}",
                        help="Output directory")

@@ -29,9 +29,9 @@ TARGET_SIZE = (448, 448)
 TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
-OUTPUT_DIR = "./train_t2rl_lora/data_v3"
+OUTPUT_DIR = "./train_t2rl_lora/data_v5" # ✅ 新增 42, 96, 2026, 701, 814
 
-BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100_v2" # _, v1, v2, v3, v4, v5
+BASE_MODEL_PATH = "./model/qwen/Qwen2.5-VL-7B-Instruct_k100-20_v4" # _, v1, v2, v3, v4, v5
 
 
 # ======================
@@ -188,7 +188,7 @@ def inference_optimized(processor, model, image_paths: list, instruction: str, s
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=["train", "val", "eval"], required=True)
-    parser.add_argument("--k_shot", type=int, default=100,
+    parser.add_argument("--k_shot", type=int, default=20,
                         help="Few-shot: 随机采样 K 条数据（例如 5）")
     parser.add_argument("--n_samples", type=int, default=3,
                         help="每条指令生成 N 个翻译（Few-Shot 建议 3）")
@@ -284,7 +284,7 @@ def main():
         torch.cuda.empty_cache()
 
     # 保存结果
-    raw_save_path = os.path.join(OUTPUT_DIR, f"t2rl_{args.split}_k{args.k_shot}_n{args.n_samples}_with_translated.json")
+    raw_save_path = os.path.join(OUTPUT_DIR, f"t2rl_{args.split}_k100-{args.k_shot}_n{args.n_samples}_with_translated.json")
     with open(raw_save_path, "w", encoding="utf-8") as f:
         json.dump(updated_items, f, indent=2, ensure_ascii=False)
 

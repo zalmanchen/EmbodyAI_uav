@@ -1,0 +1,2242 @@
+[
+  {
+    "image_path": "env_airsim_18/astar_data/low_short/2025-1-8_20-52-57_1936060910",
+    "gpt_instruction": "Continue moving forward towards a medium - sized commercial structure characterized by a white and black grid - like window pattern .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      8,
+      0
+    ],
+    "index_list": [
+      "20250108_205301_2",
+      "20250108_205303_5",
+      "20250108_205304_8",
+      "20250108_205306_11",
+      "20250108_205306_13",
+      "20250108_205307_14"
+    ],
+    "pos": [
+      [
+        874.6916285091872,
+        126.70824118346695,
+        -36.25378652273585
+      ],
+      [
+        870.1916285091872,
+        134.5024698175269,
+        -36.25378652273585
+      ],
+      [
+        865.6916285091872,
+        142.29669845158685,
+        -36.25378652273585
+      ],
+      [
+        861.1916285091872,
+        150.0909270856468,
+        -36.25378652273585
+      ],
+      [
+        858.1916285091872,
+        155.28707950835343,
+        -36.25378652273585
+      ],
+      [
+        856.6916285091872,
+        157.88515571970675,
+        -36.25378652273585
+      ]
+    ],
+    "yaw": [
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953
+    ],
+    "weaken_instruction": "Go to the small building with white and black window squares.",
+    "translated_instruction_4": "Continue moving forward towards a medium - sized commercial structure characterized by a white and black grid - like window pattern .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.975256235041198,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9230532550447424,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the small building with white and black window squares.",
+    "translated_instruction_3": "proceed to the small building with white and black window squares",
+    "translated_instruction_1_reward": 1.0256030687456474,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.090876034059574,
+    "translated_instruction_2_reward": 1.0950471681395282,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.333283952446206,
+    "translated_instruction_3_reward": 1.0566822911643101,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.199960001333289
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_long/2025-1-9_2-41-50_833215350",
+    "gpt_instruction": "Proceed towards the grey tall building with windows , then turn right to the dark tall rectangular structure . Continue straight to another dark building with a flat roof . Slightly turn left and move ahead to reach the grey building featuring a triangular structure on top .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      8,
+      3,
+      3,
+      9,
+      8,
+      2,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250109_024154_2",
+      "20250109_024155_5",
+      "20250109_024156_8",
+      "20250109_024157_11",
+      "20250109_024158_14",
+      "20250109_024159_17",
+      "20250109_024201_20",
+      "20250109_024202_23",
+      "20250109_024203_26",
+      "20250109_024205_29",
+      "20250109_024206_32",
+      "20250109_024207_35",
+      "20250109_024208_38",
+      "20250109_024208_40",
+      "20250109_024209_41",
+      "20250109_024209_42",
+      "20250109_024210_45",
+      "20250109_024211_47",
+      "20250109_024211_48",
+      "20250109_024213_51",
+      "20250109_024213_52"
+    ],
+    "pos": [
+      [
+        717.430772410351,
+        434.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        425.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        416.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        407.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        398.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        389.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        380.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        371.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        362.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        353.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        344.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        335.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        326.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        320.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        317.1989966857502,
+        4.008504278406168
+      ],
+      [
+        717.430772410351,
+        317.1989966857502,
+        4.008504278406168
+      ],
+      [
+        712.2346199876442,
+        314.1989966857502,
+        4.008504278406168
+      ],
+      [
+        707.0384675649375,
+        311.1989966857502,
+        4.008504278406168
+      ],
+      [
+        704.4403913535841,
+        309.6989966857502,
+        4.008504278406168
+      ],
+      [
+        701.4403913535841,
+        304.5028442630436,
+        4.008504278406168
+      ],
+      [
+        699.9403913535841,
+        301.90476805169027,
+        4.008504278406168
+      ]
+    ],
+    "yaw": [
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -2.0943951023931953,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.0943951023931953,
+      -2.0943951023931953
+    ],
+    "weaken_instruction": "Go to the gray tall building with windows, turn right to the dark tall building with a flat roof, go straight to another dark building with a flat roof, turn left and go to the gray building with a triangle on top.",
+    "translated_instruction_4": "Proceed towards the grey tall building with windows , then turn right to the dark tall rectangular structure . Continue straight to another dark building with a flat roof . Slightly turn left and move ahead to reach the grey building featuring a triangular structure on top .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.0006780999280687,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.010942386144037,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the gray tall building with windows, turn right to the dark tall building with a flat roof, go straight to another dark building with a flat roof, turn left and go to the gray building with a triangle on top.",
+    "translated_instruction_3": "turn left",
+    "translated_instruction_1_reward": 1.0149580221075825,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.059082117708582,
+    "translated_instruction_2_reward": 0.18096748360719192,
+    "translated_instruction_2_success": 0,
+    "translated_instruction_2_spl": 0.0,
+    "translated_instruction_3_reward": 0.14774043291694558,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_22-6-17_1826620483",
+    "gpt_instruction": "Proceed forward towards a large , modern office building featuring a gray color and grid - like windows . Then , slightly turn left and head directly towards it . Slightly turn right and advance towards it .",
+    "action": [
+      9,
+      9,
+      2,
+      9,
+      8,
+      3,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250108_220621_2",
+      "20250108_220622_5",
+      "20250108_220622_6",
+      "20250108_220624_9",
+      "20250108_220624_11",
+      "20250108_220625_12",
+      "20250108_220625_13",
+      "20250108_220626_14"
+    ],
+    "pos": [
+      [
+        -85.1823427863015,
+        -238.76426915198013,
+        -14.030541685236908
+      ],
+      [
+        -80.6823427863015,
+        -230.97004051792018,
+        -14.030541685236908
+      ],
+      [
+        -79.1823427863015,
+        -228.37196430656687,
+        -14.030541685236908
+      ],
+      [
+        -79.1823427863015,
+        -222.37196430656687,
+        -14.030541685236908
+      ],
+      [
+        -79.1823427863015,
+        -216.37196430656687,
+        -14.030541685236908
+      ],
+      [
+        -79.1823427863015,
+        -213.37196430656687,
+        -14.030541685236908
+      ],
+      [
+        -79.1823427863015,
+        -213.37196430656687,
+        -14.030541685236908
+      ],
+      [
+        -77.6823427863015,
+        -210.77388809521355,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.0471975511965979,
+      1.0471975511965979
+    ],
+    "weaken_instruction": "Go to the big gray building with window squares. Turn left, then go straight. Turn right and go to the building.",
+    "translated_instruction_4": "Proceed forward towards a large , modern office building featuring a gray color and grid - like windows . Then , slightly turn left and head directly towards it . Slightly turn right and advance towards it .",
+    "weaken_instruction_reward": 0.16946693635409485,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9340430390445038,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.8049158298011736,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Move forward",
+    "translated_instruction_3": "go to the big gray building with window squares . move slightly left . move straight . move slightly right . stop .",
+    "translated_instruction_1_reward": 1.0168095997855944,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.0732111695371302,
+    "translated_instruction_2_reward": 1.0168095997855944,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.0732111695371302,
+    "translated_instruction_3_reward": 1.0168095997855944,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.0732111695371302
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_21-47-49_1982945082",
+    "gpt_instruction": "Proceed directly ahead towards a large , tall building characterized by a gray and beige brick facade . Slightly turn right and continue straight until you reach a medium - height modern office building , recognizable by its white color and grid - like facade with square windows .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      1,
+      3,
+      9,
+      9,
+      8,
+      0
+    ],
+    "index_list": [
+      "20250108_214752_2",
+      "20250108_214753_5",
+      "20250108_214755_8",
+      "20250108_214756_11",
+      "20250108_214757_14",
+      "20250108_214758_17",
+      "20250108_214800_20",
+      "20250108_214801_23",
+      "20250108_214802_26",
+      "20250108_214803_27",
+      "20250108_214803_28",
+      "20250108_214804_31",
+      "20250108_214805_34",
+      "20250108_214806_36",
+      "20250108_214807_37"
+    ],
+    "pos": [
+      [
+        989.9195995946793,
+        933.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        982.1253709606192,
+        937.9450517778057,
+        -26.888958510984654
+      ],
+      [
+        974.3311423265591,
+        942.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        966.536913692499,
+        946.9450517778057,
+        -26.888958510984654
+      ],
+      [
+        958.7426850584388,
+        951.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        950.9484564243787,
+        955.9450517778057,
+        -26.888958510984654
+      ],
+      [
+        943.1542277903186,
+        960.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        935.3599991562585,
+        964.9450517778057,
+        -26.888958510984654
+      ],
+      [
+        927.5657705221984,
+        969.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        924.967694310845,
+        970.9450517778057,
+        -26.888958510984654
+      ],
+      [
+        922.3696180994916,
+        972.4450517778057,
+        -26.888958510984654
+      ],
+      [
+        919.3696180994916,
+        977.6412042005124,
+        -26.888958510984654
+      ],
+      [
+        914.8696180994916,
+        985.4354328345726,
+        -26.888958510984654
+      ],
+      [
+        911.8696180994916,
+        990.6315852572793,
+        -26.888958510984654
+      ],
+      [
+        910.3696180994916,
+        993.2296614686327,
+        -26.888958510984654
+      ]
+    ],
+    "yaw": [
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.6179938779915037,
+      2.094395102393186,
+      2.094395102393186,
+      2.094395102393186,
+      2.094395102393186
+    ],
+    "weaken_instruction": "Go to the tall building with gray and beige bricks, then turn right and go to the white office building with square windows.",
+    "translated_instruction_4": "Proceed directly ahead towards a large , tall building characterized by a gray and beige brick facade . Slightly turn right and continue straight until you reach a medium - height modern office building , recognizable by its white color and grid - like facade with square windows .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9991471310498732,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.0051494325371502,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the tall building with gray and beige bricks, then turn right and go to the white office building with square windows.",
+    "translated_instruction_3": "Proceed to the tall building with square windows",
+    "translated_instruction_1_reward": 1.0287322268531454,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.1056632589705715,
+    "translated_instruction_2_reward": 0.18096748360719192,
+    "translated_instruction_2_success": 0,
+    "translated_instruction_2_spl": 0.0,
+    "translated_instruction_3_reward": 1.0287322268531454,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.1056632589705715
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-51-0_1781485213",
+    "gpt_instruction": "Proceed straight to the large brown building with a brick facade and numerous windows , then slightly turn left and continue directly to it, and finally , slightly turn right and keep going straight to it .",
+    "action": [
+      9,
+      8,
+      2,
+      9,
+      9,
+      1,
+      3,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250109_015104_2",
+      "20250109_015105_4",
+      "20250109_015105_5",
+      "20250109_015106_8",
+      "20250109_015108_11",
+      "20250109_015108_12",
+      "20250109_015108_13",
+      "20250109_015109_14",
+      "20250109_015109_15"
+    ],
+    "pos": [
+      [
+        66.33152486291515,
+        -86.19266189124816,
+        -14.030541685236908
+      ],
+      [
+        63.331524862915145,
+        -80.99650946854153,
+        -14.030541685236908
+      ],
+      [
+        61.831524862915145,
+        -78.39843325718822,
+        -14.030541685236908
+      ],
+      [
+        56.63537244020851,
+        -75.39843325718822,
+        -14.030541685236908
+      ],
+      [
+        48.841143806148565,
+        -70.89843325718822,
+        -14.030541685236908
+      ],
+      [
+        46.24306759479525,
+        -69.39843325718822,
+        -14.030541685236908
+      ],
+      [
+        43.64499138344193,
+        -67.89843325718822,
+        -14.030541685236908
+      ],
+      [
+        43.64499138344193,
+        -67.89843325718822,
+        -14.030541685236908
+      ],
+      [
+        42.14499138344193,
+        -65.3003570458349,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.6179938779914944,
+      2.6179938779914944,
+      2.6179938779914944,
+      2.6179938779914944,
+      2.0943951023931957,
+      2.0943951023931957
+    ],
+    "weaken_instruction": "Go to the big brown building with many windows and brick walls. Turn a little left, then go straight. Turn a little right and keep going straight to the building.",
+    "translated_instruction_4": "Proceed straight to the large brown building with a brick facade and numerous windows , then slightly turn left and continue directly to it, and finally , slightly turn right and keep going straight to it .",
+    "weaken_instruction_reward": 0.18532332204459112,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.0131300104599166,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.065316180743519,
+    "translated_instruction_1": "Move forward",
+    "translated_instruction_2": "Go to the brown building with many windows. Then, slightly turn left and go straight. Slightly turn right and go straight to the building.",
+    "translated_instruction_3": "Go to the building",
+    "translated_instruction_1_reward": 1.14801495631954,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.521858518093724,
+    "translated_instruction_2_reward": 0.90245417061903,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 0.7102186782179571,
+    "translated_instruction_3_reward": 1.14801495631954,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.521858518093724
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_16-32-17_631704567",
+    "gpt_instruction": "Continue straight towards the structure with grey grid - like windows of a large size , then slightly turn right and proceed ahead to it .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      3,
+      9,
+      9,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250109_163221_2",
+      "20250109_163222_5",
+      "20250109_163223_8",
+      "20250109_163224_11",
+      "20250109_163226_14",
+      "20250109_163227_17",
+      "20250109_163227_18",
+      "20250109_163229_21",
+      "20250109_163230_24",
+      "20250109_163231_27",
+      "20250109_163233_30",
+      "20250109_163233_31"
+    ],
+    "pos": [
+      [
+        1061.3143920294492,
+        -352.7353592488157,
+        17.46431138117525
+      ],
+      [
+        1065.8143920294492,
+        -344.94113061475576,
+        17.46431138117525
+      ],
+      [
+        1070.3143920294492,
+        -337.1469019806958,
+        17.46431138117525
+      ],
+      [
+        1074.8143920294492,
+        -329.35267334663587,
+        17.46431138117525
+      ],
+      [
+        1079.3143920294492,
+        -321.5584447125759,
+        17.46431138117525
+      ],
+      [
+        1083.8143920294492,
+        -313.764216078516,
+        17.46431138117525
+      ],
+      [
+        1085.3143920294492,
+        -311.16613986716266,
+        17.46431138117525
+      ],
+      [
+        1090.510544452156,
+        -308.16613986716266,
+        17.46431138117525
+      ],
+      [
+        1098.304773086216,
+        -303.66613986716266,
+        17.46431138117525
+      ],
+      [
+        1106.0990017202762,
+        -299.16613986716266,
+        17.46431138117525
+      ],
+      [
+        1113.8932303543363,
+        -294.66613986716266,
+        17.46431138117525
+      ],
+      [
+        1116.4913065656897,
+        -293.16613986716266,
+        17.46431138117525
+      ]
+    ],
+    "yaw": [
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      1.0471975511965979,
+      0.5235987755982894,
+      0.5235987755982894,
+      0.5235987755982894,
+      0.5235987755982894,
+      0.5235987755982894
+    ],
+    "weaken_instruction": "Go to the big building with gray grid windows, then turn right and go to it.",
+    "translated_instruction_4": "Continue straight towards the structure with grey grid - like windows of a large size , then slightly turn right and proceed ahead to it .",
+    "weaken_instruction_reward": 0.18130442705730176,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.0344408418493463,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.1277230984329136,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the large building with gray and black grid windows . Then turn right and go to it .",
+    "translated_instruction_3": "Slightly turn right and head toward a large brown and grey building .",
+    "translated_instruction_1_reward": 0.1353005265951814,
+    "translated_instruction_1_success": 0,
+    "translated_instruction_1_spl": 0.0,
+    "translated_instruction_2_reward": 0.9691818587152145,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 0.9021809847698176,
+    "translated_instruction_3_reward": 0.1334152500522363,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_17-26-31_1219407971",
+    "gpt_instruction": "Proceed straight toward a dark building with grid - like windows of a large size . Slightly turn left slightly and continue toward it .",
+    "action": [
+      9,
+      9,
+      9,
+      2,
+      9,
+      8,
+      0
+    ],
+    "index_list": [
+      "20250109_172634_2",
+      "20250109_172635_5",
+      "20250109_172637_8",
+      "20250109_172637_9",
+      "20250109_172638_12",
+      "20250109_172639_14",
+      "20250109_172639_15"
+    ],
+    "pos": [
+      [
+        1382.5251446995585,
+        859.7282393256864,
+        36.154775318277345
+      ],
+      [
+        1387.0251446995585,
+        851.9340106916263,
+        36.154775318277345
+      ],
+      [
+        1391.5251446995585,
+        844.1397820575662,
+        36.154775318277345
+      ],
+      [
+        1393.0251446995585,
+        841.5417058462128,
+        36.154775318277345
+      ],
+      [
+        1398.2212971222652,
+        838.5417058462128,
+        36.154775318277345
+      ],
+      [
+        1403.417449544972,
+        835.5417058462128,
+        36.154775318277345
+      ],
+      [
+        1406.0155257563254,
+        834.0417058462128,
+        36.154775318277345
+      ]
+    ],
+    "yaw": [
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -0.5235987755982894,
+      -0.5235987755982894,
+      -0.5235987755982894
+    ],
+    "weaken_instruction": "Go to the dark building with big grid windows. Turn a little left and go to it.",
+    "translated_instruction_4": "Proceed straight toward a dark building with grid - like windows of a large size . Slightly turn left slightly and continue toward it .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.962631180710994,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.8924896195491119,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "turn left",
+    "translated_instruction_3": "Go slightly right",
+    "translated_instruction_1_reward": 0.9424161008155687,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 0.8287418788132398,
+    "translated_instruction_2_reward": 0.9856465249667982,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 0.9668616886207311,
+    "translated_instruction_3_reward": 0.9856465249667982,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 0.9668616886207311
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_21-56-15_204102747",
+    "gpt_instruction": "Proceed in a straight line towards the large , dark gray structure characterized by horizontal panels and a grid - like pattern , which is a modern glass facade .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250108_215618_2",
+      "20250108_215620_5",
+      "20250108_215621_8",
+      "20250108_215622_11",
+      "20250108_215623_14",
+      "20250108_215624_17",
+      "20250108_215625_20",
+      "20250108_215626_21"
+    ],
+    "pos": [
+      [
+        1374.777964239857,
+        762.5981005415977,
+        -26.888958510984654
+      ],
+      [
+        1379.277964239857,
+        754.8038719075375,
+        -26.888958510984654
+      ],
+      [
+        1383.777964239857,
+        747.0096432734774,
+        -26.888958510984654
+      ],
+      [
+        1388.277964239857,
+        739.2154146394173,
+        -26.888958510984654
+      ],
+      [
+        1392.777964239857,
+        731.4211860053572,
+        -26.888958510984654
+      ],
+      [
+        1397.277964239857,
+        723.6269573712971,
+        -26.888958510984654
+      ],
+      [
+        1401.777964239857,
+        715.832728737237,
+        -26.888958510984654
+      ],
+      [
+        1403.277964239857,
+        713.2346525258836,
+        -26.888958510984654
+      ]
+    ],
+    "yaw": [
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072,
+      -1.0471975511966072
+    ],
+    "weaken_instruction": "Go to the big dark gray building with the glass walls and lines.",
+    "translated_instruction_4": "Proceed in a straight line towards the large , dark gray structure characterized by horizontal panels and a grid - like pattern , which is a modern glass facade .",
+    "weaken_instruction_reward": 0.04637200890629139,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9999947369344426,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9999824564481429,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the building",
+    "translated_instruction_3": "fly towards the big building",
+    "translated_instruction_1_reward": 1.0531094835925607,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.1874752609320762,
+    "translated_instruction_2_reward": 1.0331933217797578,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.1176251446050185,
+    "translated_instruction_3_reward": 1.0331933217797578,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.1176251446050185
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-34-38_888830763",
+    "gpt_instruction": "Proceed towards the medium - height apartment building , which is characterized by its dark brick color and narrow windows .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250109_013442_2",
+      "20250109_013443_5",
+      "20250109_013444_8",
+      "20250109_013445_11",
+      "20250109_013447_14",
+      "20250109_013448_17",
+      "20250109_013449_20",
+      "20250109_013450_23",
+      "20250109_013450_24",
+      "20250109_013451_25"
+    ],
+    "pos": [
+      [
+        1875.9863213531535,
+        26.738192155018254,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        17.738192155018254,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        8.738192155018254,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -0.26180784498174603,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -9.261807844981746,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -18.261807844981746,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -27.261807844981746,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -36.261807844981746,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -39.261807844981746,
+        -14.030541685236908
+      ],
+      [
+        1875.9863213531535,
+        -42.261807844981746,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -1.5707963267948966
+    ],
+    "weaken_instruction": "Go to the dark building with small windows.",
+    "translated_instruction_4": "Proceed towards the medium - height apartment building , which is characterized by its dark brick color and narrow windows .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.986628329405004,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9583200233330093,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "turn left",
+    "translated_instruction_3": "Move left .",
+    "translated_instruction_1_reward": 1.0268346223669567,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.0952207107823686,
+    "translated_instruction_2_reward": 1.079025326988349,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.2777541156645247,
+    "translated_instruction_3_reward": 0.9848987528584865,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 0.9583200233330093
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-48-42_400000569",
+    "gpt_instruction": "Proceed directly to the large , beige tall building with multiple windows , slightly turn right , and then advance toward the similarly large beige building characterized by a brick facade with rectangular and arched windows , which can be either commercial or residential .",
+    "action": [
+      9,
+      8,
+      3,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250108_214846_2",
+      "20250108_214846_4",
+      "20250108_214847_5",
+      "20250108_214848_8",
+      "20250108_214850_11",
+      "20250108_214850_12"
+    ],
+    "pos": [
+      [
+        282.5726398934874,
+        150.6887110106103,
+        -14.030541685236908
+      ],
+      [
+        276.5726398934874,
+        150.6887110106103,
+        -14.030541685236908
+      ],
+      [
+        273.5726398934874,
+        150.6887110106103,
+        -14.030541685236908
+      ],
+      [
+        268.3764874707808,
+        153.6887110106103,
+        -14.030541685236908
+      ],
+      [
+        260.5822588367208,
+        158.1887110106103,
+        -14.030541685236908
+      ],
+      [
+        257.9841826253675,
+        159.6887110106103,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      3.141592653589793,
+      3.141592653589793,
+      3.141592653589793,
+      2.6179938779914944,
+      2.6179938779914944,
+      2.6179938779914944
+    ],
+    "weaken_instruction": "Go to the big beige building with many windows, turn right, and go to the other big beige building with brick walls and windows like the first one.",
+    "translated_instruction_4": "Proceed directly to the large , beige tall building with multiple windows , slightly turn right , and then advance toward the similarly large beige building characterized by a brick facade with rectangular and arched windows , which can be either commercial or residential .",
+    "weaken_instruction_reward": 0.15978862900643792,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9839286754423824,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9697350542790152,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "go to the big beige building with many windows",
+    "translated_instruction_3": "Turn right",
+    "translated_instruction_1_reward": 1.128031973273453,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.4545756458301033,
+    "translated_instruction_2_reward": 1.128031973273453,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.4545756458301033,
+    "translated_instruction_3_reward": 0.0749843434529578,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/high_average/2025-1-10_1-45-26_1823025015",
+    "gpt_instruction": "Proceed straight towards the expansive gray rectangular paved area . Then , veer left towards the large black building with grid - like windows . Next , continue straight towards the large gray structure featuring glass windows . Finally , make a slight right turn and keep going straight towards the tall dark building with light grids on the fa\u00e7ade .",
+    "action": [
+      9,
+      2,
+      2,
+      9,
+      9,
+      9,
+      3,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250110_014529_2",
+      "20250110_014530_3",
+      "20250110_014530_4",
+      "20250110_014532_7",
+      "20250110_014533_10",
+      "20250110_014534_13",
+      "20250110_014534_14",
+      "20250110_014535_15",
+      "20250110_014535_16"
+    ],
+    "pos": [
+      [
+        1868.7364586164695,
+        743.6502598035136,
+        17.46431138117525
+      ],
+      [
+        1871.7364586164695,
+        743.6502598035136,
+        17.46431138117525
+      ],
+      [
+        1871.7364586164695,
+        743.6502598035136,
+        17.46431138117525
+      ],
+      [
+        1874.7364586164695,
+        748.8464122262203,
+        17.46431138117525
+      ],
+      [
+        1879.2364586164695,
+        756.6406408602804,
+        17.46431138117525
+      ],
+      [
+        1883.7364586164695,
+        764.4348694943405,
+        17.46431138117525
+      ],
+      [
+        1885.2364586164695,
+        767.0329457056939,
+        17.46431138117525
+      ],
+      [
+        1885.2364586164695,
+        767.0329457056939,
+        17.46431138117525
+      ],
+      [
+        1887.8345348278228,
+        768.5329457056939,
+        17.46431138117525
+      ]
+    ],
+    "yaw": [
+      0.0,
+      0.0,
+      0.5235987755982988,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      0.5235987755983084,
+      0.5235987755983084
+    ],
+    "weaken_instruction": "Go to the big gray paved place. Turn left to the big black building with window lines. Go straight to the big gray building with glass windows. Turn a little right and go to the tall dark building with light lines.",
+    "translated_instruction_4": "Proceed straight towards the expansive gray rectangular paved area . Then , veer left towards the large black building with grid - like windows . Next , continue straight towards the large gray structure featuring glass windows . Finally , make a slight right turn and keep going straight towards the tall dark building with light grids on the fa\u00e7ade .",
+    "weaken_instruction_reward": 0.1794181360183955,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.0034095383901636,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.0455296284955584,
+    "translated_instruction_1": "Turn around and fly forward until you see the small white house. Fly over the small white house. Continue flying forward until you reach the big gray paved area. Slightly turn left and fly up along side the big black building with window lines. Fly straight ahead past the big black building with window lines. Fly straight through the open space between two buildings. Slightly turn right and fly up next to the big gray building with glass windows. Slightly turn right again and fly up close beside the tall dark building with light lines.",
+    "translated_instruction_2": "turn right",
+    "translated_instruction_3": "Go to the big gray paved place. Then, slightly turn left and continue forward to the big dark building with window lines. Lastly proceed to the big gray building with glass windows.",
+    "translated_instruction_1_reward": 0.18090108380776704,
+    "translated_instruction_1_success": 0,
+    "translated_instruction_1_spl": 0.0,
+    "translated_instruction_2_reward": 0.13351394099160935,
+    "translated_instruction_2_success": 0,
+    "translated_instruction_2_spl": 0.0,
+    "translated_instruction_3_reward": 0.15154921512413957,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_23-0-27_96055805",
+    "gpt_instruction": "Proceed straight towards a brown building characterized by a brick facade with large windows , then slightly turn left slightly and advance towards it .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      1,
+      2,
+      8,
+      0
+    ],
+    "index_list": [
+      "20250108_230031_2",
+      "20250108_230032_5",
+      "20250108_230033_8",
+      "20250108_230035_11",
+      "20250108_230036_14",
+      "20250108_230037_17",
+      "20250108_230038_20",
+      "20250108_230039_23",
+      "20250108_230040_24",
+      "20250108_230040_25",
+      "20250108_230041_27",
+      "20250108_230042_28"
+    ],
+    "pos": [
+      [
+        398.5577564805325,
+        279.93444920366096,
+        -8.37259322125965
+      ],
+      [
+        394.0577564805325,
+        287.7286778377209,
+        -8.37259322125965
+      ],
+      [
+        389.5577564805325,
+        295.52290647178086,
+        -8.37259322125965
+      ],
+      [
+        385.0577564805325,
+        303.3171351058408,
+        -8.37259322125965
+      ],
+      [
+        380.5577564805325,
+        311.11136373990075,
+        -8.37259322125965
+      ],
+      [
+        376.0577564805325,
+        318.9055923739607,
+        -8.37259322125965
+      ],
+      [
+        371.5577564805325,
+        326.69982100802065,
+        -8.37259322125965
+      ],
+      [
+        367.0577564805325,
+        334.4940496420806,
+        -8.37259322125965
+      ],
+      [
+        365.5577564805325,
+        337.0921258534339,
+        -8.37259322125965
+      ],
+      [
+        364.0577564805325,
+        339.69020206478723,
+        -8.37259322125965
+      ],
+      [
+        361.45968026917916,
+        341.19020206478723,
+        -8.37259322125965
+      ],
+      [
+        358.86160405782584,
+        342.69020206478723,
+        -8.37259322125965
+      ]
+    ],
+    "yaw": [
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.0943951023931953,
+      2.6179938779914944,
+      2.6179938779914944
+    ],
+    "weaken_instruction": "Go to the brown building with brick walls and big windows, then turn left and go to it.",
+    "translated_instruction_4": "Proceed straight towards a brown building characterized by a brick facade with large windows , then slightly turn left slightly and advance towards it .",
+    "weaken_instruction_reward": 0.18268881793462535,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9628626360551793,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.8839987345345699,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "move towards the brown building with brick walls and big windows",
+    "translated_instruction_3": "Head directly toward the tall building on the right side . Then , slightly turn left and proceed to it .",
+    "translated_instruction_1_reward": 1.0212413733198442,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.0761695873920436,
+    "translated_instruction_2_reward": 1.0212413733198442,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.0761695873920436,
+    "translated_instruction_3_reward": 0.9730289530002437,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 0.9167390242051136
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_22-15-4_262178224",
+    "gpt_instruction": "Proceed directly ahead to the dark gray commercial building featuring large windows with a textured facade , which is a mid-rise structure .",
+    "action": [
+      9,
+      9,
+      9,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250108_221507_2",
+      "20250108_221509_5",
+      "20250108_221510_8",
+      "20250108_221511_9",
+      "20250108_221511_10"
+    ],
+    "pos": [
+      [
+        1872.6486419048515,
+        580.1419222100938,
+        -8.37259322125965
+      ],
+      [
+        1868.1486419048515,
+        572.3476935760336,
+        -8.37259322125965
+      ],
+      [
+        1863.6486419048515,
+        564.5534649419735,
+        -8.37259322125965
+      ],
+      [
+        1862.1486419048515,
+        561.9553887306201,
+        -8.37259322125965
+      ],
+      [
+        1860.6486419048515,
+        559.3573125192668,
+        -8.37259322125965
+      ]
+    ],
+    "yaw": [
+      -2.094395102393186,
+      -2.094395102393186,
+      -2.094395102393186,
+      -2.094395102393186,
+      -2.094395102393186
+    ],
+    "weaken_instruction": "Go to the dark gray building with big windows and a bumpy wall.",
+    "translated_instruction_4": "Proceed directly ahead to the dark gray commercial building featuring large windows with a textured facade , which is a mid-rise structure .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9350539826723269,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.7999733342222005,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Slightly turn left",
+    "translated_instruction_3": "advance towards the grey building",
+    "translated_instruction_1_reward": 1.040356377202727,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.1428027236798355,
+    "translated_instruction_2_reward": 1.040356377202727,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.1428027236798355,
+    "translated_instruction_3_reward": 1.040356377202727,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.1428027236798355
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/high_average/2025-1-9_21-10-56_1866355856",
+    "gpt_instruction": "Proceed directly towards the tall beige building , notable for its multiple windows and arched designs near the top , then slightly turn left and continue straight to the tall brown building , distinguished by its arched windows and brick texture .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      1,
+      2,
+      9,
+      9,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250109_211100_2",
+      "20250109_211101_5",
+      "20250109_211102_8",
+      "20250109_211104_11",
+      "20250109_211105_14",
+      "20250109_211106_17",
+      "20250109_211108_20",
+      "20250109_211109_23",
+      "20250109_211110_26",
+      "20250109_211111_29",
+      "20250109_211112_32",
+      "20250109_211113_33",
+      "20250109_211113_34",
+      "20250109_211114_37",
+      "20250109_211116_40",
+      "20250109_211116_41",
+      "20250109_211116_42"
+    ],
+    "pos": [
+      [
+        661.6871972905401,
+        -38.811111137746806,
+        17.46431138117525
+      ],
+      [
+        653.89296865648,
+        -43.311111137746806,
+        17.46431138117525
+      ],
+      [
+        646.0987400224199,
+        -47.811111137746806,
+        17.46431138117525
+      ],
+      [
+        638.3045113883597,
+        -52.311111137746806,
+        17.46431138117525
+      ],
+      [
+        630.5102827542996,
+        -56.811111137746806,
+        17.46431138117525
+      ],
+      [
+        622.7160541202395,
+        -61.311111137746806,
+        17.46431138117525
+      ],
+      [
+        614.9218254861794,
+        -65.8111111377468,
+        17.46431138117525
+      ],
+      [
+        607.1275968521193,
+        -70.3111111377468,
+        17.46431138117525
+      ],
+      [
+        599.3333682180591,
+        -74.8111111377468,
+        17.46431138117525
+      ],
+      [
+        591.539139583999,
+        -79.3111111377468,
+        17.46431138117525
+      ],
+      [
+        583.7449109499389,
+        -83.8111111377468,
+        17.46431138117525
+      ],
+      [
+        581.1468347385855,
+        -85.3111111377468,
+        17.46431138117525
+      ],
+      [
+        578.5487585272322,
+        -86.8111111377468,
+        17.46431138117525
+      ],
+      [
+        575.5487585272322,
+        -92.00726356045344,
+        17.46431138117525
+      ],
+      [
+        571.0487585272322,
+        -99.80149219451339,
+        17.46431138117525
+      ],
+      [
+        569.5487585272322,
+        -102.3995684058667,
+        17.46431138117525
+      ],
+      [
+        568.0487585272322,
+        -104.99764461722002,
+        17.46431138117525
+      ]
+    ],
+    "yaw": [
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.0943951023931953,
+      -2.0943951023931953,
+      -2.0943951023931953,
+      -2.0943951023931953
+    ],
+    "weaken_instruction": "Go to the tall beige building with many windows and arches on top, then turn left and go to the tall brown building with arched windows and brick walls.",
+    "translated_instruction_4": "Proceed directly towards the tall beige building , notable for its multiple windows and arched designs near the top , then slightly turn left and continue straight to the tall brown building , distinguished by its arched windows and brick texture .",
+    "weaken_instruction_reward": 0.18225143764232762,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9855968879972743,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9555610366243883,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the tall beige building with many windows and arches on top .",
+    "translated_instruction_3": "Head left .",
+    "translated_instruction_1_reward": 0.9845858970169845,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 0.9555610366243881,
+    "translated_instruction_2_reward": 0.9845858970169845,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 0.9555610366243881,
+    "translated_instruction_3_reward": 0.9845858970169845,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 0.9555610366243881
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-8_21-34-29_1671294892",
+    "gpt_instruction": "Continue walking straight until you reach the brown building with large rectangular windows , then slightly turn left slightly and proceed to it .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      2,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250108_213433_2",
+      "20250108_213434_5",
+      "20250108_213436_8",
+      "20250108_213437_11",
+      "20250108_213438_14",
+      "20250108_213440_17",
+      "20250108_213440_18",
+      "20250108_213441_21",
+      "20250108_213443_24",
+      "20250108_213443_25"
+    ],
+    "pos": [
+      [
+        480.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        489.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        498.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        507.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        516.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        525.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        528.0374202389482,
+        -228.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        533.233572661655,
+        -225.93467602911196,
+        -14.030541685236908
+      ],
+      [
+        541.0278012957151,
+        -221.43467602911196,
+        -14.030541685236908
+      ],
+      [
+        543.6258775070685,
+        -219.93467602911196,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5235987755982894,
+      0.5235987755982894,
+      0.5235987755982894
+    ],
+    "weaken_instruction": "Go to the brown building with big square windows, then turn left and go to it.",
+    "translated_instruction_4": "Continue walking straight until you reach the brown building with large rectangular windows , then slightly turn left slightly and proceed to it .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.0048831024995373,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.0193839336006931,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Slightly turn left",
+    "translated_instruction_3": "Go to the brown building with arched windows then turn left and go back to it.",
+    "translated_instruction_1_reward": 1.0030260573454544,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.0193839336006916,
+    "translated_instruction_2_reward": 1.0048831024995373,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.0193839336006931,
+    "translated_instruction_3_reward": 0.18096748360719192,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/low_average/2025-1-8_23-5-46_2118801173",
+    "gpt_instruction": "Proceed directly to the modern building with medium height , characterized by its white color and rectangular windows .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250108_230549_2",
+      "20250108_230551_5",
+      "20250108_230552_8",
+      "20250108_230553_11",
+      "20250108_230555_14",
+      "20250108_230556_17",
+      "20250108_230557_20",
+      "20250108_230558_23",
+      "20250108_230559_26",
+      "20250108_230601_29",
+      "20250108_230601_30",
+      "20250108_230601_31"
+    ],
+    "pos": [
+      [
+        790.3946710675812,
+        945.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        954.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        963.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        972.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        981.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        990.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        999.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        1008.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        1017.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        1026.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        1029.925132865978,
+        -26.888958510984654
+      ],
+      [
+        790.3946710675812,
+        1032.925132865978,
+        -26.888958510984654
+      ]
+    ],
+    "yaw": [
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966
+    ],
+    "weaken_instruction": "Go to the white building with square windows.",
+    "translated_instruction_4": "Proceed directly to the modern building with medium height , characterized by its white color and rectangular windows .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9792675786155395,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9354738121095472,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Go to the white building with square windows .",
+    "translated_instruction_3": "Drive forward",
+    "translated_instruction_1_reward": 1.010022119301398,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.035701955929096,
+    "translated_instruction_2_reward": 1.010022119301398,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.035701955929096,
+    "translated_instruction_3_reward": 1.010022119301398,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.035701955929096
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/high_short/2025-1-9_20-8-38_883799426",
+    "gpt_instruction": "Proceed straight towards the tall office building characterized by its light beige color , featuring rows of windows and a weathered facade .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250109_200842_2",
+      "20250109_200843_5",
+      "20250109_200845_8",
+      "20250109_200846_11",
+      "20250109_200846_12"
+    ],
+    "pos": [
+      [
+        -33.60706411123576,
+        286.84348019171085,
+        36.154775318277345
+      ],
+      [
+        -33.60706411123576,
+        295.84348019171085,
+        36.154775318277345
+      ],
+      [
+        -33.60706411123576,
+        304.84348019171085,
+        36.154775318277345
+      ],
+      [
+        -33.60706411123576,
+        313.84348019171085,
+        36.154775318277345
+      ],
+      [
+        -33.60706411123576,
+        316.84348019171085,
+        36.154775318277345
+      ]
+    ],
+    "yaw": [
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966,
+      1.5707963267948966
+    ],
+    "weaken_instruction": "Go to the tall building with the light brown color and rows of windows.",
+    "translated_instruction_4": "Proceed straight towards the tall office building characterized by its light beige color , featuring rows of windows and a weathered facade .",
+    "weaken_instruction_reward": 0.18096748360719192,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 1.122640128089636,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 1.428503404599781,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Fly to the building with the light brown color and rows of windows.",
+    "translated_instruction_3": "Head to the tall , white building .",
+    "translated_instruction_1_reward": 0.9999900003333222,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 0.9999666677777408,
+    "translated_instruction_2_reward": 1.0313309548613852,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.1110699603718381,
+    "translated_instruction_3_reward": 1.0313309548613852,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.1110699603718381
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_short/2025-1-9_1-29-21_808808585",
+    "gpt_instruction": "Proceed towards a dark gray building with large , rectangular windows , then slightly turn right slightly and advance to it .",
+    "action": [
+      9,
+      3,
+      8,
+      0
+    ],
+    "index_list": [
+      "20250109_012925_2",
+      "20250109_012925_3",
+      "20250109_012926_5",
+      "20250109_012926_6"
+    ],
+    "pos": [
+      [
+        452.6955015485325,
+        465.62463194728537,
+        -14.030541685236908
+      ],
+      [
+        452.6955015485325,
+        462.62463194728537,
+        -14.030541685236908
+      ],
+      [
+        451.1955015485325,
+        460.02655573593205,
+        -14.030541685236908
+      ],
+      [
+        449.6955015485325,
+        457.42847952457873,
+        -14.030541685236908
+      ]
+    ],
+    "yaw": [
+      -1.5707963267948966,
+      -1.5707963267948966,
+      -2.0943951023931953,
+      -2.0943951023931953
+    ],
+    "weaken_instruction": "Go to the dark gray building with big square windows, then turn right and go to it.",
+    "translated_instruction_4": "Proceed towards a dark gray building with large , rectangular windows , then slightly turn right slightly and advance to it .",
+    "weaken_instruction_reward": 0.04943761273066842,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 2619.0625875423757,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 8727.938733529229,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Turn right",
+    "translated_instruction_3": "further up",
+    "translated_instruction_1_reward": 2619.0625875423757,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 8727.938733529229,
+    "translated_instruction_2_reward": 0.13100561836231878,
+    "translated_instruction_2_success": 0,
+    "translated_instruction_2_spl": 0.0,
+    "translated_instruction_3_reward": 2619.0625875423757,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 8727.938733529229
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_average/2025-1-9_0-50-56_145186709",
+    "gpt_instruction": "Proceed straight towards the white and dark building characterized by a grid of windows and large size , then slightly turn right and keep going straight until you reach the blue and reflective glass building , which features a grid pattern with reflective panels and is also large in size , classified as a modern building .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      3,
+      1,
+      0
+    ],
+    "index_list": [
+      "20250109_005100_2",
+      "20250109_005101_5",
+      "20250109_005102_8",
+      "20250109_005103_11",
+      "20250109_005104_14",
+      "20250109_005106_17",
+      "20250109_005106_18",
+      "20250109_005106_19",
+      "20250109_005107_20"
+    ],
+    "pos": [
+      [
+        1365.1717357987332,
+        568.5348963527008,
+        -8.37259322125965
+      ],
+      [
+        1369.6717357987332,
+        576.3291249867609,
+        -8.37259322125965
+      ],
+      [
+        1374.1717357987332,
+        584.123353620821,
+        -8.37259322125965
+      ],
+      [
+        1378.6717357987332,
+        591.9175822548812,
+        -8.37259322125965
+      ],
+      [
+        1383.1717357987332,
+        599.7118108889413,
+        -8.37259322125965
+      ],
+      [
+        1387.6717357987332,
+        607.5060395230014,
+        -8.37259322125965
+      ],
+      [
+        1389.1717357987332,
+        610.1041157343548,
+        -8.37259322125965
+      ],
+      [
+        1389.1717357987332,
+        610.1041157343548,
+        -8.37259322125965
+      ],
+      [
+        1391.7698120100865,
+        611.6041157343548,
+        -8.37259322125965
+      ]
+    ],
+    "yaw": [
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      1.0471975511966072,
+      0.5235987755983084,
+      0.5235987755983084
+    ],
+    "weaken_instruction": "Go to the white and dark building with a window grid, then turn right and go to the big blue building with shiny panels.",
+    "translated_instruction_4": "Proceed straight towards the white and dark building characterized by a grid of windows and large size , then slightly turn right and keep going straight until you reach the blue and reflective glass building , which features a grid pattern with reflective panels and is also large in size , classified as a modern building .",
+    "weaken_instruction_reward": 0.1723734392080538,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9797551399397354,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.9373957033261106,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Turn right",
+    "translated_instruction_3": "Go to the white and dark building with a window grid, then slightly turn left and go to the big blue building with shiny panels .",
+    "translated_instruction_1_reward": 1.0351844473049316,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.1248706778807869,
+    "translated_instruction_2_reward": 1.0151885278288022,
+    "translated_instruction_2_success": 1,
+    "translated_instruction_2_spl": 1.0545677251580854,
+    "translated_instruction_3_reward": 0.11726144595373365,
+    "translated_instruction_3_success": 0,
+    "translated_instruction_3_spl": 0.0
+  },
+  {
+    "image_path": "env_airsim_18/astar_data/medium_average/2025-1-8_19-36-8_1307565984",
+    "gpt_instruction": "Begin by walking directly towards a large building characterized by its grey color , triangular roof , and multiple windows . Upon reaching it , slightly veer to the right and continue walking straight until you arrive at a medium - sized urban building , distinguished by its light brown color , medium - sized windows , and a square top .",
+    "action": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      3,
+      9,
+      9,
+      9,
+      0
+    ],
+    "index_list": [
+      "20250108_193612_2",
+      "20250108_193613_5",
+      "20250108_193614_8",
+      "20250108_193615_11",
+      "20250108_193617_14",
+      "20250108_193618_17",
+      "20250108_193619_20",
+      "20250108_193620_23",
+      "20250108_193622_26",
+      "20250108_193623_29",
+      "20250108_193623_30",
+      "20250108_193624_33",
+      "20250108_193626_36",
+      "20250108_193627_39",
+      "20250108_193627_40"
+    ],
+    "pos": [
+      [
+        1073.2105637904363,
+        346.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        1065.4163351563761,
+        342.47824356790056,
+        -8.37259322125965
+      ],
+      [
+        1057.622106522316,
+        337.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        1049.827877888256,
+        333.47824356790056,
+        -8.37259322125965
+      ],
+      [
+        1042.0336492541958,
+        328.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        1034.2394206201357,
+        324.47824356790056,
+        -8.37259322125965
+      ],
+      [
+        1026.4451919860755,
+        319.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        1018.6509633520154,
+        315.47824356790056,
+        -8.37259322125965
+      ],
+      [
+        1010.8567347179553,
+        310.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        1003.0625060838952,
+        306.47824356790056,
+        -8.37259322125965
+      ],
+      [
+        1000.4644298725418,
+        304.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        994.4644298725418,
+        304.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        985.4644298725418,
+        304.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        976.4644298725418,
+        304.97824356790056,
+        -8.37259322125965
+      ],
+      [
+        973.4644298725418,
+        304.97824356790056,
+        -8.37259322125965
+      ]
+    ],
+    "yaw": [
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      -2.6179938779915037,
+      3.141592653589793,
+      3.141592653589793,
+      3.141592653589793,
+      3.141592653589793
+    ],
+    "weaken_instruction": "Go to the big gray building with the triangle roof and many windows. Then turn right and go to the small brown building with medium windows and a flat top.",
+    "translated_instruction_4": "Begin by walking directly towards a large building characterized by its grey color , triangular roof , and multiple windows . Upon reaching it , slightly veer to the right and continue walking straight until you arrive at a medium - sized urban building , distinguished by its light brown color , medium - sized windows , and a square top .",
+    "weaken_instruction_reward": 0.17735538572908435,
+    "weaken_instruction_success": 0,
+    "weaken_instruction_spl": 0.0,
+    "translated_instruction_4_reward": 0.9826022751834165,
+    "translated_instruction_4_success": 1,
+    "translated_instruction_4_spl": 0.949359738641157,
+    "translated_instruction_1": "Slightly move forward",
+    "translated_instruction_2": "Move towards the tall building with a pointy roof.",
+    "translated_instruction_3": "turn right",
+    "translated_instruction_1_reward": 0.9981486233847459,
+    "translated_instruction_1_success": 1,
+    "translated_instruction_1_spl": 1.0021014579941903,
+    "translated_instruction_2_reward": 0.18367014501450965,
+    "translated_instruction_2_success": 0,
+    "translated_instruction_2_spl": 0.0,
+    "translated_instruction_3_reward": 0.9989706554730619,
+    "translated_instruction_3_success": 1,
+    "translated_instruction_3_spl": 1.0021014579941907
+  }
+]

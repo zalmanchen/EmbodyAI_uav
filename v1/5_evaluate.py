@@ -26,10 +26,10 @@ TEMP_IMAGE_DIR = "./tmp/qwen_vl_imgs"
 MAX_NEW_TOKENS = 256
 
 EVAL_JSON_PATH = "./train_t2rl_lora/data/t2rl_eval.json"
-OUTPUT_JSON_PATH = "./train_t2rl_lora/data_v3/t2rl_eval_with_translated_k100.json" # v1, v2, v3, v4, v5
-LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/data_v1/output/v2/baseline_dpo/final"
+OUTPUT_JSON_PATH = "./train_t2rl_lora/data_v5/t2rl_eval_with_translated_k100-20.json" # v1, v2, v3, v4, v5
+LORA_PATH = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/train_t2rl_lora/data_v3/output/v2/baseline_dpo/final"
 
-base_model_path ="/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_k100_v3" # v1 ,v2, v3, v4, v5
+base_model_path ="/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_k100-20_v5" # v1 ,v2, v3, v4, v5
 
 save_model_path = "/mnt/geogpt-doc-new/default/cx/UAV/OpenFly/model/qwen/Qwen2.5-VL-7B-Instruct_test" # save the updated model
 
