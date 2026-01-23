@@ -1,0 +1,97 @@
+# k_20
+
+# First Round
+final_acc: 0.15763546798029557
+final_spl: 272.15918106415927
+final_ne: 90.95784550652039
+final_stop: 1.0
+
+# Second Round
+final_acc: 0.3054187192118227
+final_spl: 171.3649802598603
+final_ne: 119.482003372813
+final_stop: 1.0
+
+# Third Round
+final_acc: 0.18719211822660098
+final_spl: 286.96107575148994
+final_ne: 92.96860477623744
+final_stop: 1.0
+
+# Forth Round
+final_acc: 0.21182266009852216
+final_spl: 189.14883606969272
+final_ne: 95.25460550415787
+final_stop: 1.0
+
+# Fifth Round
+final_acc: 0.18719211822660098
+final_spl: 418.3013631745476
+final_ne: 83.85493161342475
+final_stop: 1.0
+
+
+# k_100
+
+# First Round
+final_acc: 0.3054187192118227
+final_spl: 171.338990794164
+final_ne: 123.20309718166705
+final_stop: 1.0
+
+# Second Round
+final_acc: 0.32019704433497537
+final_spl: 273.1424947157941
+final_ne: 109.12443454978794
+final_stop: 1.0
+
+# Third Round
+final_acc: 0.3891625615763547
+final_spl: 256.9697720719886
+final_ne: 68.36635293893966
+final_stop: 1.0
+
+# Forth Round
+final_acc: 0.41379310344827586
+final_spl: 375.19589433921936
+final_ne: 69.26926397190705
+final_stop: 1.0
+
+# Fifth Round
+final_acc: 0.39901477832512317
+final_spl: 299.977307418795
+final_ne: 72.41866614735575
+final_stop: 1.0
+
+
+### k100-20 random
+
+# First round
+final_acc: 0.22167487684729065
+final_spl: 402.8592339346726
+final_ne: 96.04780341458412
+final_stop: 1.0
+
+# Second round
+final_acc: 0.1921182266009852
+final_spl: 242.643923838222
+final_ne: 108.8941179454998
+final_stop: 1.0
+
+# Third round
+final_acc: 0.22167487684729065
+final_spl: 303.26759449906234
+final_ne: 93.32974339779597
+final_stop: 1.0
+
+# Forth round
+final_acc: 0.20689655172413793
+final_spl: 549.2798731815794
+final_ne: 85.83087384718034
+final_stop: 1.0
+
+# Fifth round
+final_acc: 0.17733990147783252
+final_spl: 364.78716975982996
+final_ne: 83.7225210148866
+final_stop: 1.0
