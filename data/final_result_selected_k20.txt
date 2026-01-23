@@ -1,0 +1,37 @@
+
+
+# k20 Selected
+
+# First Round
+final_acc: 0.3103448275862069
+final_spl: 159.7063879571669
+final_ne: 119.19701657923642
+final_stop: 1.0
+
+# Second Round
+
+final_acc: 0.33497536945812806
+final_spl: 216.82722208416973
+final_ne: 110.30334374267841
+final_stop: 1.0
+
+# Third Round
+
+final_acc: 0.28078817733990147
+final_spl: 233.53926010063148
+final_ne: 101.36924102203301
+final_stop: 1.0
+
+# Forth Round
+
+final_acc: 0.3103448275862069
+final_spl: 317.87430846177597
+final_ne: 103.5065201820613
+final_stop: 1.0
+
+# Fifth Round
+
+final_acc: 0.29064039408866993
+final_spl: 242.73033396251682
+final_ne: 105.21807462627848
+final_stop: 1.0

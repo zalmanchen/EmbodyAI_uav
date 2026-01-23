@@ -1,0 +1,85 @@
+final_acc: 0.1921182266009852
+final_spl: 273.8342401281267
+final_ne: 121.68784967777418
+final_stop: 1.0
+
+final_acc: 0.21182266009852216
+final_spl: 299.7506268505253
+final_ne: 109.37483442108699
+final_stop: 1.0
+
+final_acc: 0.2660098522167488
+final_spl: 286.3358788881997
+final_ne: 108.01563326623521
+final_stop: 1.0
+
+final_acc: 0.31527093596059114
+final_spl: 374.07446499411543
+final_ne: 76.57724461169124
+final_stop: 1.0
+
+final_acc: 0.3793103448275862
+final_spl: 218.90917928829649
+final_ne: 71.43049056054862
+final_stop: 1.0
+
+# weaken_instruction
+final_acc: 0.15270935960591134
+final_spl: 272.12966631234843
+final_ne: 85.57874292313521
+final_stop: 1.0
+
+# Origin_Instruction
+final_acc: 0.3251231527093596
+final_spl: 342.50977970022615
+final_ne: 110.40797831948109
+final_stop: 1.0
+
+final_acc: 0.20689655172413793
+final_spl: 242.66132825683664
+final_ne: 110.3692257299009
+final_stop: 1.0
+
+# First Round
+final_acc: 0.21182266009852216
+final_spl: 161.260785495474
+final_ne: 133.55993889287976
+final_stop: 1.0
+
+# Second Round
+final_acc: 0.18226600985221675
+final_spl: 375.6090404012926
+final_ne: 103.68533139250498
+final_stop: 1.0
+
+# Third Round
+final_acc: 0.2512315270935961
+final_spl: 481.0503530987957
+final_ne: 105.44018184569208
+final_stop: 1.0
+
+# Forth Round
+final_acc: 0.2955665024630542
+final_spl: 330.7334256356276
+final_ne: 83.43395247934482
+final_stop: 1.0
+
+# Fifth Round
+final_acc: 0.3793103448275862
+final_spl: 248.4540194046364
+final_ne: 72.07524919741773
+final_stop: 1.0
+
+# weaken_instruction
+
+final_acc: 0.15763546798029557
+final_spl: 373.5660374680088
+final_ne: 82.47927174531748
+final_stop: 1.0
+
+# gpt_instructionfinal_acc: 0.3103448275862069
+final_spl: 316.6437329898019
+final_ne: 116.56083408479505
+final_stop: 1.0
+
+
